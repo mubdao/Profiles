@@ -1,0 +1,179 @@
+# Proxy
+
+
+# key
+HOST-KEYWORD,github
+HOST-KEYWORD,google
+HOST-KEYWORD,gmail
+HOST-KEYWORD,spotify
+HOST-KEYWORD,avtb
+HOST-KEYWORD,dropbox
+HOST-KEYWORD,facebook
+HOST-KEYWORD,fbcdn
+HOST-KEYWORD,instagram
+HOST-KEYWORD,porn
+HOST-KEYWORD,telegram
+HOST-KEYWORD,twitter
+HOST-KEYWORD,youtube
+HOST-KEYWORD,testflight
+
+# suffix
+HOST-SUFFIX,bing.com
+HOST-SUFFIX,amazonaws.com
+HOST-SUFFIX,cloudflare.com
+HOST-SUFFIX,rsshub.app
+HOST-SUFFIX,speedrun.com
+
+# porn
+HOST-SUFFIX,8teenxxx.com
+HOST-SUFFIX,ahcdn.com
+HOST-SUFFIX,bcvcdn.com
+HOST-SUFFIX,bongacams.com
+HOST-SUFFIX,chaturbate.com
+HOST-SUFFIX,dditscdn.com
+HOST-SUFFIX,livejasmin.com
+HOST-SUFFIX,phncdn.com
+HOST-SUFFIX,phprcdn.com
+HOST-SUFFIX,pornhub.com
+HOST-SUFFIX,pornhubpremium.com
+HOST-SUFFIX,rdtcdn.com
+HOST-SUFFIX,redtube.com
+HOST-SUFFIX,sb-cd.com
+HOST-SUFFIX,spankbang.com
+HOST-SUFFIX,t66y.com
+HOST-SUFFIX,missav.com
+HOST-SUFFIX,xhamster.com
+HOST-SUFFIX,xnxx-cdn.com
+HOST-SUFFIX,xnxx.com
+HOST-SUFFIX,xvideos-cdn.com
+HOST-SUFFIX,xvideos.com
+HOST-SUFFIX,ypncdn.com
+
+# bbc
+HOST-KEYWORD,uk-live
+HOST-SUFFIX,bbc.co
+HOST-SUFFIX,bbc.com
+
+# google
+HOST-SUFFIX,1e100.net
+HOST-SUFFIX,2mdn.net
+HOST-SUFFIX,app-measurement.net
+HOST-SUFFIX,g.co
+HOST-SUFFIX,ggpht.com
+HOST-SUFFIX,goo.gl
+HOST-SUFFIX,googleapis.cn
+HOST-SUFFIX,googleapis.com
+HOST-SUFFIX,gstatic.cn
+HOST-SUFFIX,gstatic.com
+HOST-SUFFIX,gvt0.com
+HOST-SUFFIX,gvt1.com
+HOST-SUFFIX,gvt2.com
+HOST-SUFFIX,gvt3.com
+HOST-SUFFIX,xn--ngstr-lra8j.com
+HOST-SUFFIX,youtu.be
+HOST-SUFFIX,youtube-nocookie.com
+HOST-SUFFIX,youtube.com
+HOST-SUFFIX,yt.be
+HOST-SUFFIX,ytimg.com
+IP-CIDR,172.110.32.0/21
+IP-CIDR,173.194.0.0/16
+IP-CIDR,216.73.80.0/20
+IP-CIDR,74.125.0.0/16
+IP6-CIDR,2620:120:e000::/40
+
+# github
+HOST-SUFFIX,github.com
+HOST-SUFFIX,github.io
+HOST-SUFFIX,githubapp.com
+HOST-SUFFIX,githubassets.com
+HOST-SUFFIX,githubusercontent.com
+
+# instagram
+HOST-SUFFIX,cdninstagram.com
+HOST-SUFFIX,instagram.com
+HOST-SUFFIX,instagr.am
+
+# mail
+HOST,imap-mail.outlook.com
+HOST,imap.gmail.com
+HOST,outlook.office365.com
+HOST,pop.gmail.com
+HOST,smtp-mail.outlook.com
+HOST,smtp.gmail.com
+HOST,smtp.office365.com
+HOST-SUFFIX,apple.imap.mail.yahoo.com
+HOST-SUFFIX,m.hotmail.com
+
+# spark
+HOST-SUFFIX,amplitude.com
+HOST-SUFFIX,firebaseio.com
+HOST-SUFFIX,hockeyapp.net
+HOST-SUFFIX,readdle.com
+HOST-SUFFIX,smartmailcloud.com
+
+# telegram
+HOST-SUFFIX,t.me
+HOST-SUFFIX,tdesktop.com
+HOST-SUFFIX,telegra.ph
+HOST-SUFFIX,telegram.me
+HOST-SUFFIX,telegram.org
+HOST-SUFFIX,telesco.pe
+IP-CIDR,109.239.140.0/24
+IP-CIDR,149.154.160.0/20
+IP-CIDR,5.28.195.163/32
+IP-CIDR,5.28.195.205/32
+IP-CIDR,91.108.0.0/16 
+IP6-CIDR,2001:67c:4e8::/48
+IP6-CIDR,2001:b28:f23c::/47
+IP6-CIDR,2001:b28:f23f::/48
+IP6-CIDR,2a0a:f280::/32
+
+# twitter
+HOST-SUFFIX,periscope.tv
+HOST-SUFFIX,pscp.tv
+HOST-SUFFIX,t.co
+HOST-SUFFIX,twimg.co
+HOST-SUFFIX,twimg.com
+HOST-SUFFIX,twimg.org
+HOST-SUFFIX,twitpic.com
+HOST-SUFFIX,twitter.com
+HOST-SUFFIX,twitter.jp
+HOST-SUFFIX,vine.co
+
+# testflight
+HOST,beta.apple.com
+HOST,testflight.apple.com
+
+# youTube
+HOST,yt3.ggpht.com
+HOST-SUFFIX,gvt2.com
+HOST-SUFFIX,withyoutube.com
+HOST-SUFFIX,youtu.be
+HOST-SUFFIX,youtube-nocookie.com
+HOST-SUFFIX,youtube.com
+HOST-SUFFIX,youtubeeducation.com
+HOST-SUFFIX,youtubegaming.com
+HOST-SUFFIX,youtubekids.com
+HOST-SUFFIX,yt.be
+HOST-SUFFIX,ytimg.com
+
+# wikipedia
+HOST-SUFFIX,mediawiki.org
+HOST-SUFFIX,wikibooks.org
+HOST-SUFFIX,wikidata.org
+HOST-SUFFIX,wikileaks.org
+HOST-SUFFIX,wikimedia.org
+HOST-SUFFIX,wikinews.org
+HOST-SUFFIX,wikipedia.org
+HOST-SUFFIX,wikiquote.org
+HOST-SUFFIX,wikisource.org
+HOST-SUFFIX,wikiversity.org
+HOST-SUFFIX,wikivoyage.org
+HOST-SUFFIX,wiktionary.org
+
+# server
+HOST-SUFFIX,texon.io
+HOST-SUFFIX,flower.yt
+
+# emby
+HOST,emby.texon.io
