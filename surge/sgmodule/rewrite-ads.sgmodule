@@ -1,0 +1,51 @@
+#!name=Rewrite ad
+#!desc=Rewrite remove ads
+
+
+[Rule]
+# 屏蔽 UDP 443 端口
+AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
+# 屏蔽 YouTube UDP
+AND,((PROTOCOL,UDP), (DOMAIN-SUFFIX,googlevideo.com)),REJECT-NO-DROP
+# Safari 防跳转
+DOMAIN,app-site-association.cdn-apple.com,REJECT
+
+[URL Rewrite]
+# official accounts ad
+wechat = type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/wechat.js
+# bus code
+^https:\/\/ccmsupport-sz\.tenpay\.com\/cgi-bin\/common\/ccm_page_element.cgi - reject
+# ali
+^https?:\/\/(gw|heic)\.alicdn\.com\/imgextra\/\w{2}\/[\w!]+-\d-tps-\d{3,4}-\d{4}\.jpg_(1\d{3}|9\d{2})x(1\d{3}|9\d{2})q\d0\.jpg_\.(heic|webp)$ - reject
+# byteDance
+^https?:\/\/[\w-]+\.(amemv|musical|snssdk|tiktokv)\.(com|ly)\/(api|motor)\/ad\/ - reject
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/ad\/ - reject
+^https?:\/\/[\w-]+\.snssdk\.com\/.+_ad\/ - reject
+^https?:\/\/[\w-]+\.snssdk\.com\/motor\/operation\/activity\/display\/config\/V2\/ - reject
+^https?:\/\/.+?\/img\/ad\.union\.api\/ - reject
+# chinamobile
+^https?:\/\/clientaccess\.10086\.cn\/biz-orange\/DN\/init\/startInit - reject
+^https?:\/\/wap\.js\.10086\.cn\/jsmccClient\/cd\/market_content\/api\/v\d\/market_content\.page\.query - reject
+# douban
+^https?:\/\/api\.douban\.com\/v\d\/app_ads\/ - reject
+# douyu
+^https?:\/\/rtbapi\.douyucdn\.cn\/japi\/sign\/app\/getinfo - reject
+^https?:\/\/daoyu\.sdo\.com\/api\/userCommon\/getAppStartAd - reject
+# dianshijia
+^https?:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/ad\/ - reject
+^https?:\/\/cdn\.dianshihome\.com\/static\/ad\/ - reject
+# jd
+^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts - reject
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
+# pdd
+^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash - reject
+# smzdm
+^https?:\/\/api\.smzdm\.com\/v\d\/util\/loading - reject
+^https?:\/\/app-api\.smzdm\.com\/util\/loading - reject
+^https?:\/\/s\d\.zdmimg\.com\/www\/api\/v\d\/api\/thirdAd\.php - reject
+# xhs
+^https?:\/\/www\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config - reject
+^https?:\/\/www\.xiaohongshu\.com\/api\/sns\/v\d\/ads\/ - reject
+
+[MITM]
+hostname = %APPEND% ccmsupport-sz.tenpay.com, gw.alicdn.com,heic.alicdn.com, clientaccess.10086.cn, api.douban.com, rtbapi.douyucdn.cn, daoyu.sdo.com, api.m.jd.com, api.yangkeduo.com,api.pinduoduo.com, ap*.smzdm.com, www.xiaohongshu.com
