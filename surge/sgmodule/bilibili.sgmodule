@@ -16,11 +16,11 @@
 
 [Script]
 # Proto 动态去广告 
-bili-proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,requires-body=1,binary-body-mode=1,script-path= https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bilibili_proto.js,
+bili-proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,requires-body=1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bilibili_proto.js
 # Proto 播放页去广告 
-#bili-proto = type=http-response,pattern= ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.playurl\.v1\.PlayURL\/PlayView$,requires-body=1,max-size=0,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Mubdao/Surge/main/js/bilibili_proto.js
+#bili-proto = type=http-response,pattern= ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.playurl\.v1\.PlayURL\/PlayView$,requires-body=1,max-size=0,binary-body-mode=1,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bilibili_proto.js
 # Proto 去除后台播放限制 
-bili-proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.view\.v1\.View\/View$,requires-body=1,max-size=0,binary-body-mode=1,script-path= https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bilibili_proto.js
+bili-proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.view\.v1\.View\/View$,requires-body=1,max-size=0,binary-body-mode=1,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bilibili_proto.js
 # 首页 推荐、热搜发现、右上角活动、标签页、观影页、直播
 bili_json = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/(feed\/index|search\/square)\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bilibili_json.js
 bili_json = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/resource\/(top\/activity|show\/tab\/v2)\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bilibili_json.js
