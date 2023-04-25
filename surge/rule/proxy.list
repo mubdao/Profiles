@@ -1,0 +1,179 @@
+# Proxy
+
+
+# key
+DOMAIN-KEYWORD,github
+DOMAIN-KEYWORD,google
+DOMAIN-KEYWORD,gmail
+DOMAIN-KEYWORD,spotify
+DOMAIN-KEYWORD,avtb
+DOMAIN-KEYWORD,dropbox
+DOMAIN-KEYWORD,facebook
+DOMAIN-KEYWORD,fbcdn
+DOMAIN-KEYWORD,instagram
+DOMAIN-KEYWORD,porn
+DOMAIN-KEYWORD,telegram
+DOMAIN-KEYWORD,twitter
+DOMAIN-KEYWORD,youtube
+DOMAIN-KEYWORD,testflight
+
+# suffix
+DOMAIN-SUFFIX,bing.com
+DOMAIN-SUFFIX,amazonaws.com
+DOMAIN-SUFFIX,cloudflare.com
+DOMAIN-SUFFIX,rsshub.app
+DOMAIN-SUFFIX,speedrun.com
+
+# porn
+DOMAIN-SUFFIX,8teenxxx.com
+DOMAIN-SUFFIX,ahcdn.com
+DOMAIN-SUFFIX,bcvcdn.com
+DOMAIN-SUFFIX,bongacams.com
+DOMAIN-SUFFIX,chaturbate.com
+DOMAIN-SUFFIX,dditscdn.com
+DOMAIN-SUFFIX,livejasmin.com
+DOMAIN-SUFFIX,phncdn.com
+DOMAIN-SUFFIX,phprcdn.com
+DOMAIN-SUFFIX,pornhub.com
+DOMAIN-SUFFIX,pornhubpremium.com
+DOMAIN-SUFFIX,rdtcdn.com
+DOMAIN-SUFFIX,redtube.com
+DOMAIN-SUFFIX,sb-cd.com
+DOMAIN-SUFFIX,spankbang.com
+DOMAIN-SUFFIX,t66y.com
+DOMAIN-SUFFIX,missav.com
+DOMAIN-SUFFIX,xhamster.com
+DOMAIN-SUFFIX,xnxx-cdn.com
+DOMAIN-SUFFIX,xnxx.com
+DOMAIN-SUFFIX,xvideos-cdn.com
+DOMAIN-SUFFIX,xvideos.com
+DOMAIN-SUFFIX,ypncdn.com
+
+# bbc
+DOMAIN-KEYWORD,uk-live
+DOMAIN-SUFFIX,bbc.co
+DOMAIN-SUFFIX,bbc.com
+
+# google
+DOMAIN-SUFFIX,1e100.net
+DOMAIN-SUFFIX,2mdn.net
+DOMAIN-SUFFIX,app-measurement.net
+DOMAIN-SUFFIX,g.co
+DOMAIN-SUFFIX,ggpht.com
+DOMAIN-SUFFIX,goo.gl
+DOMAIN-SUFFIX,googleapis.cn
+DOMAIN-SUFFIX,googleapis.com
+DOMAIN-SUFFIX,gstatic.cn
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,gvt0.com
+DOMAIN-SUFFIX,gvt1.com
+DOMAIN-SUFFIX,gvt2.com
+DOMAIN-SUFFIX,gvt3.com
+DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,youtube-nocookie.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,ytimg.com
+IP-CIDR,74.125.0.0/16,no-resolve
+IP-CIDR,173.194.0.0/16,no-resolve
+
+# github
+DOMAIN-SUFFIX,github.com
+DOMAIN-SUFFIX,github.io
+DOMAIN-SUFFIX,githubapp.com
+DOMAIN-SUFFIX,githubassets.com
+DOMAIN-SUFFIX,githubusercontent.com
+
+# instagram
+DOMAIN-SUFFIX,cdninstagram.com
+DOMAIN-SUFFIX,instagram.com
+DOMAIN-SUFFIX,instagr.am
+
+# mail
+DOMAIN,imap-mail.outlook.com
+DOMAIN,imap.gmail.com
+DOMAIN,outlook.office365.com
+DOMAIN,pop.gmail.com
+DOMAIN,smtp-mail.outlook.com
+DOMAIN,smtp.gmail.com
+DOMAIN,smtp.office365.com
+DOMAIN-SUFFIX,apple.imap.mail.yahoo.com
+DOMAIN-SUFFIX,m.hotmail.com
+
+# spark
+DOMAIN-SUFFIX,amplitude.com
+DOMAIN-SUFFIX,firebaseio.com
+DOMAIN-SUFFIX,hockeyapp.net
+DOMAIN-SUFFIX,readdle.com
+DOMAIN-SUFFIX,smartmailcloud.com
+
+# telegram
+DOMAIN-SUFFIX,t.me
+DOMAIN-SUFFIX,tdesktop.com
+DOMAIN-SUFFIX,telegra.ph
+DOMAIN-SUFFIX,telegram.me
+DOMAIN-SUFFIX,telegram.org
+DOMAIN-SUFFIX,telesco.pe
+IP-CIDR,149.154.160.0/20,no-resolve
+IP-CIDR,185.76.151.0/24,no-resolve
+IP-CIDR,91.105.192.0/23,no-resolve
+IP-CIDR,91.108.12.0/22,no-resolve
+IP-CIDR,91.108.16.0/22,no-resolve
+IP-CIDR,91.108.20.0/22,no-resolve
+IP-CIDR,91.108.4.0/22,no-resolve
+IP-CIDR,91.108.56.0/22,no-resolve
+IP-CIDR,91.108.8.0/22,no-resolve
+IP-CIDR6,2001:67c:4e8::/48,no-resolve
+IP-CIDR6,2001:b28:f23c::/48,no-resolve
+IP-CIDR6,2001:b28:f23d::/48,no-resolve
+IP-CIDR6,2001:b28:f23f::/48,no-resolve
+IP-CIDR6,2a0a:f280::/32,no-resolve
+
+# twitter
+DOMAIN-SUFFIX,periscope.tv
+DOMAIN-SUFFIX,pscp.tv
+DOMAIN-SUFFIX,t.co
+DOMAIN-SUFFIX,twimg.co
+DOMAIN-SUFFIX,twimg.com
+DOMAIN-SUFFIX,twimg.org
+DOMAIN-SUFFIX,twitpic.com
+DOMAIN-SUFFIX,twitter.com
+DOMAIN-SUFFIX,twitter.jp
+DOMAIN-SUFFIX,vine.co
+
+# testflight
+DOMAIN,beta.apple.com
+DOMAIN,testflight.apple.com
+
+# youTube
+DOMAIN,yt3.ggpht.com
+DOMAIN-SUFFIX,gvt2.com
+DOMAIN-SUFFIX,withyoutube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,youtube-nocookie.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtubeeducation.com
+DOMAIN-SUFFIX,youtubegaming.com
+DOMAIN-SUFFIX,youtubekids.com
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,ytimg.com
+
+# wikipedia
+DOMAIN-SUFFIX,mediawiki.org
+DOMAIN-SUFFIX,wikibooks.org
+DOMAIN-SUFFIX,wikidata.org
+DOMAIN-SUFFIX,wikileaks.org
+DOMAIN-SUFFIX,wikimedia.org
+DOMAIN-SUFFIX,wikinews.org
+DOMAIN-SUFFIX,wikipedia.org
+DOMAIN-SUFFIX,wikiquote.org
+DOMAIN-SUFFIX,wikisource.org
+DOMAIN-SUFFIX,wikiversity.org
+DOMAIN-SUFFIX,wikivoyage.org
+
+# server
+DOMAIN-SUFFIX,texon.io
+
+# emby
+DOMAIN,emby.texon.io
