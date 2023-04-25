@@ -1,0 +1,19 @@
+#!name=Weibo_intl ad
+#!desc= Remove Weibo_intl Ads
+#@ddgksf2013
+
+
+[Map Local]
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_info.json" 
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
+
+[Script]
+weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*get_coopen_ads,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=trends,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=user_center,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+
+[MITM]
+hostname = %APPEND% *api.weibo*, *uve.weibo.com, new.vip.weibo.cn
