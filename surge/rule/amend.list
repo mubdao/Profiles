@@ -40,3 +40,9 @@ DOMAIN,analytics.strava.com
 # umeng
 DOMAIN,msg.umeng.com
 DOMAIN,msg.umengcloud.com
+
+# weibo
+DOMAIN,sdkapp.uve.weibo.com
+
+# emby
+DOMAIN,bsyid.otoou.com
