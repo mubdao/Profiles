@@ -21,4 +21,4 @@ IP-CIDR6,fe80::/10
 IP-CIDR6,fd00::/8
 
 # router
-HOST-SUFFIX,miwifi.com,DIRECT
+HOST-SUFFIX,miwifi.com
