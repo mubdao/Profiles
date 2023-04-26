@@ -1,6 +1,33 @@
 # Advertising
 
 
+# key
+HOST-KEYWORD,admarvel
+HOST-KEYWORD,admaster
+HOST-KEYWORD,adsage
+HOST-KEYWORD,adsensor
+HOST-KEYWORD,adservice
+HOST-KEYWORD,adsmogo
+HOST-KEYWORD,adsrvmedia
+HOST-KEYWORD,adsserving
+HOST-KEYWORD,adsystem
+HOST-KEYWORD,adwords
+HOST-KEYWORD,applovin
+HOST-KEYWORD,appsflyer
+HOST-KEYWORD,domob
+HOST-KEYWORD,duomeng
+HOST-KEYWORD,dwtrack
+HOST-KEYWORD,guanggao
+HOST-KEYWORD,omgmta
+HOST-KEYWORD,omniture
+HOST-KEYWORD,openx
+HOST-KEYWORD,partnerad
+HOST-KEYWORD,pingfore
+HOST-KEYWORD,socdm
+HOST-KEYWORD,supersonicads
+HOST-KEYWORD,wlmonitor
+HOST-KEYWORD,zjtoolbar
+
 # general
 HOST-KEYWORD,adservice
 
