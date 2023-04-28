@@ -19,6 +19,7 @@ DOMAIN-KEYWORD,testflight
 
 # suffix
 DOMAIN-SUFFIX,bing.com
+DOMAIN-SUFFIX,duckduckgo.com
 DOMAIN-SUFFIX,amazonaws.com
 DOMAIN-SUFFIX,cloudflare.com
 DOMAIN-SUFFIX,rsshub.app
@@ -48,6 +49,11 @@ DOMAIN-SUFFIX,xnxx.com
 DOMAIN-SUFFIX,xvideos-cdn.com
 DOMAIN-SUFFIX,xvideos.com
 DOMAIN-SUFFIX,ypncdn.com
+
+# adg
+DOMAIN-SUFFIX,adguard.org
+DOMAIN-SUFFIX,adguard.com
+DOMAIN-SUFFIX,adtidy.org
 
 # bbc
 DOMAIN-KEYWORD,uk-live
@@ -100,6 +106,10 @@ DOMAIN,smtp.gmail.com
 DOMAIN,smtp.office365.com
 DOMAIN-SUFFIX,apple.imap.mail.yahoo.com
 DOMAIN-SUFFIX,m.hotmail.com
+
+# spotify
+DOMAIN-SUFFIX,branch.io
+DOMAIN-SUFFIX,scorecardresearch.com
 
 # spark
 DOMAIN-SUFFIX,amplitude.com
@@ -178,7 +188,6 @@ DOMAIN-SUFFIX,flower.yt
 
 # emby
 DOMAIN,emby.texon.io
-DOMAIN,bluesea.ddns.me
 
 # substore
-DOMAIN,sub.store
+DOMAIN,sub-store.vercel.app
