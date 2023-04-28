@@ -1,21 +1,19 @@
 # Direct
 
 
+# ua
+USER-AGENT,MicroMessenger Client
+USER-AGENT,WeChat*
+USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
+
 # key
 DOMAIN-KEYWORD,apple
-DOMAIN-KEYWORD,alipay
-DOMAIN-KEYWORD,aliyun
-DOMAIN-KEYWORD,aliapp
-DOMAIN-KEYWORD,alicdn
-DOMAIN-KEYWORD,alibaba
 DOMAIN-KEYWORD,icloud
 DOMAIN-KEYWORD,baidu
 DOMAIN-KEYWORD,csdn
 DOMAIN-KEYWORD,douyin
 DOMAIN-KEYWORD,taobao
 DOMAIN-KEYWORD,tencent
-DOMAIN-KEYWORD,wechat
-DOMAIN-KEYWORD,weixin
 DOMAIN-KEYWORD,weibo
 DOMAIN-KEYWORD,pinduoduo
 DOMAIN-KEYWORD,jdcloud
@@ -23,148 +21,23 @@ DOMAIN-KEYWORD,toutiao
 DOMAIN-KEYWORD,ruguoapp
 
 # ali
-DOMAIN-SUFFIX,1688.com
-DOMAIN-SUFFIX,aliapp.org
-DOMAIN-SUFFIX,alibaba.com
-DOMAIN-SUFFIX,alibabacloud.com
-DOMAIN-SUFFIX,alibabausercontent.com
-DOMAIN-SUFFIX,alicdn.com
-DOMAIN-SUFFIX,alicloudccp.com
-DOMAIN-SUFFIX,aliexpress.com
-DOMAIN-SUFFIX,aliimg.com
-DOMAIN-SUFFIX,alikunlun.com
-DOMAIN-SUFFIX,alipay.com
-DOMAIN-SUFFIX,alipayobjects.com
-DOMAIN-SUFFIX,alisoft.com
-DOMAIN-SUFFIX,aliyun.com
-DOMAIN-SUFFIX,aliyuncdn.com
-DOMAIN-SUFFIX,aliyuncs.com
-DOMAIN-SUFFIX,aliyundrive.com
-DOMAIN-SUFFIX,amap.com
-DOMAIN-SUFFIX,autonavi.com
-DOMAIN-SUFFIX,dingtalk.com
-DOMAIN-SUFFIX,ele.me
-DOMAIN-SUFFIX,hichina.com
-DOMAIN-SUFFIX,mmstat.com
-DOMAIN-SUFFIX,mxhichina.com
-DOMAIN-SUFFIX,soku.com
-DOMAIN-SUFFIX,taobao.com
-DOMAIN-SUFFIX,taobaocdn.com
-DOMAIN-SUFFIX,tbcache.com
-DOMAIN-SUFFIX,tbcdn.com
-DOMAIN-SUFFIX,tmall.com
-DOMAIN-SUFFIX,tmall.hk
-DOMAIN-SUFFIX,ucweb.com
-DOMAIN-SUFFIX,xiami.com
-DOMAIN-SUFFIX,xiami.net
-DOMAIN-SUFFIX,ykimg.com
-DOMAIN-SUFFIX,youku.com
+DOMAIN-KEYWORD,alipay
+DOMAIN-KEYWORD,taobao
+DOMAIN-KEYWORD,alicdn
+DOMAIN-KEYWORD,aliyun
+DOMAIN-KEYWORD,.tmall.
+IP-CIDR,198.11.188.0/25,no-resolve
+IP-CIDR,198.11.136.0/24,no-resolve
 
 # accuWeather
-DOMAIN-SUFFIX,lycorisrecoil.org
-DOMAIN-SUFFIX,mapbox.com
 DOMAIN-SUFFIX,awxcdn.com
 DOMAIN-SUFFIX,scorecardresearch.com
-DOMAIN-SUFFIX,appsflyer.com
 DOMAIN-SUFFIX,urbanairship.com
 DOMAIN-SUFFIX,apptimize.com
 DOMAIN-SUFFIX,accuweather.com
-
-# baidu
-DOMAIN-SUFFIX,baidu.com
-DOMAIN-SUFFIX,baidubcr.com
-DOMAIN-SUFFIX,baidupcs.com
-DOMAIN-SUFFIX,baidustatic.com
-DOMAIN-SUFFIX,bcebos.com
-DOMAIN-SUFFIX,bdimg.com
-DOMAIN-SUFFIX,bdstatic.com
-DOMAIN-SUFFIX,bdurl.net
-DOMAIN-SUFFIX,hao123.com
-DOMAIN-SUFFIX,hao123img.com
-DOMAIN-SUFFIX,jomodns.com
-DOMAIN-SUFFIX,yunjiasu-cdn.net
 
 # bilibili
 DOMAIN-SUFFIX,biliapi.com
 DOMAIN-SUFFIX,biliapi.net
 DOMAIN-SUFFIX,bilibili.com
-DOMAIN-SUFFIX,bilibili.tv
 DOMAIN-SUFFIX,bilivideo.com
-DOMAIN-SUFFIX,biligame.com
-DOMAIN-SUFFIX,hdslb.com
-DOMAIN-SUFFIX,mzstatic.com
-DOMAIN-SUFFIX,amap.com
-DOMAIN-SUFFIX,autonavi.com
-DOMAIN-SUFFIX,qq.com
-DOMAIN-SUFFIX,qq.com.cn
-DOMAIN-SUFFIX,qlogo.cn
-DOMAIN-SUFFIX,gtimg.com
-DOMAIN-SUFFIX,akamaized.net
-DOMAIN-SUFFIX,bstarstatic.com
-
-# douyin
-DOMAIN-SUFFIX,bytescm.com
-DOMAIN-SUFFIX,bsccdn.net
-DOMAIN-SUFFIX,bytetos.com
-DOMAIN-SUFFIX,static.com
-DOMAIN-SUFFIX,bytegecko.com
-DOMAIN-SUFFIX,bdurl.net
-DOMAIN-SUFFIX,snssdk.com
-DOMAIN-SUFFIX,kuiniuca.com
-DOMAIN-SUFFIX,zijieapi.com
-DOMAIN-SUFFIX,awemeughun.com
-DOMAIN-SUFFIX,amemv.com
-DOMAIN-SUFFIX,ecombdapi.com
-DOMAIN-SUFFIX,xycdn.com
-DOMAIN-SUFFIX,pstatp.com
-DOMAIN-SUFFIX,bytemaimg.com
-DOMAIN-SUFFIX,ibytedapm.com
-DOMAIN-SUFFIX,byteactivity.com
-DOMAIN-SUFFIX,bytedance.com
-DOMAIN-SUFFIX,byteeffecttos.com
-DOMAIN-SUFFIX,bytednsdoc.com
-DOMAIN-SUFFIX,baike.com
-DOMAIN-SUFFIX,ksyuncdn.com
-DOMAIN-SUFFIX,oceanengine.com
-DOMAIN-SUFFIX,oceanengine.com
-DOMAIN-SUFFIX,volcsirius.com
-DOMAIN-SUFFIX,ecombdstatic.com
-DOMAIN-SUFFIX,byteimg.com
-DOMAIN-SUFFIX,miaozhen.com
-DOMAIN-SUFFIX,ndcpp.com
-
-# jd
-DOMAIN-SUFFIX,360buy.com
-DOMAIN-SUFFIX,360buyimg.com
-DOMAIN-SUFFIX,jcloudcs.com
-DOMAIN-SUFFIX,jd.com
-DOMAIN-SUFFIX,jd.hk
-DOMAIN-SUFFIX,jdcloud.com
-DOMAIN-SUFFIX,jdpay.com
-DOMAIN-SUFFIX,paipai.com
-
-# pdd
-DOMAIN-SUFFIX,pinduoduo.com
-DOMAIN-SUFFIX,yangkeduo.com
-
-# sina
-DOMAIN-SUFFIX,leju.com
-DOMAIN-SUFFIX,miaopai.com
-DOMAIN-SUFFIX,sina.com
-DOMAIN-SUFFIX,sina.com.cn
-DOMAIN-SUFFIX,sina.cn
-DOMAIN-SUFFIX,sinaapp.com
-DOMAIN-SUFFIX,sinaapp.cn
-DOMAIN-SUFFIX,sinaimg.com
-DOMAIN-SUFFIX,sinaimg.cn
-DOMAIN-SUFFIX,weibo.com
-DOMAIN-SUFFIX,weibo.cn
-DOMAIN-SUFFIX,weibocdn.com
-DOMAIN-SUFFIX,weibocdn.cn
-DOMAIN-SUFFIX,xiaoka.tv
-
-# tencent
-DOMAIN-SUFFIX,gcloudgbs.com
-DOMAIN-SUFFIX,myapp.com
-DOMAIN-SUFFIX,gdtimg.com
-DOMAIN-SUFFIX,anticheatexpert.com
