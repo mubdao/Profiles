@@ -22,6 +22,7 @@ DOMAIN-SUFFIX,rsshub.app
 DOMAIN-SUFFIX,speedrun.com
 
 # apple
+DOMAIN,apps.apple.com
 DOMAIN-SUFFIX,cdn-apple.com
 DOMAIN-SUFFIX,mzstatic.com // App Store & iTunes Images
 DOMAIN-SUFFIX,aaplimg.com
