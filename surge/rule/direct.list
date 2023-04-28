@@ -12,13 +12,11 @@ DOMAIN-KEYWORD,icloud
 DOMAIN-KEYWORD,baidu
 DOMAIN-KEYWORD,csdn
 DOMAIN-KEYWORD,douyin
-DOMAIN-KEYWORD,didi
 DOMAIN-KEYWORD,taobao
 DOMAIN-KEYWORD,tencent
 DOMAIN-KEYWORD,wechat
 DOMAIN-KEYWORD,weixin
 DOMAIN-KEYWORD,weibo
-DOMAIN-KEYWORD,cainiao
 DOMAIN-KEYWORD,pinduoduo
 DOMAIN-KEYWORD,jdcloud
 DOMAIN-KEYWORD,toutiao
@@ -62,6 +60,16 @@ DOMAIN-SUFFIX,xiami.net
 DOMAIN-SUFFIX,ykimg.com
 DOMAIN-SUFFIX,youku.com
 
+# accuWeather
+DOMAIN-SUFFIX,lycorisrecoil.org
+DOMAIN-SUFFIX,mapbox.com
+DOMAIN-SUFFIX,awxcdn.com
+DOMAIN-SUFFIX,scorecardresearch.com
+DOMAIN-SUFFIX,appsflyer.com
+DOMAIN-SUFFIX,urbanairship.com
+DOMAIN-SUFFIX,apptimize.com
+DOMAIN-SUFFIX,accuweather.com
+
 # baidu
 DOMAIN-SUFFIX,baidu.com
 DOMAIN-SUFFIX,baidubcr.com
@@ -77,67 +85,53 @@ DOMAIN-SUFFIX,jomodns.com
 DOMAIN-SUFFIX,yunjiasu-cdn.net
 
 # bilibili
-DOMAIN-SUFFIX,acg.tv
-DOMAIN-SUFFIX,acgvideo.com
-DOMAIN-SUFFIX,b23.tv
-DOMAIN-SUFFIX,bigfun.cn
-DOMAIN-SUFFIX,bigfunapp.cn
 DOMAIN-SUFFIX,biliapi.com
 DOMAIN-SUFFIX,biliapi.net
 DOMAIN-SUFFIX,bilibili.com
-DOMAIN-SUFFIX,biligame.com
-DOMAIN-SUFFIX,biligame.net
+DOMAIN-SUFFIX,bilibili.tv
 DOMAIN-SUFFIX,bilivideo.com
-DOMAIN-SUFFIX,bilivideo.cn
+DOMAIN-SUFFIX,biligame.com
 DOMAIN-SUFFIX,hdslb.com
-DOMAIN-SUFFIX,im9.com
-DOMAIN-SUFFIX,smtcdns.net
+DOMAIN-SUFFIX,mzstatic.com
+DOMAIN-SUFFIX,amap.com
+DOMAIN-SUFFIX,autonavi.com
+DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,qq.com.cn
+DOMAIN-SUFFIX,qlogo.cn
+DOMAIN-SUFFIX,gtimg.com
+DOMAIN-SUFFIX,akamaized.net
+DOMAIN-SUFFIX,bstarstatic.com
 
-# byteDance
-DOMAIN-SUFFIX,amemv.com
-DOMAIN-SUFFIX,bdxiguaimg.com
-DOMAIN-SUFFIX,bdxiguastatic.com
-DOMAIN-SUFFIX,byted-static.com
-DOMAIN-SUFFIX,bytedance.com
-DOMAIN-SUFFIX,bytedance.net
-DOMAIN-SUFFIX,bytedns.net
-DOMAIN-SUFFIX,bytednsdoc.com
-DOMAIN-SUFFIX,bytegoofy.com
-DOMAIN-SUFFIX,byteimg.com
+# douyin
 DOMAIN-SUFFIX,bytescm.com
+DOMAIN-SUFFIX,bsccdn.net
 DOMAIN-SUFFIX,bytetos.com
-DOMAIN-SUFFIX,bytexservice.com
-DOMAIN-SUFFIX,douyin.com
-DOMAIN-SUFFIX,douyincdn.com
-DOMAIN-SUFFIX,douyinpic.com
-DOMAIN-SUFFIX,douyinstatic.com
-DOMAIN-SUFFIX,douyinvod.com
-DOMAIN-SUFFIX,feelgood.cn
-DOMAIN-SUFFIX,feiliao.com
-DOMAIN-SUFFIX,gifshow.com
-DOMAIN-SUFFIX,huoshan.com
-DOMAIN-SUFFIX,huoshanzhibo.com
-DOMAIN-SUFFIX,ibytedapm.com
-DOMAIN-SUFFIX,iesdouyin.com
-DOMAIN-SUFFIX,ixigua.com
-DOMAIN-SUFFIX,kspkg.com
-DOMAIN-SUFFIX,pstatp.com
+DOMAIN-SUFFIX,static.com
+DOMAIN-SUFFIX,bytegecko.com
+DOMAIN-SUFFIX,bdurl.net
 DOMAIN-SUFFIX,snssdk.com
-DOMAIN-SUFFIX,toutiao.com
-DOMAIN-SUFFIX,toutiao13.com
-DOMAIN-SUFFIX,toutiaoapi.com
-DOMAIN-SUFFIX,toutiaocdn.com
-DOMAIN-SUFFIX,toutiaocdn.net
-DOMAIN-SUFFIX,toutiaocloud.com
-DOMAIN-SUFFIX,toutiaohao.com
-DOMAIN-SUFFIX,toutiaohao.net
-DOMAIN-SUFFIX,toutiaoimg.com
-DOMAIN-SUFFIX,toutiaopage.com
-DOMAIN-SUFFIX,wukong.com
+DOMAIN-SUFFIX,kuiniuca.com
 DOMAIN-SUFFIX,zijieapi.com
-DOMAIN-SUFFIX,zijieimg.com
-DOMAIN-SUFFIX,zjbyte.com
-DOMAIN-SUFFIX,zjcdn.com
+DOMAIN-SUFFIX,awemeughun.com
+DOMAIN-SUFFIX,amemv.com
+DOMAIN-SUFFIX,ecombdapi.com
+DOMAIN-SUFFIX,xycdn.com
+DOMAIN-SUFFIX,pstatp.com
+DOMAIN-SUFFIX,bytemaimg.com
+DOMAIN-SUFFIX,ibytedapm.com
+DOMAIN-SUFFIX,byteactivity.com
+DOMAIN-SUFFIX,bytedance.com
+DOMAIN-SUFFIX,byteeffecttos.com
+DOMAIN-SUFFIX,bytednsdoc.com
+DOMAIN-SUFFIX,baike.com
+DOMAIN-SUFFIX,ksyuncdn.com
+DOMAIN-SUFFIX,oceanengine.com
+DOMAIN-SUFFIX,oceanengine.com
+DOMAIN-SUFFIX,volcsirius.com
+DOMAIN-SUFFIX,ecombdstatic.com
+DOMAIN-SUFFIX,byteimg.com
+DOMAIN-SUFFIX,miaozhen.com
+DOMAIN-SUFFIX,ndcpp.com
 
 # jd
 DOMAIN-SUFFIX,360buy.com
@@ -170,22 +164,7 @@ DOMAIN-SUFFIX,weibocdn.cn
 DOMAIN-SUFFIX,xiaoka.tv
 
 # tencent
-DOMAIN-SUFFIX,foxmail.com
-DOMAIN-SUFFIX,gtimg.com
-DOMAIN-SUFFIX,idqqimg.com
-DOMAIN-SUFFIX,igamecj.com
+DOMAIN-SUFFIX,gcloudgbs.com
 DOMAIN-SUFFIX,myapp.com
-DOMAIN-SUFFIX,myqcloud.com
-DOMAIN-SUFFIX,qq.com
-DOMAIN-SUFFIX,qqmail.com
-DOMAIN-SUFFIX,qqurl.com
-DOMAIN-SUFFIX,smtcdns.com
-DOMAIN-SUFFIX,smtcdns.net
-DOMAIN-SUFFIX,soso.com
-DOMAIN-SUFFIX,tencent-cloud.net
-DOMAIN-SUFFIX,tencent.com
-DOMAIN-SUFFIX,tencentmind.com
-DOMAIN-SUFFIX,tenpay.com
-DOMAIN-SUFFIX,wechat.com
-DOMAIN-SUFFIX,weixin.com
-DOMAIN-SUFFIX,weiyun.com
+DOMAIN-SUFFIX,gdtimg.com
+DOMAIN-SUFFIX,anticheatexpert.com
