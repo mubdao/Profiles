@@ -51,6 +51,8 @@ DOMAIN,mobads.baidu.com
 DOMAIN,mobads-logs.baidu.com
 DOMAIN,nadvideo2.baidu.com
 DOMAIN,nsclick.baidu.com
+DOMAIN,hm.baidu.com
+DOMAIN,hmma.baidu.com
 
 # byteDance
 DOMAIN,ad.toutiao.com
@@ -82,34 +84,7 @@ DOMAIN-SUFFIX,googleadservices.com
 DOMAIN-SUFFIX,googleadsserving.cn
 DOMAIN-SUFFIX,googlesyndication.com
 DOMAIN-SUFFIX,googletagservices.com
-
-# jd
-DOMAIN-SUFFIX,ads.union.jd.com
-DOMAIN-SUFFIX,c-nfa.jd.com
-DOMAIN-SUFFIX,cps.360buy.com
-DOMAIN-SUFFIX,img-x.jd.com
-DOMAIN-SUFFIX,jrclick.jd.com
-DOMAIN-SUFFIX,jzt.jd.com
-DOMAIN-SUFFIX,policy.jd.com
-DOMAIN-SUFFIX,stat.m.jd.com
-
-# microsoft
-DOMAIN-SUFFIX,ads.msn.com
-DOMAIN-SUFFIX,ads1.msn.com
-DOMAIN-SUFFIX,ads2.msn.com
-DOMAIN-SUFFIX,bingads.microsoft.com
-DOMAIN-SUFFIX,rads.msn.com
-DOMAIN,mobileads.msn.com
-
-# sina
-DOMAIN-SUFFIX,alitui.weibo.com
-DOMAIN-SUFFIX,beacon.sina.com.cn
-DOMAIN,adimg.uve.weibo.com
-DOMAIN,adimg.vue.weibo.com
-DOMAIN,u1.img.mobile.sina.cn
-DOMAIN,sax.sina.com.cn
-DOMAIN,saxs.sina.com.cn
-DOMAIN,saxn.sina.com.cn
+DOMAIN,ads.youtube.com
 
 # tencent
 DOMAIN-SUFFIX,e.qq.com
@@ -126,17 +101,6 @@ DOMAIN,pgdt.ugdtimg.com
 DOMAIN,splashqqlive.gtimg.com
 DOMAIN,wa.gtimg.com
 
-# twitter
-DOMAIN-SUFFIX,ads-twitter.com
-DOMAIN-SUFFIX,ads.twitter.com
-DOMAIN-SUFFIX,analytics.twitter.com
-DOMAIN-SUFFIX,p.twitter.com
-DOMAIN-SUFFIX,scribe.twitter.com
-DOMAIN-SUFFIX,syndication-o.twitter.com
-DOMAIN-SUFFIX,syndication.twitter.com
-DOMAIN-SUFFIX,tellapart.com
-DOMAIN-SUFFIX,urls.api.twitter.com
-
 # xiaohongshu
 DOMAIN,ads-img-qc.xhscdn.com
 DOMAIN,ads-video-al.xhscdn.com
@@ -144,18 +108,17 @@ DOMAIN,ads-video-qc.xhscdn.com
 DOMAIN,t-ads.xiaohongshu.com
 
 # zhuhu
+DOMAIN,appcloud.zhihu.com
 DOMAIN,appcloud2.in.zhihu.com
+DOMAIN,crash2.zhihu.com
 DOMAIN,mqtt.zhihu.com
 DOMAIN,sugar.zhihu.com
-DOMAIN,118.89.204.198
-IP-CIDR,118.89.204.198/32,no-resolve
-IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,no-resolve
+IP-CIDR, 118.89.204.198/32
+IP-CIDR, 103.41.167.237/32
 
 # other
-DOMAIN-SUFFIX,u3.ucweb.com
 DOMAIN,data.flurry.com
 DOMAIN,stun.services.mozilla.com
-DOMAIN,ad.caiyunapp.com
 DOMAIN-SUFFIX,pstatp.com
 DOMAIN,ulogs.umengcloud.com
 DOMAIN,ulogs.umeng.com
@@ -163,10 +126,3 @@ DOMAIN,devs-data.dutils.com
 DOMAIN-SUFFIX,bayescom.com
 DOMAIN-SUFFIX,bayescom.cn
 DOMAIN-KEYWORD,bayescom
-IP-CIDR,101.227.200.11/32,no-resolve
-IP-CIDR,101.227.200.28/32,no-resolve
-IP-CIDR,101.227.97.240/32,no-resolve
-IP-CIDR,118.89.204.198/32,no-resolve
-IP-CIDR,124.192.153.42/32,no-resolve
-IP-CIDR,180.76.76.200/32,no-resolve
-IP-CIDR,203.107.1.1/24,no-resolve
