@@ -5,10 +5,10 @@
 mitm= photos.adobe.io
 
 QuantumultX:
-^https:\/\/photos\.adobe\.io\/v2\/accounts* url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/lightroom.js
+^https:\/\/photos\.adobe\.io\/v2\/accounts* url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/script/lightroom.js
 
 Surge:
-Lightroom = type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v2\/accounts,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/lightroom.js,script-update-interval=-1
+Lightroom = type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v2\/accounts,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/lightroom.js,script-update-interval=-1
 */
 
 
