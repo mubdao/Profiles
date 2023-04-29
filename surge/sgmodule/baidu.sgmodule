@@ -4,9 +4,9 @@
 
 
 [Script]
-baiduzd = type=http-response,pattern=^https?:\/\/zhidao\.baidu\.com\/(question|index|\?fr|\?word),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/baidu_zd.js
-baidusearch_homepage = type=http-response,pattern=^https?:\/\/(www|m)\.baidu\.com(\/$|\/\?(ref|from).*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/baidusearch_homepage.js
-baidusearch_results = type=http-response,pattern=^https?:\/\/(www|m)\.baidu\.com\/.*word=.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/baidusearch_results.js
+baiduzd = type=http-response,pattern=^https?:\/\/zhidao\.baidu\.com\/(question|index|\?fr|\?word),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/baidu_zd.js
+baidusearch_homepage = type=http-response,pattern=^https?:\/\/(www|m)\.baidu\.com(\/$|\/\?(ref|from).*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/baidusearch_homepage.js
+baidusearch_results = type=http-response,pattern=^https?:\/\/(www|m)\.baidu\.com\/.*word=.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/baidusearch_results.js
 #baidu_redirect = type=http-response,pattern=^https?:\/\/boxer\.baidu\.com\/scheme\?scheme,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/baidu-noredirect.js
 
 [MITM]
