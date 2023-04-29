@@ -6,7 +6,7 @@ hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
 
 Surge:
 [Script]
-Qx_Surge = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/qxtosg.js
+Qx_Surge = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/qxtosg.js
 */
 
 let req = $request.url.replace(/qx$/,'')
