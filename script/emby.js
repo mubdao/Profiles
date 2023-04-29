@@ -5,10 +5,10 @@
 hostname = mb3admin.com
 
 QuantumultX:
-^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/emby.js
+^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/script/emby.js
 
 Surge:
-Emby= type=http-response,pattern=^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/emby.js
+Emby= type=http-response,pattern=^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/emby.js
 */
 
 
