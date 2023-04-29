@@ -2,7 +2,7 @@
 hostname = boxer.baidu.com
 
 QuantumultX：
-^https?:\/\/boxer\.baidu\.com\/scheme\?scheme url script-response-header https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/baidu-noredirect.js
+^https?:\/\/boxer\.baidu\.com\/scheme\?scheme url script-response-header https://raw.githubusercontent.com/mubdao/Profiles/main/script/baidu-noredirect.js
 
 Surge：
 百度防跳转 = type=http-response,pattern=^https?:\/\/boxer\.baidu\.com\/scheme\?scheme,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/baidu-no-redirect.js
