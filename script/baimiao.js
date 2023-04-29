@@ -5,11 +5,11 @@
 hostname = baimiao.uzero.cn
 
 QuantimultX:
-^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$ url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/baimiao.js
+^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$ url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/script/baimiao.js
 
 Surge:
 [Script]
-Baimiao=type=http-response,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/baimiao.js,script-update-interval=0,pattern=^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser
+Baimiao=type=http-response,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/baimiao.js,script-update-interval=0,pattern=^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser
 */
 
 
