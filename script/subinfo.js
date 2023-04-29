@@ -8,7 +8,7 @@ Surge配置参考注释@congcong.
 AmyInfo = select, policy-path=http://sub.info?url=机场节点链接&reset_day=1&alert=1, update-interval=3600
 
 [Script]
-Sub_info = type=http-request,pattern=http://sub\.info,script-path=https://raw.githubusercontent.com/Mubdao/Surge/main/js/Subinfo.js,timeout=10
+Sub_info = type=http-request,pattern=http://sub\.info,script-path=https://github.com/mubdao/Profiles/raw/main/script/subinfo.js,timeout=10
 ----------------------------------------
 
 脚本不用修改，直接配置就好。
