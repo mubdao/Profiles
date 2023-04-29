@@ -1,1 +1,9 @@
+#!name=QuantumultX To Surge
+#!desc=Rule Conversion
 
+
+[Script]
+QxToSurge = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/qxtosg.js
+
+[MITM]
+hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
