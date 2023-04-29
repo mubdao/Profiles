@@ -5,10 +5,10 @@
 hostname = biz.caiyunapp.com
 
 QuantumultX:
-https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user) url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/caiyun.js
+https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user) url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/script/caiyun.js
 
 Surge:
-Caiyun = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user),script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/caiyun.js   
+Caiyun = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user),script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/caiyun.js   
 */
 
 
