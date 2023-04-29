@@ -11,7 +11,7 @@ AND,((PROTOCOL,UDP), (DOMAIN-SUFFIX,googlevideo.com)),REJECT-NO-DROP
 DOMAIN,app-site-association.cdn-apple.com,REJECT
 
 [URL Rewrite]
-wechat = type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/wechat.js
+wechat = type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/wechat.js
 # bus code
 ^https:\/\/ccmsupport-sz\.tenpay\.com\/cgi-bin\/common\/ccm_page_element.cgi - reject
 # ali
