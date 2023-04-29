@@ -5,11 +5,11 @@
 hostname= buy.itunes.apple.com
 
 QuantumultX：
-^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bear.js
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/script/bear.js
 
 Surge：
 [Script]
-bear = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=hhttps://raw.githubusercontent.com/mubdao/Profiles/main/javascript/bear.js
+bear = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=hhttps://raw.githubusercontent.com/mubdao/Profiles/main/script/bear.js
 */
 
 
