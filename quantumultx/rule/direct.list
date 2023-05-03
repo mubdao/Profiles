@@ -1,0 +1,48 @@
+# Direct
+
+# ua
+USER-AGENT,MicroMessenger Client
+USER-AGENT,WeChat*
+USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
+
+# key
+HOST-KEYWORD,apple
+HOST-KEYWORD,icloud
+HOST-KEYWORD,baidu
+HOST-KEYWORD,csdn
+HOST-KEYWORD,douyin
+HOST-KEYWORD,taobao
+HOST-KEYWORD,tencent
+HOST-KEYWORD,weibo
+HOST-KEYWORD,pinduoduo
+HOST-KEYWORD,jdcloud
+HOST-KEYWORD,toutiao
+HOST-KEYWORD,ruguoapp
+
+# apple
+HOST-SUFFIX,ls.apple.com,DIRECT // Apple Maps
+HOST-SUFFIX,store.apple.com,DIRECT // Apple Store Online
+
+# ali
+HOST-KEYWORD,alipay
+HOST-KEYWORD,taobao
+HOST-KEYWORD,alicdn
+HOST-KEYWORD,aliyun
+HOST-KEYWORD,.tmall.
+IP-CIDR,198.11.188.0/25,no-resolve
+IP-CIDR,198.11.136.0/24,no-resolve
+
+# accuWeather
+HOST-SUFFIX,awxcdn.com
+HOST-SUFFIX,scorecardresearch.com
+HOST-SUFFIX,urbanairship.com
+HOST-SUFFIX,apptimize.com
+HOST-SUFFIX,accuweather.com
+
+# bilibili
+HOST-SUFFIX,biliapi.com
+HOST-SUFFIX,biliapi.net
+HOST-SUFFIX,bilibili.com
+HOST-SUFFIX,bilivideo.com
+
+GEOIP,CN,DIRECT
