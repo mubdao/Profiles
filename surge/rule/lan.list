@@ -11,4 +11,4 @@ IP-CIDR,224.0.0.0/4
 IP-CIDR6,fe80::/10
 
 # router managed
-DOMAIN,www.miwifi.com
+DOMAIN-SUFFIX,miwifi.com
