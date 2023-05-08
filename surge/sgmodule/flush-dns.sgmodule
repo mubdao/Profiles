@@ -1,0 +1,9 @@
+#!name=Flush DNS
+#!desc=Flush surge DNS cache
+
+
+[Panel]
+FlushDNS = script-name=FlushDNS,update-interval=600
+
+[Script]
+FlushDNS = type=generic,timeout=10,script-path= https://raw.githubusercontent.com/mubdao/Profiles/main/script/flushdns.js,argument=title=DNS FLush&icon=cube&color=#afe59a&server=false
