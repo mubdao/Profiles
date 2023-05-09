@@ -55,6 +55,8 @@ DOMAIN-SUFFIX,spankbang.com
 DOMAIN-SUFFIX,t66y.com
 DOMAIN-SUFFIX,missav.com
 DOMAIN-SUFFIX,xhamster.com
+DOMAIN-SUFFIX,xhcdn.com
+DOMAIN-SUFFIX,b.cdn13.com
 DOMAIN-SUFFIX,xnxx-cdn.com
 DOMAIN-SUFFIX,xnxx.com
 DOMAIN-SUFFIX,xvideos-cdn.com
@@ -135,11 +137,6 @@ DOMAIN-SUFFIX,youtubegaming.com
 DOMAIN-SUFFIX,youtubekids.com
 DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
-
-# xhamster
-DOMAIN-SUFFIX,xhamster.com
-DOMAIN-SUFFIX,xhcdn.com
-DOMAIN-SUFFIX,b.cdn13.com
 
 # server
 DOMAIN-SUFFIX,texon.io
