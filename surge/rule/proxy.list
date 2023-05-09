@@ -136,6 +136,10 @@ DOMAIN-SUFFIX,youtubekids.com
 DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
 
+# xhamster
+DOMAIN-SUFFIX,xhamster.com
+DOMAIN-SUFFIX,xhcdn.com
+
 # server
 DOMAIN-SUFFIX,texon.io
 DOMAIN-SUFFIX,flower.yt
