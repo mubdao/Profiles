@@ -139,7 +139,7 @@ DOMAIN-SUFFIX,ytimg.com
 # xhamster
 DOMAIN-SUFFIX,xhamster.com
 DOMAIN-SUFFIX,xhcdn.com
-DOMAIN-SUFFIX,b.cdn13.com.com
+DOMAIN-SUFFIX,b.cdn13.com
 
 # server
 DOMAIN-SUFFIX,texon.io
