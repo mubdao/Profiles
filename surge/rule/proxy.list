@@ -143,7 +143,8 @@ DOMAIN-SUFFIX,texon.io
 DOMAIN-SUFFIX,flower.yt
 
 # emby
-DOMAIN,emby.texon.io
+DOMAIN-SUFFIX,texon.io
+DOMAIN-SUFFIX,misakaf.org
 
 # substore
 DOMAIN,sub-store.vercel.app
