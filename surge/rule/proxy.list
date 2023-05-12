@@ -9,7 +9,6 @@ DOMAIN-KEYWORD,facebook
 DOMAIN-KEYWORD,fbcdn
 DOMAIN-KEYWORD,instagram
 DOMAIN-KEYWORD,twitter
-DOMAIN-KEYWORD,youtube
 DOMAIN-KEYWORD,testflight
 DOMAIN-KEYWORD,wiki
 
@@ -125,26 +124,9 @@ DOMAIN-SUFFIX,twitter.com
 DOMAIN-SUFFIX,twitter.jp
 DOMAIN-SUFFIX,vine.co
 
-# youTube
-DOMAIN,yt3.ggpht.com
-DOMAIN-SUFFIX,gvt2.com
-DOMAIN-SUFFIX,withyoutube.com
-DOMAIN-SUFFIX,youtu.be
-DOMAIN-SUFFIX,youtube-nocookie.com
-DOMAIN-SUFFIX,youtube.com
-DOMAIN-SUFFIX,youtubeeducation.com
-DOMAIN-SUFFIX,youtubegaming.com
-DOMAIN-SUFFIX,youtubekids.com
-DOMAIN-SUFFIX,yt.be
-DOMAIN-SUFFIX,ytimg.com
-
 # server
 DOMAIN-SUFFIX,texon.io
 DOMAIN-SUFFIX,flower.yt
-
-# emby
-DOMAIN-SUFFIX,texon.io
-DOMAIN-SUFFIX,misakaf.org
 
 # substore
 DOMAIN,sub-store.vercel.app
