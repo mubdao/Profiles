@@ -6,6 +6,7 @@
 [Map Local]
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_info.json" 
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
 
