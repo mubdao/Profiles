@@ -114,5 +114,5 @@ function formatTime(time) {
   let year = dateObj.getFullYear();
   let month = dateObj.getMonth() + 1;
   let day = dateObj.getDate();
-  return year + "-Y-" + month + "-M-" + day + "-D";
+  return year + "-" + month + "-" + day + "";
 }
