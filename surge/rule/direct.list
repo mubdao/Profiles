@@ -16,7 +16,6 @@ DOMAIN-KEYWORD,jdcloud
 DOMAIN-KEYWORD,toutiao
 DOMAIN-KEYWORD,ruguoapp
 
-
 # apple
 DOMAIN-SUFFIX,ls.apple.com,DIRECT // Apple Maps
 DOMAIN-SUFFIX,store.apple.com,DIRECT // Apple Store Online
