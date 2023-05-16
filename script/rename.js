@@ -53,7 +53,7 @@ var others = {
   边缘: 'Edge',
   高级: 'Pro',
   标准: 'Std',
-  //实验: 'Exp',
+  实验: 'Exp',
   商宽: 'Biz',
   家宽: 'Fam',
   LB: 'LB',
