@@ -56,10 +56,10 @@ let proto = x.match('proto.js') ? ',binary-body-mode=1' : '' ;
 			let url = x.match(/[^\s]+/)[0];
 			let jct = x.match(/reject?[^\s]+/)[0];
 				let obj = {
-				"reject-200" : 'https://raw.githubusercontent.com/mubeid/Surge/main/mocks/reject-200.txt',
-				"reject-img" : 'https://raw.githubusercontent.com/mubeid/Surge/main/mocks/reject-img.gif',
-				"reject-dict" : 'https://raw.githubusercontent.com/mubeid/Surge/main/mocks/reject-dict.json',
-				"reject-array" : 'https://raw.githubusercontent.com/mubeid/Surge/main/mocks/reject-array.json',
+				"reject-200" : 'https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-200.txt',
+				"reject-img" : 'https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-img.gif',
+				"reject-dict" : 'https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json',
+				"reject-array" : 'https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-array.json',
 			   pp : function (){
 				return this[jct]}
 				}
