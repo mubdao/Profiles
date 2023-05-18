@@ -38,6 +38,7 @@ USER-AGENT,com.apple.appstored* // iOS App Store
 
 # emby
 DOMAIN-SUFFIX,misakaf.org
+DOMAIN-SUFFIX,789.123456.al
 
 # porn
 DOMAIN-SUFFIX,8teenxxx.com
