@@ -13,6 +13,6 @@ Lightroom = type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v2\/account
 AccuWeather = type=http-response,pattern=https://app-subscription-proxy.accuweather.com/subscriptions/v1/apple/validate,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/accuweather.js,script-update-interval=-1
 Spotify = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js,script-update-interval=0
 AdGuard = type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/adguard.is,script-update-interval=-1
-
+ChatGPT = type=http-response,pattern=^https?:\/\/ios\.chat\.openai\.com\/backend-api\/(accounts\/check\/|models),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/chatgpt.js
 [MITM]
-hostname = %APPEND% testflight.apple.com, api.revenuecat.com, baimiao.uzero.cn, photos.adobe.io, app-subscription-proxy.accuweather.com, spclient.wg.spotify.com, mobile-api.adguard.org
+hostname = %APPEND% testflight.apple.com, api.revenuecat.com, baimiao.uzero.cn, photos.adobe.io, app-subscription-proxy.accuweather.com, spclient.wg.spotify.com, mobile-api.adguard.org, ios.chat.openai.com
