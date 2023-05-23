@@ -7,6 +7,7 @@ skip-proxy = %APPEND% iosapps.itunes.apple.com
 
 [Script]
 TestFlight = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$,requires-body=1,max-size=0,script-path=https://gist.githubusercontent.com/NobyDa/9be418b93afc5e9c8a8f4d28ae403cf2/raw/TF_Download.js,script-update-interval=-1
+VscoPro = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/vscopro.js,script-update-interval=-1
 Baimiao = type=http-response,pattern=^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/baimiao.js,script-update-interval=-1
 Lightroom = type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v2\/accounts,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/lightroom.js,script-update-interval=-1
 AccuWeather = type=http-response,pattern=https://app-subscription-proxy.accuweather.com/subscriptions/v1/apple/validate,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/accuweather.js,script-update-interval=-1
@@ -14,4 +15,4 @@ Spotify = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(boo
 AdGuard = type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/adguard.is,script-update-interval=-1
 
 [MITM]
-hostname = %APPEND% testflight.apple.com, baimiao.uzero.cn, photos.adobe.io, app-subscription-proxy.accuweather.com, spclient.wg.spotify.com, mobile-api.adguard.org
+hostname = %APPEND% testflight.apple.com, api.revenuecat.com, baimiao.uzero.cn, photos.adobe.io, app-subscription-proxy.accuweather.com, spclient.wg.spotify.com, mobile-api.adguard.org
