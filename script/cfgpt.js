@@ -24,24 +24,19 @@ $httpClient.get(url, function(error, response, data){
   let l = tf.indexOf(loc);
   
   if (l != -1) {
-    gpt = "GPT: 支持";
+    gpt = "✓";
   } else {
-    gpt = "GPT: 不支持";
+    gpt = "✕";
   }
   
   let warp = cf.warp;
   let w = tff.indexOf(warp);
   
   if (w != -1) {
-    warps = "增强";
+    warps = "✓";
   } else {
-    warps = "未开启";
+    warps = "✕";
   }
   
-  let body = {
-    title: "ChatGPT",
-    content: `${gpt}   Loc: ${loc}   Warp: ${warp} ${warps}`
-  };
-  
-  $done(body);
+  console.log(`GPT: ${gpt}   Loc: ${loc}   Warp: ${warp} ${warps}`);
 });
