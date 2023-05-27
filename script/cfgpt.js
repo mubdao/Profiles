@@ -43,6 +43,6 @@ if (w != -1) {
 	warps = "No"
 }
 body = {
-title: "ChatGPT",
-content: `${gpt}   Loc: ${loc}   CF: ${warps}`,
+title: "𝗖𝗵𝗮𝘁 𝗚𝗣𝗧",
+content: `CF: ${warps}  ${gpt}   Loc: ${loc}`,
 },$done(body);})
