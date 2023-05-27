@@ -42,7 +42,7 @@ $httpClient.get(url, function(error, response, data) {
   let content = `GPT: ${gpt}   CF: ${cf}   Loc: ${loc}`;
 
   let body = {
-    title: "ChatGPT",
+    title: "𝗖𝗵𝗮𝘁 𝗚𝗣𝗧",
     content: content
   };
   $done(body);
