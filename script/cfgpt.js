@@ -14,6 +14,7 @@ if (typeof $argument !== 'undefined') {
   }
 }
 
+// 发送 HTTP 请求获取所在地信息
 $httpClient.get(url, function(error, response, data){
   if (error) {
     console.error(error);
@@ -27,7 +28,9 @@ $httpClient.get(url, function(error, response, data){
     acc[key] = value;
     return acc;
   }, {});
-  let loc = cf.loc;
+  let ip = cf.ip;
+  let warp = cf.warp;
+  let loc = getCountryFlagEmoji(cf.loc) + cf.loc;
 
   // 判断 ChatGPT 是否支持该国家/地区
   let l = tf.indexOf(cf.loc);
@@ -39,15 +42,15 @@ $httpClient.get(url, function(error, response, data){
   }
 
   // 获取 Warp 状态
-  let w = tff.indexOf(cf.warp);
+  let w = tff.indexOf(warp);
   let warps;
   if (w !== -1) {
-    warps = "Yes";
+    warps = "CF: Yes";
   } else {
-    warps = "No";
+    warps = "CF: No";
   }
 
   // 组装通知数据
   let body = {
     title: titlediy ? titlediy : 'ChatGPT',
-    content: `${gpt}   区域: ${loc}   Warp: ${
+    content: `${gpt}   Reg: ${loc}   ${
