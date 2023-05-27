@@ -50,4 +50,4 @@ $httpClient.get(url, function(error, response, data){
   // 组装通知数据
   let body = {
     title: titlediy ? titlediy : 'ChatGPT',
-    content: `${gpt}   Loc: ${loc}   CF: ${
+    content: `${gpt}   区域: ${loc}   Warp: ${
