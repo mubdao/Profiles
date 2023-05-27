@@ -30,7 +30,7 @@ $httpClient.get(url, function(error, response, data){
   }, {});
   let ip = cf.ip;
   let warp = cf.warp;
-  let loc = cf.loc;
+  let loc = getCountryFlagEmoji(cf.loc) + cf.loc;
 
   // 判断 ChatGPT 是否支持该国家/地区
   let l = tf.indexOf(cf.loc);
@@ -53,7 +53,4 @@ $httpClient.get(url, function(error, response, data){
   // 组装通知数据
   let body = {
     title: titlediy ? titlediy : 'ChatGPT',
-    content: `${gpt}   Reg: ${loc}   ${warps}`
-  };
-
-  //
+    content: `${gpt}   Reg: ${loc}   ${
