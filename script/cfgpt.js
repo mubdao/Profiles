@@ -14,7 +14,6 @@ if (typeof $argument !== 'undefined') {
   }
 }
 
-// 发送 HTTP 请求获取所在地信息
 $httpClient.get(url, function(error, response, data){
   if (error) {
     console.error(error);
@@ -43,17 +42,12 @@ $httpClient.get(url, function(error, response, data){
   let w = tff.indexOf(cf.warp);
   let warps;
   if (w !== -1) {
-    warps = "CF";
+    warps = "Yes";
   } else {
-    warps = "Non-CF";
+    warps = "No";
   }
 
   // 组装通知数据
   let body = {
     title: titlediy ? titlediy : 'ChatGPT',
-    content: `${gpt}   区域: ${loc}   ${warps}`
-  };
-
-  // 发送通知
-  $done(body);
-});
+    content: `${gpt}   Loc: ${loc}   CF: ${
