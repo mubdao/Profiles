@@ -44,5 +44,5 @@ if (w != -1) {
 }
 body = {
 title: "𝗖𝗵𝗮𝘁 𝗚𝗣𝗧",
-content: `CF: ${warps}  ${gpt}   Loc: ${loc}`,
+content: `Cloudflare: ${warps}   ${gpt}   Loc: ${loc}`,
 },$done(body);})
