@@ -26,7 +26,7 @@ $httpClient.get(url, function(error, response, data) {
   // GPT
   let l = tf.indexOf(loc);
   if (l != -1) {
-    gpt = "✔️";
+    gpt = "✔";
   } else {
     gpt = "❌";
   }
@@ -34,12 +34,12 @@ $httpClient.get(url, function(error, response, data) {
   // CF
   let w = tff.indexOf(warp);
   if (w != -1) {
-    cf = "✔️";
+    cf = "✔";
   } else {
     cf = "❌";
   }
 
-  let content = `GPT: ${gpt}   Loc: ${loc}   CF: ${cf}`;
+  let content = `GPT: ${gpt}   CF: ${cf}   Loc: ${loc}`;
 
   let body = {
     title: "ChatGPT",
