@@ -48,7 +48,7 @@ USER-AGENT,WeChat*
 USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
 
 # wechat
-DOMAIN-SUFFIX,myqcloud.com,
+DOMAIN-SUFFIX,myqcloud.com
 DOMAIN-SUFFIX,qlogo.cn
 DOMAIN-SUFFIX,qpic.cn
 DOMAIN-SUFFIX,qq.com
