@@ -20,8 +20,8 @@ HOST-KEYWORD,toutiao
 HOST-KEYWORD,ruguoapp
 
 # apple
-HOST-SUFFIX,ls.apple.com,DIRECT // Apple Maps
-HOST-SUFFIX,store.apple.com,DIRECT // Apple Store Online
+HOST-SUFFIX,ls.apple.com
+HOST-SUFFIX,store.apple.com
 
 # ali
 HOST-KEYWORD,alipay
@@ -44,5 +44,38 @@ HOST-SUFFIX,biliapi.com
 HOST-SUFFIX,biliapi.net
 HOST-SUFFIX,bilibili.com
 HOST-SUFFIX,bilivideo.com
+
+# wechat
+HOST-SUFFIX,myqcloud.com
+HOST-SUFFIX,qlogo.cn
+HOST-SUFFIX,qpic.cn
+HOST-SUFFIX,qq.com
+HOST-SUFFIX,servicewechat.com
+HOST-SUFFIX,tencent-cloud.com
+HOST-SUFFIX,tencent-cloud.net
+HOST-SUFFIX,tencent.com
+HOST-SUFFIX,tencentcs.com
+HOST-SUFFIX,tenpay.com
+HOST-SUFFIX,wechat.com
+HOST-SUFFIX,wechatlegal.net
+HOST-SUFFIX,wechatpay.com
+HOST-SUFFIX,weixin.com
+HOST-SUFFIX,weixinbridge.com
+HOST-SUFFIX,weixinsxy.com
+IP-CIDR,43.156.222.154/32
+IP-CIDR,43.156.223.202/32
+IP-CIDR,43.156.255.184/32
+IP-CIDR,43.156.222.210/32
+IP-CIDR,43.159.77.28/32
+IP-CIDR,43.156.222.216/32
+IP-CIDR,101.32.104.4/32
+IP-CIDR,101.32.104.41/32
+IP-CIDR,101.32.104.56/32
+IP-CIDR,101.32.118.25/32
+IP-CIDR,101.32.133.16/32
+IP-CIDR,101.32.133.53/32
+IP-CIDR,101.32.133.209/32
+IP-CIDR,129.226.3.47/32
+IP-CIDR,129.226.107.244/32
 
 GEOIP,CN,DIRECT
