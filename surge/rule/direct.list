@@ -16,10 +16,6 @@ DOMAIN-KEYWORD,jdcloud
 DOMAIN-KEYWORD,toutiao
 DOMAIN-KEYWORD,ruguoapp
 
-# apple
-DOMAIN-SUFFIX,ls.apple.com
-DOMAIN-SUFFIX,store.apple.com
-
 # ali
 DOMAIN-KEYWORD,alipay
 DOMAIN-KEYWORD,taobao
