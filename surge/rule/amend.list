@@ -6,6 +6,9 @@ DOMAIN,app.adjust.com
 DOMAIN,app.appsflyer.com
 DOMAIN,bdtj.tagtic.cn
 
+# amy
+DOMAIN,api.nxtlnodes.com
+
 # ali
 DOMAIN,log.mmstat.com
 DOMAIN,sycm.mmstat.com
