@@ -102,21 +102,6 @@ DOMAIN,pgdt.ugdtimg.com
 DOMAIN,splashqqlive.gtimg.com
 DOMAIN,wa.gtimg.com
 
-# xiaohongshu
-DOMAIN,ads-img-qc.xhscdn.com
-DOMAIN,ads-video-al.xhscdn.com
-DOMAIN,ads-video-qc.xhscdn.com
-DOMAIN,t-ads.xiaohongshu.com
-
-# zhuhu
-DOMAIN,appcloud.zhihu.com
-DOMAIN,appcloud2.in.zhihu.com
-DOMAIN,crash2.zhihu.com
-DOMAIN,mqtt.zhihu.com
-DOMAIN,sugar.zhihu.com
-IP-CIDR, 118.89.204.198/32
-IP-CIDR, 103.41.167.237/32
-
 # other
 DOMAIN,data.flurry.com
 DOMAIN,stun.services.mozilla.com
