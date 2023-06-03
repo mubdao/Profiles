@@ -30,6 +30,12 @@ DOMAIN-KEYWORD,uk-live
 DOMAIN-SUFFIX,bbc.co
 DOMAIN-SUFFIX,bbc.com
 
+# fast
+DOMAIN-SUFFIX,fast.com
+DOMAIN-SUFFIX,fastly.net
+DOMAIN-SUFFIX,fastly.com
+DOMAIN-SUFFIX,netflix.com
+
 # mail
 DOMAIN,imap-mail.outlook.com
 DOMAIN,imap.gmail.com
