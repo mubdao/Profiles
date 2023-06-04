@@ -6,12 +6,10 @@ USER-AGENT,WeChat*
 USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
 
 # key
-HOST-KEYWORD,apple
 HOST-KEYWORD,icloud
 HOST-KEYWORD,baidu
 HOST-KEYWORD,csdn
 HOST-KEYWORD,douyin
-HOST-KEYWORD,taobao
 HOST-KEYWORD,tencent
 HOST-KEYWORD,weibo
 HOST-KEYWORD,pinduoduo
@@ -20,6 +18,7 @@ HOST-KEYWORD,toutiao
 HOST-KEYWORD,ruguoapp
 
 # apple
+HOST-KEYWORD,apple
 HOST-SUFFIX,ls.apple.com
 HOST-SUFFIX,store.apple.com
 
