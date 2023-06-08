@@ -11,7 +11,6 @@ AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
 ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
 
 [Script]
-youtube = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)\?,requires-body=1,binary-body-mode=1,max-size=3145728,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/youtube.js
-
+youtube = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)\?,requires-body=1,binary-body-mode=1,max-size=3145728,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/youtube.js
 [MITM]
 hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com
