@@ -17,7 +17,7 @@ $httpClient.get(url, function(error, response, data){
 });
 
 function getOrganizations(isp) {
-  let organizations = isp.split(",");
-  let filteredOrganizations = organizations.slice(0, 2).map(org => org.trim());
-  return filteredOrganizations.join(", ");
+  let organizations = isp.split(", ");
+  let truncatedOrganizations = organizations.slice(0, 2);
+  return truncatedOrganizations.join(", ");
 }
