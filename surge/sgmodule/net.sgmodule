@@ -4,7 +4,7 @@
 
 [Panel]
 NetISP = script-name=NetISP,update-interval=-1
-CFGPT = script-name=CFGPT,update-interval=-1
+#CFGPT = script-name=CFGPT,update-interval=-1
 
 
 [Script]
