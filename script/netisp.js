@@ -2,12 +2,11 @@ let url = "http://ip-api.com/json/?lang=zh-CN";
 $httpClient.get(url, function(error, response, data){
   let jsonData = JSON.parse(data);
   let ip = jsonData.query;
-  let isp = jsonData.isp.replace(/, Inc.$/, "");
+  let isp = smKey(jsonData.isp);
   let country = jsonData.country;
   let city = jsonData.city;
 
-  let organizations = getOrganizations(isp);
-  let content = `${country} ${city} ${ip} ${organizations}`;
+  let content = `${country} ${city} ${ip} ${isp}`;
 
   body = {
     title: "𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗿",
@@ -16,10 +15,11 @@ $httpClient.get(url, function(error, response, data){
   $done(body);
 });
 
-function getOrganizations(isp) {
-  let organizations = isp.split(", ");
-  if (organizations.length > 2) {
-    organizations = organizations.slice(0, 2);
+function smKey(s) {
+  s = s.replace(/\s?\.?\,?(?:inc|com|llc|ltd|pte|services|network|infrastructure|limited|shanghai|proxy|corporation|communications|information|technology|id\d{2,6}|\(.+\)|\.|\,)\s?\.?/ig, "");
+  if (s.length > 23) {
+    return s.slice(0, 23) + "..";
+  } else {
+    return s;
   }
-  return organizations.join(", ");
 }
