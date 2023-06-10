@@ -2,7 +2,7 @@ let url = "http://ip-api.com/json/?lang=zh-CN";
 $httpClient.get(url, function(error, response, data){
   let jsonData = JSON.parse(data);
   let ip = jsonData.query;
-  let isp = jsonData.isp.replace(/, Inc./g, "");
+  let isp = jsonData.isp.replace(/, Inc.$/, "");
   let country = jsonData.country;
   let city = jsonData.city;
 
@@ -18,6 +18,8 @@ $httpClient.get(url, function(error, response, data){
 
 function getOrganizations(isp) {
   let organizations = isp.split(", ");
-  let truncatedOrganizations = organizations.slice(0, 2);
-  return truncatedOrganizations.join(", ");
+  if (organizations.length > 2) {
+    organizations = organizations.slice(0, 2);
+  }
+  return organizations.join(", ");
 }
