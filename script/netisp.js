@@ -6,10 +6,7 @@ $httpClient.get(url, function(error, response, data){
   let country = jsonData.country;
   let city = jsonData.city;
 
-  let ispParts = isp.split(" ");
-  isp = ispParts.slice(0, 2).join(" ");
-
-  let content = `${country}, ${city}\n${ip}\n${isp}`;
+  let content = `${country} ${city} ${ip} ${getOrganization(isp)}`;
 
   body = {
     title: "𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗿",
@@ -17,3 +14,9 @@ $httpClient.get(url, function(error, response, data){
   };
   $done(body);
 });
+
+function getOrganization(isp) {
+  let organizations = isp.split(",");
+  let filteredOrganizations = organizations.slice(0, 2).map(org => org.trim());
+  return filteredOrganizations.join(", ");
+}
