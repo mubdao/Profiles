@@ -6,7 +6,7 @@ $httpClient.get(url, function(error, response, data){
   let country = jsonData.country;
   let city = jsonData.city;
 
-  let content = `${country}, ${city}\n${ip}\n${isp}`;
+  let content = `${country} ${city} ${ip} ${isp}`;
 
   body = {
     title: "𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗿",
