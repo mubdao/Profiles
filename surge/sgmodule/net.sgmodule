@@ -9,4 +9,4 @@ CFGPT = script-name=CFGPT,update-interval=-1
 
 [Script]
 NetISP = type=generic,timeout=3,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/netisp.js
-CFGPT = type=generic,timeout=6,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/cfgpt.js
+#CFGPT = type=generic,timeout=6,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/cfgpt.js
