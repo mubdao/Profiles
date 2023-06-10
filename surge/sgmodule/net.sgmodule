@@ -8,5 +8,5 @@ NetISP = script-name=NetISP,update-interval=-1
 
 
 [Script]
-NetISP = type=generic,timeout=3,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/netisp.js
+NetISP = type=generic,timeout=3,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/ip.js
 #CFGPT = type=generic,timeout=6,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/cfgpt.js
