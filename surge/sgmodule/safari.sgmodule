@@ -3,6 +3,7 @@
 
 
 [URL Rewrite]
+# bd (bd空格关键词为百度搜索)
 ^https:\/\/duckduckgo.com\/\?q=bd\+([^&]+).+ https://www.baidu.com/s?wd=$1 302
 ^https:\/\/duckduckgo.com\/\?q=f\+([^&]+).+ http://dict.youdao.com/search?q=$1 302
 ^https:\/\/duckduckgo.com\/\?q=z\+([^&]+).+ https://www.zhihu.com/search?type=content&q=$1 302
