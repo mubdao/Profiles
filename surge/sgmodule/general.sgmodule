@@ -2,6 +2,15 @@
 #!desc=Rewrite remove ads
 
 
+[Rule]
+AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
+AND,((PROTOCOL,UDP), (DOMAIN-SUFFIX,googlevideo.com)),REJECT-NO-DROP
+DEST-PORT,4480,REJECT-NO-DROP
+DEST-PORT,4483,REJECT-NO-DROP
+DEST-PORT,9102,REJECT-NO-DROP
+DOMAIN,www.googleadservices.com,REJECT-DROP
+DOMAIN,googleads.g.doubleclick.net,REJECT-DROP
+
 [URL Rewrite]
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
 ^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 302
