@@ -1,0 +1,54 @@
+#!name=Block Ad
+#!desc=Ali Douban Xianyu Meituan Wechat CMB
+
+
+
+[Rule]
+# port 443
+AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
+# youtube udp
+AND,((PROTOCOL,UDP), (DOMAIN-SUFFIX,googlevideo.com)),REJECT-NO-DROP
+# bili cdn
+DEST-PORT,4480,REJECT-NO-DROP
+DEST-PORT,4483,REJECT-NO-DROP
+DEST-PORT,9102,REJECT-NO-DROP
+# invalid request
+DOMAIN,www.googleadservices.com,REJECT-DROP
+DOMAIN,googleads.g.doubleclick.net,REJECT-DROP
+
+
+[URL Rewrite]
+# ali
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources - reject
+# douban
+^https:\/\/api\.douban\.com\/v2\/app_ads\/splash - reject
+^https:\/\/api\.douban\.com\b.*\/common_ads\? - reject
+# xianyu
+^https:\/\/gw\.alicdn\.com\/mt\/ - reject
+^https:\/\/gw\.alicdn\.com\/tfs\/.+\d{3,4}-\d{4} - reject
+^https:\/\/gw\.alicdn\.com\/tps\/.+\d{3,4}-\d{4} - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome - reject
+
+[Map Local]
+# ali
+^https:\/\/gw\.alicdn\.com\/imgextra\/i\d\/[\w!]+-\d-tps-702-758\.png data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https:\/\/(gw|heic)\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(octopus|tps-1125-1602)\.jpg_(1\d{3}|9\d{2})x(1\d{3}|9\d{2})q[59]0 data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+# meituan
+^http:\/\/wmapi\.meituan\.com\/api\/v7\/(loadInfo|openscreen|startpicture)\? data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https:\/\/s3plus\.meituan\.net\/v1\/mss_\w+\/(brandcpt-vedio|waimai-alita)\/\w+\.zip$ data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+# wechat public account
+^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/wechat.json"
+# CMB launches ad
+^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v\d\/func\/getmarketconfig data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+
+[MITM]
+hostname = %APPEND% acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, api.douban.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, gw.alicdn.com, mp.weixin.qq.com, webappcfg.paas.cmbchina.com
