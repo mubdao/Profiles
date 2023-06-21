@@ -1,9 +1,6 @@
 # Advertising
 
 
-# Safari 防跳转
-DOMAIN,app-site-association.cdn-apple.com
-
 # key
 DOMAIN-KEYWORD,admarvel
 DOMAIN-KEYWORD,admaster
