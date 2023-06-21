@@ -1,6 +1,9 @@
 # Advertising
 
 
+# Safari 防跳转
+DOMAIN,app-site-association.cdn-apple.com
+
 # key
 DOMAIN-KEYWORD,admarvel
 DOMAIN-KEYWORD,admaster
@@ -33,6 +36,7 @@ DOMAIN,app-site-association.cdn-apple.com
 DOMAIN-KEYWORD,adservice
 
 # apple
+DOMAIN,api-adservices.apple.com
 DOMAIN-SUFFIX,iadsdk.apple.com
 DOMAIN-SUFFIX,ads.internal.unity3d.com
 DOMAIN-SUFFIX,ads.prd.ie.internal.unity3d.com
@@ -40,6 +44,17 @@ DOMAIN-SUFFIX,unityads.unity3d.com
 
 # ali
 DOMAIN,tunion-api.m.taobao.com
+
+# browser
+DOMAIN,lookup.api.bsb.baidu.com
+DOMAIN,proxy.safebrowsing.apple
+DOMAIN,safebrowsing.g.applimg.com
+DOMAIN,safebrowsing.googleapis.com
+DOMAIN,safebrowsing.urlsec.qq.com
+DOMAIN,token.safebrowsing.apple
+DOMAIN,vs6.bj2ct.u3.ucweb.com
+DOMAIN-SUFFIX,safebrowsing.apple
+DOMAIN-SUFFIX,u3.ucweb.com
 
 # baidu
 DOMAIN-SUFFIX,duapps.com
