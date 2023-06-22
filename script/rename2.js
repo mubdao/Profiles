@@ -21,6 +21,7 @@ rename.js 以下是此脚本支持的参数，必须以 # 为开头多个参数�
 [clear]:  清理乱名
 */
 
+
 const bl = $arguments["bl"], nf = $arguments["nf"],blpx = $arguments["blpx"], nx = $arguments["nx"], blnx = $arguments["blnx"], numone = $arguments["one"], clear = $arguments["clear"], addflag = $arguments["flag"];
 const jcname = $arguments.name == undefined ? "" : decodeURI($arguments.name), FGF = $arguments.fgf == undefined ? " " : decodeURI($arguments.fgf);
 const inname = $arguments["in"] === "cn" ? "cn" : $arguments["in"] === "us" ? "us" : $arguments["in"] === "quan" ? "quan" : $arguments["gq"] === "gq" ? "gq" : "";
