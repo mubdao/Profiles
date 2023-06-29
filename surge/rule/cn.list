@@ -20,13 +20,6 @@ DOMAIN-KEYWORD,.tmall.
 IP-CIDR,198.11.188.0/25,no-resolve
 IP-CIDR,198.11.136.0/24,no-resolve
 
-# accuWeather
-DOMAIN-SUFFIX,awxcdn.com
-DOMAIN-SUFFIX,scorecardresearch.com
-DOMAIN-SUFFIX,urbanairship.com
-DOMAIN-SUFFIX,apptimize.com
-DOMAIN-SUFFIX,accuweather.com
-
 # bilibili
 DOMAIN-SUFFIX,biliapi.com
 DOMAIN-SUFFIX,biliapi.net
