@@ -19,3 +19,6 @@ DOMAIN-SUFFIX,stripe.com
 # claude
 DOMAIN-KEYWORD,claude
 DOMAIN-SUFFIX,anthropic.com
+
+# google brad
+DOMAIN-SUFFIX,bard.google.com
