@@ -13,3 +13,8 @@ DOMAIN-SUFFIX,itunes.apple.com
 DOMAIN-SUFFIX,lookup-api.apple.com
 DOMAIN-SUFFIX,me.com
 USER-AGENT,com.apple.appstored*
+
+# app store
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,itunes-apple.com.akadns.net
