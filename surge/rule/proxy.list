@@ -19,6 +19,7 @@ DOMAIN-SUFFIX,amazonaws.com
 DOMAIN-SUFFIX,cloudflare.com
 DOMAIN-SUFFIX,rsshub.app
 DOMAIN-SUFFIX,speedrun.com
+DOMAIN-SUFFIX,vercel.app
 
 # adg
 DOMAIN-SUFFIX,adguard.org
