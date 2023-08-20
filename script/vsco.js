@@ -1,56 +1,65 @@
-/*
-VSCO 解锁高级特权
+/
+@chxm1023
+QX:	
+[rewrite_local]
+^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) url script-response-body https://raw.githubusercontent.com/chxm1023/Rewrite/main/vsco.js
+		
+[mitm]
+hostname = api.revenuecat.com
+
+
+Surge:	
+[Script]
+vsco = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/vsco.js
 
 [MITM]
-hostname = vsco.co, api.revenuecat.com
-
-QuantumultX:
-^https:\/\/(api\.revenuecat\.com\/v\d\/subscribers|vsco\.co\/api\/subscriptions\/\d\.\d\/user-subscriptions)\/ url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/script/vsco.js
-
-Surge:
-[Script]
-VSCO = type=http-response,pattern=^https:\/\/(api\.revenuecat\.com\/v\d\/subscribers|vsco\.co\/api\/subscriptions\/\d\.\d\/user-subscriptions)\/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/vsco.js,script-update-interval=0
-*/
+hostname = %APPEND% api.revenuecat.com	
+/
 
 
-let obj = JSON.parse($response.body || '{}');
+var chxm1023 = JSON.parse($response.body);
 
-if (obj.user_subscription) {
-	obj.user_subscription["expires_on_sec"] = 4102415999;
-	obj.user_subscription["expired"] = false;
-	obj.user_subscription["payment_type"] = 2;
-	obj.user_subscription["is_trial_period"] = true;
-	obj.user_subscription["starts_on_sec"] = 4102415999;
-	obj.user_subscription["is_active"] = true;
-	obj.user_subscription["auto_renew"] = true;
-	obj.user_subscription["last_verified_sec"] = 4102415999;
-	obj.user_subscription["subscription_code"] = "VSCOANNUAL";
-	obj.user_subscription["user_id"] = 54624336;
-	obj.user_subscription["source"] = 1;
-}
+chxm1023 = {
+  "request_date_ms" : 1684774345008,
+  "request_date" : "2023-05-22T16:52:25Z",
+  "subscriber" : {
+    "non_subscriptions" : {
 
-if (obj.subscriber) {
-	obj.subscriber.subscriptions = {
-		"com.circles.fin.premium.yearly": {
-			"billing_issues_detected_at": null,
-			"expires_date": "2099-12-31T07:52:54Z",
-			"is_sandbox": false,
-			"original_purchase_date": "2020-02-11T07:52:55Z",
-			"period_type": "normal",
-			"purchase_date": "2020-02-11T07:52:54Z",
-			"store": "app_store",
-			"unsubscribe_detected_at": null
-		}
-	};
-	obj.subscriber.entitlements = {
-		"membership": {
-			"expires_date": "2099-12-31T07:52:54Z",
-			"product_identifier": "com.circles.fin.premium.yearly",
-			"purchase_date": "2020-02-11T07:52:54Z"
-		}
-	};
-}
+    },
+    "first_seen" : "2022-10-17T14:23:20Z",
+    "original_application_version" : "5077",
+    "entitlement" : {
 
-$done({
-	body: JSON.stringify(obj)
-});
+    },
+    "other_purchases" : {
+
+    },
+    "management_url" : null,
+    "subscriptions" : {
+      "vscopro_global_5999_annual_7D_free" : {
+        "warning" : "仅供学习，禁止转载或售卖",
+        "wechat" : "chxm1023",
+        "purchase_date" : "2022-09-09T09:09:09Z",
+        "original_purchase_date" : "2022-09-09T09:09:09Z",
+        "ownership_type" : "PURCHASED",
+        "expires_date" : "2099-09-09T09:09:09Z"
+      }
+    },
+    "entitlements" : {
+      "pro" : {
+        "wechat" : "chxm1023",
+        "ownership_type" : "PURCHASED",
+        "product_identifier" : "vscopro_global_5999_annual_7D_free",
+        "expires_date" : "2099-09-09T09:09:09Z",
+        "warning" : "仅供学习，禁止转载或售卖",
+        "original_purchase_date" : "2022-09-09T09:09:09Z",
+        "purchase_date" : "2022-09-09T09:09:09Z"
+      }
+    },
+    "original_purchase_date" : "2022-10-17T14:12:21Z",
+    "original_app_user_id" : "$RCAnonymousID:ebc2c4f413f740c284494afbdfec8c93",
+    "last_seen" : "2022-11-17T11:10:56Z"
+  }
+};
+
+$done({body : JSON.stringify(chxm1023)});
