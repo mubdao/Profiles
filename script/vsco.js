@@ -2,7 +2,7 @@
 @chxm1023
 QX:	
 [rewrite_local]
-^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) url script-response-body https://raw.githubusercontent.com/chxm1023/Rewrite/main/vsco.js
+^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) url script-response-body https://raw.githubusercontent.com/mubdao/Profiles/main/script/vsco.js
 		
 [mitm]
 hostname = api.revenuecat.com
@@ -10,7 +10,7 @@ hostname = api.revenuecat.com
 
 Surge:	
 [Script]
-vsco = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/vsco.js
+vsco = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/vsco.js
 
 [MITM]
 hostname = %APPEND% api.revenuecat.com	
