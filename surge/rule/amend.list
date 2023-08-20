@@ -21,6 +21,3 @@ DOMAIN-SUFFIX,weather-data.apple.com
 DOMAIN-SUFFIX,weather-map.apple.com
 DOMAIN-SUFFIX,weather-map2.apple.com
 DOMAIN-SUFFIX,weather-analytics-events.apple.com
-
-# apple in-app purchase service
-DOMAIN-KEYWORD,buy.itunes.apple.com
