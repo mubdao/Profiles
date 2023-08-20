@@ -18,3 +18,6 @@ USER-AGENT,com.apple.appstored*
 DOMAIN-SUFFIX,apps.apple.com
 DOMAIN-SUFFIX,itunes.apple.com
 DOMAIN-SUFFIX,itunes-apple.com.akadns.net
+
+# apple in-app purchase service
+DOMAIN-KEYWORD,buy.itunes.apple.com
