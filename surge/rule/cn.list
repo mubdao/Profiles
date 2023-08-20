@@ -65,14 +65,3 @@ IP-CIDR,129.226.107.244/32,no-resolve
 DOMAIN,api.nxtlnodes.com
 DOMAIN,btlsmi.xyz
 DOMAIN,sdkapp.uve.weibo.com
-
-# apple push service
-DOMAIN-SUFFIX,push.apple.com
-
-# apple weather service
-DOMAIN-KEYWORD,weather-edge.apple.com
-DOMAIN-KEYWORD,weather-adge.apple.com
-DOMAIN-SUFFIX,weather-data.apple.com
-DOMAIN-SUFFIX,weather-map.apple.com
-DOMAIN-SUFFIX,weather-map2.apple.com
-DOMAIN-SUFFIX,weather-analytics-events.apple.com
