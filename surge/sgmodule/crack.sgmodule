@@ -6,7 +6,6 @@
 skip-proxy = %APPEND% iosapps.itunes.apple.com
 
 [Script]
-vscopro = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/vsco.js
 fangfuxiangji = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/ffxj.js
 fangfuxiangji = type=http-request,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/ffxj.js
 Lightroom = type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v2\/accounts,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/lightroom.js,script-update-interval=-1
