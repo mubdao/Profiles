@@ -10,6 +10,8 @@
 [Map Local]
 ^https?:\/\/api\.bili(bili\.com|api\.net)\/pgc\/season\/app\/related\/recommend\? data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
 ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash|GetActivityTab) data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
+^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity data="https://github.com/Keywos/rule/raw/main/mocks/biliactivity.json"
 
 [Script]
 bili-jsons = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/(v2\/(splash\/(list|show)|feed\/index|account\/(mine(\/ipad)?|myinfo\?)|search\/square)|resource\/show\/(tab\/v2|skin\?)),requires-body=1,script-update-interval=-1,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/script/bilibili_json.js
