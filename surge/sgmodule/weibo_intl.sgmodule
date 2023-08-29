@@ -2,6 +2,8 @@
 #!desc=Remove weibo_intl ads
 #@ddgksf2013
 
+[Rule]
+DOMAIN,sdkapp.uve.weibo.com,DIRECT
 
 [Map Local]
 ^https?:\/\/api\.weibo\.cn\/\d\/cardlist\?v_f=.*Weibo_intl data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
