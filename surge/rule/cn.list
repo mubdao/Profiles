@@ -12,11 +12,11 @@ DOMAIN-KEYWORD,toutiao
 DOMAIN-KEYWORD,ruguoapp
 
 # apple
-DOMAIN-KEYWORD, weather-edge.apple.com
-DOMAIN-KEYWORD, weather-adge.apple.com
-DOMAIN-SUFFIX, weather-data.apple.com
-DOMAIN-SUFFIX, weather-map.apple.com
-DOMAIN-SUFFIX, weather-analytics-events.apple.com
+DOMAIN-KEYWORD,weather-edge.apple.com
+DOMAIN-KEYWORD,weather-adge.apple.com
+DOMAIN-SUFFIX,weather-data.apple.com
+DOMAIN-SUFFIX,weather-map.apple.com
+DOMAIN-SUFFIX,weather-analytics-events.apple.com
 
 # ali
 DOMAIN-KEYWORD,alipay
