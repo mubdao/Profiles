@@ -1,5 +1,6 @@
 #!name=Safari Search
-#!desc=Safari all in one search 需要把Safari的搜索引擎设置为 DuckDuckGo
+#!desc=Safari all in one search 
+# 需要把Safari的搜索引擎设置为 DuckDuckGo
 
 
 [URL Rewrite]
@@ -7,7 +8,7 @@
 ^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 302
 
 # bd (bd空格关键词为百度搜索)
-^https:\/\/duckduckgo.com\/\?q=bd\+([^&]+).+ https://www.baidu.com/s?wd=$1 302
+^https:\/\/duckduckgo.com\/\?q=b\+([^&]+).+ https://www.baidu.com/s?wd=$1 302
 ^https:\/\/duckduckgo.com\/\?q=f\+([^&]+).+ http://dict.youdao.com/search?q=$1 302
 ^https:\/\/duckduckgo.com\/\?q=z\+([^&]+).+ https://www.zhihu.com/search?type=content&q=$1 302
 ^https:\/\/duckduckgo.com\/\?q=t\+([^&]+).+ https://twitter.com/search?q=$1 302
