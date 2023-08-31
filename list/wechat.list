@@ -1,32 +1,6 @@
-# Direct
+# Wechat
 
 
-# key
-DOMAIN-KEYWORD,baidu
-DOMAIN-KEYWORD,csdn
-DOMAIN-KEYWORD,douyin
-DOMAIN-KEYWORD,weibo
-DOMAIN-KEYWORD,pinduoduo
-DOMAIN-KEYWORD,jdcloud
-DOMAIN-KEYWORD,toutiao
-DOMAIN-KEYWORD,ruguoapp
-
-# ali
-DOMAIN-KEYWORD,alipay
-DOMAIN-KEYWORD,taobao
-DOMAIN-KEYWORD,alicdn
-DOMAIN-KEYWORD,aliyun
-DOMAIN-KEYWORD,.tmall.
-IP-CIDR,198.11.188.0/25,no-resolve
-IP-CIDR,198.11.136.0/24,no-resolve
-
-# bilibili
-DOMAIN-SUFFIX,biliapi.com
-DOMAIN-SUFFIX,biliapi.net
-DOMAIN-SUFFIX,bilibili.com
-DOMAIN-SUFFIX,bilivideo.com
-
-# wechat
 DOMAIN-KEYWORD,wechat
 DOMAIN-SUFFIX,myqcloud.com
 DOMAIN-SUFFIX,qlogo.cn
