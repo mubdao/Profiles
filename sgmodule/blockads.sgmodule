@@ -16,7 +16,6 @@ DEST-PORT,9102,REJECT-NO-DROP
 DOMAIN,www.googleadservices.com,REJECT-DROP
 DOMAIN,googleads.g.doubleclick.net,REJECT-DROP
 
-
 [URL Rewrite]
 # ali
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv - reject
@@ -27,9 +26,6 @@ DOMAIN,googleads.g.doubleclick.net,REJECT-DROP
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get - reject
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome - reject
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources - reject
-# douban
-^https:\/\/api\.douban\.com\/v2\/app_ads\/splash - reject
-^https:\/\/api\.douban\.com\b.*\/common_ads\? - reject
 # xianyu
 ^https:\/\/gw\.alicdn\.com\/mt\/ - reject
 ^https:\/\/gw\.alicdn\.com\/tfs\/.+\d{3,4}-\d{4} - reject
@@ -57,4 +53,4 @@ DOMAIN,googleads.g.doubleclick.net,REJECT-DROP
 ^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v\d\/func\/getmarketconfig data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
 
 [MITM]
-hostname = %APPEND% acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, api.douban.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, gw.alicdn.com, mp.weixin.qq.com, webappcfg.paas.cmbchina.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com
+hostname = %APPEND% acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, gw.alicdn.com, mp.weixin.qq.com, webappcfg.paas.cmbchina.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com
