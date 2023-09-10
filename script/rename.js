@@ -56,6 +56,7 @@ var others = {
   实验: 'Exp',
   商宽: 'Biz',
   家宽: 'Fam',
+  Aliyun: '3x',
   LB: 'LB',
   //IPLC: 'Spec',
   //'IEPL': 'Spec',
