@@ -57,6 +57,7 @@ var others = {
   商宽: 'Biz',
   家宽: 'Fam',
   Aliyun: '3x',
+  Tencent: '6x',
   LB: 'LB',
   //IPLC: 'Spec',
   //'IEPL': 'Spec',
