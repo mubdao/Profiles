@@ -114,3 +114,10 @@ function operator(y) {
   blpx && (y = fampx(y));
   return y;
 }
+// 在原有代码后添加以下代码
+pro.forEach((e) => {
+  // 检查数字是否只有一位
+  if (e.name.match(/^\d$/)) {
+    e.name = e.name[0];
+  }
+});
