@@ -57,6 +57,7 @@ var others = {
   商宽: 'Biz',
   家宽: 'Fam',
   LB: 'LB',
+  0.2X: '0.2x',
   //IPLC: 'Spec',
   //'IEPL': 'Spec',
   //沪日: 'SH-Japan',
