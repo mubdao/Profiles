@@ -61,7 +61,7 @@ nameMap = { cn: 'cn', zh: 'cn', us: 'us', en: 'us', quan: 'quan', gq: 'gq', flag
 inname = nameMap[inArg.in] || '', 
 outputName = nameMap[inArg.out] || '';
 function getList(arg) { switch (arg) { case 'us': return EN; case 'gq': return FG; case 'quan': return QC; default: return ZH; }};
-function jxh(e) { const n = e.reduce((e, n) => { const t = e.find((e) => e.name === n.name); if (t) { t.count++; t.items.push({ ...n, name: `${n.name}${XHFGF}${t.count.toString().padStart(2, "0")}`, }); } else { e.push({ name: n.name, count: 1, items: [{ ...n, name: n.name}], }); } return e; }, []); const t = n.flatMap((e) => e.items); e.splice(0, e.length, ...t); return e;};
+function jxh(e) { const n = e.reduce((e, n) => { const t = e.find((e) => e.name === n.name); if (t) { t.count++; t.items.push({ ...n, name: `${n.name}${XHFGF}${t.count.toString().padStart(2, "0")}`, }); } else { e.push({ name: n.name, count: 1, items: [{ ...n, name: `${n.name}${XHFGF}01` }], }); } return e; }, []); const t = n.flatMap((e) => e.items); e.splice(0, e.length, ...t); return e;};
 function oneP(e) { const t = e.reduce((e, t) => { const n = t.name.replace(/[^A-Za-z0-9\u00C0-\u017F\u4E00-\u9FFF]+\d+$/, ""); if (!e[n]) { e[n] = []; } e[n].push(t); return e; }, {}); for (const e in t) { if (t[e].length === 1 && t[e][0].name.endsWith("01")) { const n = t[e][0]; n.name = e; } } return e; };
 function fampx(pro) { const wis = []; const wnout = []; for (const proxy of pro) { const fan = specialRegex.some((regex) => regex.test(proxy.name)); if (fan) { wis.push(proxy); } else { wnout.push(proxy); } } const sps = wis.map((proxy) => specialRegex.findIndex((regex) => regex.test(proxy.name)) ); wis.sort( (a, b) => sps[wis.indexOf(a)] - sps[wis.indexOf(b)] || a.name.localeCompare(b.name) ); wnout.sort((a, b) => pro.indexOf(a) - pro.indexOf(b)); return wnout.concat(wis);};
 
@@ -204,7 +204,7 @@ function operator(pro) {
                 nNames = FNAME
             }
             keyover = keyover.concat( firstName, usflag, nNames, findKeyValue, retainKey, ikey, ikeys).filter(k => k !== '');
-            e.name = keyover.join(FGF);
+            e.name = keyover.join(FGF).replace(/0+(\d)/g, '$1');
         };
     });
     pro = pro.filter((e) => e.name !== null);
