@@ -8,9 +8,6 @@
 AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
 # youtube udp
 AND,((PROTOCOL,UDP), (DOMAIN-SUFFIX,googlevideo.com)),REJECT-NO-DROP
-# google
-^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
-^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 302
 # bili cdn
 DEST-PORT,4480,REJECT-NO-DROP
 DEST-PORT,4483,REJECT-NO-DROP
@@ -20,6 +17,9 @@ DOMAIN,www.googleadservices.com,REJECT-DROP
 DOMAIN,googleads.g.doubleclick.net,REJECT-DROP
 
 [URL Rewrite]
+# google
+^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
+^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 302
 # ali
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv - reject
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise - reject
