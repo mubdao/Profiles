@@ -1,32 +1,5 @@
-# Streaming Media
+# Media
 
-
-# porn
-DOMAIN-SUFFIX,8teenxxx.com
-DOMAIN-SUFFIX,ahcdn.com
-DOMAIN-SUFFIX,bcvcdn.com
-DOMAIN-SUFFIX,bongacams.com
-DOMAIN-SUFFIX,chaturbate.com
-DOMAIN-SUFFIX,dditscdn.com
-DOMAIN-SUFFIX,livejasmin.com
-DOMAIN-SUFFIX,phncdn.com
-DOMAIN-SUFFIX,phprcdn.com
-DOMAIN-SUFFIX,pornhub.com
-DOMAIN-SUFFIX,pornhubpremium.com
-DOMAIN-SUFFIX,rdtcdn.com
-DOMAIN-SUFFIX,redtube.com
-DOMAIN-SUFFIX,sb-cd.com
-DOMAIN-SUFFIX,spankbang.com
-DOMAIN-SUFFIX,t66y.com
-DOMAIN-SUFFIX,missav.com
-DOMAIN-SUFFIX,xhamster.com
-DOMAIN-SUFFIX,xhcdn.com
-DOMAIN-SUFFIX,b.cdn13.com
-DOMAIN-SUFFIX,xnxx-cdn.com
-DOMAIN-SUFFIX,xnxx.com
-DOMAIN-SUFFIX,xvideos-cdn.com
-DOMAIN-SUFFIX,xvideos.com
-DOMAIN-SUFFIX,ypncdn.com
 
 # spotify
 USER-AGENT,Spotify*
@@ -52,7 +25,3 @@ DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
 DOMAIN,youtubei.googleapis.com
 DOMAIN,yt3.ggpht.com
-
-# emby
-DOMAIN-SUFFIX,misakaf.org
-DOMAIN-SUFFIX,789.123456.al
