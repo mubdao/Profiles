@@ -32,11 +32,9 @@ let pro = {
             o = data.hideIP;
         let n = "",
             a = "",
-            i = "节点信息查询",
-            l = "\n---------------------\n代理链",
+            i = f;
+            l = "\n---------------------";,
             r = "",
-            c = "",
-            p = "",
             d = "";
         const u = await tKey("http://ip-api.com/json/?lang=zh-CN", 1200);
         if (u.status === "success") {
@@ -55,7 +53,7 @@ let pro = {
             o && (a = a.slice(0, 6) + "∗∗∗∗∗");
             e === i && (i = "");
             let f = getflag(t) + e + " " + i;
-            r = " \t" + f + "\n落地IP: \t" + a + ": " + d + "ms" + "\n落地ISP: \t" + c + "\n落地ASN: \t" + p + ""
+            r = " \t" + f + "\n落地IP: \t" + a + ": " + d + "ms" + "\n落地ISP: \t" + n;
         } else {
             console.log("ild" + u);
             r = ""
@@ -154,8 +152,8 @@ let pro = {
             }
         }
         $done({
-            title: i + d,
-            content: p + a + c + zl + r,
+            title: f,
+            content: c + "\n" + g + ": " + d + "ms" + "\n" + h
             icon: t,
             "icon-color": s
         })
