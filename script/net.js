@@ -1,3 +1,4 @@
+// 作者：@keywos
 let pro = {
         icons: "globe.asia.australia",
         icolor: "#6699FF",
@@ -32,9 +33,11 @@ let pro = {
             o = data.hideIP;
         let n = "",
             a = "",
-            i = f;
-            l = "\n---------------------";,
+            i = "节点信息查询",
+            l = "\n---------------------\n代理链",
             r = "",
+            c = "",
+            p = "",
             d = "";
         const u = await tKey("http://ip-api.com/json/?lang=zh-CN", 1200);
         if (u.status === "success") {
@@ -53,7 +56,7 @@ let pro = {
             o && (a = a.slice(0, 6) + "∗∗∗∗∗");
             e === i && (i = "");
             let f = getflag(t) + e + " " + i;
-            r = " \t" + f + "\n落地IP: \t" + a + ": " + d + "ms" + "\n落地ISP: \t" + n;
+            r = " \t" + f + "\n落地IP: \t" + a + ": " + d + "ms" + "\n落地ISP: \t" + c + "\n落地ASN: \t" + p + ""
         } else {
             console.log("ild" + u);
             r = ""
@@ -152,8 +155,8 @@ let pro = {
             }
         }
         $done({
-            title: f,
-            content: c + "\n" + g + ": " + d + "ms" + "\n" + h
+            title: i + d,
+            content: p + a + c + zl + r,
             icon: t,
             "icon-color": s
         })
