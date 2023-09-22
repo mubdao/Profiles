@@ -78,7 +78,7 @@ let pro = {
             a && (s = HIP(s));
             e === n && (n = "");
             let d = getflag(t) + e + " " + n;
-            u = " \t" + d + "\n落地IP: \t" + s + ": " + p + "ms" + "\n落地ISP: \t" + l;
+            u = " \t" + d + "\n落地IP: \t" + s + "\n落地ISP: \t" + l;
         } else {
             console.log("ild" + m);
             u = ""
@@ -150,7 +150,7 @@ let pro = {
                     } = e.data, i = e.tk;
                     cn = true;
                     a && (y = HIP(y));
-                    p = "入口国家: \t" + getflag(n) + t + " " + s + "\n入口IP: \t" + y + ": " + i + "ms" + "\n入口ISP: \t" + o + c + "\n---------------------\n"
+                    p = "入口国家: \t" + getflag(n) + t + " " + s + "\n入口IP: \t" + y + i + "ms" + "\n入口ISP: \t" + o + c + "\n---------------------\n"
                 } else {
                     cn = false;
                     console.log(e);
