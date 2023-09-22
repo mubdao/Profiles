@@ -125,6 +125,9 @@ let pro = {
           c = '入口IPA Failed\n';
         }
       }
+        if (hideIP) {
+  g = g.slice(0, 6) + '∗∗∗∗∗'; 
+}
       if ((!P || isv6) && !cn) {
         const e = await tKey(`http://ip-api.com/json/${g}?lang=zh-CN`, 1e3);
         if (e.status === 'success') {
