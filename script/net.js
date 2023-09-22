@@ -53,7 +53,7 @@ let pro = {
       o && (a = a.slice(0, 6) + '∗∗∗∗∗');
       e === i && (i = '');
       let f = getflag(t) + e + ' ' + i;
-      r = f + '\n落地IP: \t' + a + ': ' + d + 'ms' + '\n落地ISP: \t' + c + '\n落地ASN: \t' + p + '';
+      r = f + '\n落地IP: \t' + a + '\n落地ISP: \t' + c + '\n落地ASN: \t' + p + '';
     } else {
       console.log('ild' + u);
       r = '';
@@ -118,20 +118,7 @@ let pro = {
             i = e.tk;
           cn = true;
           o && (g = g.slice(0, 6) + '∗∗∗∗∗');
-          c =
-            getflag(a) +
-            t +
-            ' ' +
-            n +
-            '\n入口IP: \t' +
-            g +
-            ': ' +
-            i +
-            'ms' +
-            '\n入口ISP: \t' +
-            s +
-            l +
-            '\n---------------------\n';
+          c = getflag(a) + t + ' ' + n + '\n入口IP: \t' + g + '\n入口ISP: \t' + s + l + '\n---------------------\n';
         } else {
           cn = false;
           console.log(e);
@@ -144,18 +131,7 @@ let pro = {
           let { countryCode: t, country: s, city: n, tk: a, isp: i } = e;
           o && (g = g.slice(0, 6) + '∗∗∗∗∗');
           let r = s + ' ' + n;
-          c =
-            getflag(t) +
-            r +
-            '\n入口IP: \t' +
-            g +
-            ': ' +
-            a +
-            'ms' +
-            '\n入口ISP: \t' +
-            i +
-            l +
-            '\n---------------------\n';
+          c = getflag(t) + r + '\n入口IP: \t' + g + '\n入口ISP: \t' + i + l + '\n---------------------\n';
         } else {
           console.log(e);
           c = '入口IPB Failed\n';
