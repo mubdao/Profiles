@@ -61,7 +61,7 @@ let pro = {
             p = "",
             d = "",
             f = "";
-        const m = await tKey(http://ip-api.com/json", n);
+        const m = await tKey("http://ip-api.com/json/?lang=zh-CN", n);
         if (m.status === "success") {
             let {
                 country: e,
@@ -158,7 +158,7 @@ let pro = {
                 }
             }
             if ((!w || isv6) && !cn) {
-                const e = await tKey(`http://ip-api.com/json/${y}`, n);
+                const e = await tKey(`http://ip-api.com/json/${y}?lang=zh-CN`, n);
                 if (e.status === "success") {
                     let {
                         countryCode: t,
