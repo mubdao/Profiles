@@ -78,7 +78,7 @@ let pro = {
             a && (s = HIP(s));
             e === n && (n = "");
             let d = getflag(t) + e + " " + n;
-            u = " \t" + d + "\n落地IP: \t" + s + ": " + p + "ms" + "\n落地ISP: \t" + l + "\n落地ASN: \t" + c + ""
+            u = " \t" + d + "\n落地IP: \t" + s + ": " + p + "ms" + "\n落地ISP: \t" + l;
         } else {
             console.log("ild" + m);
             u = ""
