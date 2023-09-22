@@ -53,7 +53,7 @@ let pro = {
       o && (a = a.slice(0, 6) + '∗∗∗∗∗');
       e === i && (i = '');
       let f = getflag(t) + e + ' ' + i;
-      r = ' \t' + f + '\n落地IP: \t' + a + ': ' + d + 'ms' + '\n落地ISP: \t' + c + '\n落地ASN: \t' + p + '';
+      r = f + '\n落地IP: \t' + a + ': ' + d + 'ms' + '\n落地ISP: \t' + c + '\n落地ASN: \t' + p + '';
     } else {
       console.log('ild' + u);
       r = '';
