@@ -118,11 +118,11 @@ let pro = {
             i = e.tk;
           cn = true;
           o && (g = g.slice(0, 6) + '∗∗∗∗∗');
-          c = getflag(a) + t + ' ' + n + '\n入口IP: \t' + g + '\n入口ISP: \t' + s + l + '\n---------------------\n';
+          c = getflag(a) + t + ' ' + n + '\nEntranceIP: \t' + g + '\nEntranceISP: \t' + s + l + '\n---------------------\n';
         } else {
           cn = false;
           console.log(e);
-          c = '入口IPA Failed\n';
+          c = 'EntranceIPA Failed\n';
         }
       }
       if ((!P || isv6) && !cn) {
