@@ -53,7 +53,7 @@ let pro = {
       o && (a = a.slice(0, 6) + '∗∗∗∗∗');
       e === i && (i = '');
       let f = getflag(t) + e + ' ' + i;
-      r = f + '\n落地IP: \t' + a + '\n落地ISP: \t' + c +  '';
+      r = f + '\nDIP: \t' + a + '\nDISP: \t' + c +  '';
     } else {
       console.log('ild' + u);
       r = '';
@@ -118,23 +118,23 @@ let pro = {
             i = e.tk;
           cn = true;
           o && (g = g.slice(0, 6) + '∗∗∗∗∗');
-          c = getflag(a) + t + ' ' + n + '\nEntranceIP: \t' + g + '\nEntranceISP: \t' + s + l + '\n---------------------\n';
+          c = getflag(a) + t + ' ' + n + '\nEIP: \t' + g + '\nEISP: \t' + s + l + '\n---------------------\n';
         } else {
           cn = false;
           console.log(e);
-          c = 'EntranceIPA Failed\n';
+          c = 'EIPA Failed\n';
         }
       }
       if ((!P || isv6) && !cn) {
-        const e = await tKey(`http://ip-api.com/json/${g}?lang=zh-CN`, 1e3);
+        const e = await tKey(`http://ip-api.com/json/${g}?lang=en`, 1e3);
         if (e.status === 'success') {
           let { countryCode: t, country: s, city: n, tk: a, isp: i } = e;
           o && (g = g.slice(0, 6) + '∗∗∗∗∗');
           let r = s + ' ' + n;
-          c = getflag(t) + r + '\nEntranceIP: \t' + g + '\nEntranceISP: \t' + i + l + '\n---------------------\n';
+          c = getflag(t) + r + '\nEIP: \t' + g + '\nEISP: \t' + i + l + '\n---------------------\n';
         } else {
           console.log(e);
-          c = 'EntranceIPB Failed\n';
+          c = 'EIPB Failed\n';
         }
       }
     }
