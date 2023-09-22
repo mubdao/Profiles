@@ -112,7 +112,7 @@ let pro = {
         let h = P.filter((e => /ip-api\.com/.test(e.URL)));
         if (h.length > 0) {
             const e = h[0];
-            f = ": " + e.policyName;
+            f = e.policyName;
             if (/\(Proxy\)/.test(e.remoteAddress)) {
                 y = e.remoteAddress.replace(" (Proxy)", "");
                 c = ""
@@ -178,7 +178,7 @@ let pro = {
         }
         $done({
             title: f,
-            content: d + r + zl + u,
+            content: d + r + p + zl + u,
             icon: t,
             "icon-color": o
         })
