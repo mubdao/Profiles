@@ -110,7 +110,7 @@ let pro = {
       cn = false;
       zl = '直连节点:';
     } else {
-      zl = '落地地区:';
+      zl = '';
       if (!P || w) {
         const e = await tKey(`https://api-v3.${h}${k}.cn/ip?ip=${g}`, 500);
         if (e.code === 0 && e.data.country === '中国') {
@@ -119,7 +119,6 @@ let pro = {
           cn = true;
           o && (g = g.slice(0, 6) + '∗∗∗∗∗');
           c =
-            '入口国家: \t' +
             getflag(a) +
             t +
             ' ' +
@@ -146,7 +145,6 @@ let pro = {
           o && (g = g.slice(0, 6) + '∗∗∗∗∗');
           let r = s + ' ' + n;
           c =
-            '入口国家: \t' +
             getflag(t) +
             r +
             '\n入口IP: \t' +
