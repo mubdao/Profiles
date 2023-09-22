@@ -61,7 +61,7 @@ let pro = {
             p = "",
             d = "",
             f = "";
-        const m = await tKey("http://ip-api.com/json/?lang=zh-CN", n);
+        const m = await tKey(http://ip-api.com/json", n);
         if (m.status === "success") {
             let {
                 country: e,
@@ -150,8 +150,7 @@ let pro = {
                     } = e.data, i = e.tk;
                     cn = true;
                     a && (y = HIP(y));
-                    p = "入口国家: \t" + getflag(t) + r + "\n入口IP: \t" + y + "\n入口ISP: \t" + i + c + "\n---------------------\n";
-
+                    p = "入口国家: \t" + getflag(n) + t + " " + s + "\n入口IP: \t" + y + i + "\n入口ISP: \t" + o + c + "\n---------------------\n""
                 } else {
                     cn = false;
                     console.log(e);
@@ -159,7 +158,7 @@ let pro = {
                 }
             }
             if ((!w || isv6) && !cn) {
-                const e = await tKey(`http://ip-api.com/json/${y}?lang=zh-CN`, n);
+                const e = await tKey(`http://ip-api.com/json/${y}`, n);
                 if (e.status === "success") {
                     let {
                         countryCode: t,
@@ -170,7 +169,7 @@ let pro = {
                     } = e;
                     a && (y = HIP(y));
                     let r = o + " " + s;
-                    p = "入口国家: \t" + getflag(t) + r + "\n入口IP: \t" + y + ": " + n + "ms" + "\n入口ISP: \t" + i + c + "\n---------------------\n"
+                    p = "入口国家: \t" + getflag(t) + r + "\n入口IP: \t" + y + "\n入口ISP: \t" + i + c + "\n---------------------\n";
                 } else {
                     console.log(e);
                     p = "入口IPB Failed\n"
