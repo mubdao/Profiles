@@ -1,7 +1,4 @@
 // 作者：@keywos
-function HIP(ip) {
-  return ip.replace(/(\w{1,4})(\.|\:)(\w{1,4})$/, (_, first, separator, last) => `${"∗".repeat(first.length)}${separator}${"∗".repeat(last.length)}`);
-}
 let pro = {
     icons: 'globe.asia.australia',
     icolor: '#6699FF',
@@ -50,27 +47,16 @@ let pro = {
       p = '',
       d = '';
     const u = await tKey('http://ip-api.com/json/?lang=zh-CN', 1200);
-   if (m.status === "success") {
-  let {
-    country: e,
-    countryCode: t,
-    regionName: o,
-    query: s,
-    city: n,
-    org: r,
-    isp: l,
-    as: c,
-    tk: p,
-  } = m;
-  i = s;
-  a && (s = HIP(s));
-  e === n && (n = "");
-  let d = getflag(t) + e + " " + n;
-  u = " \t" + d + "\n落地IP: \t" + s + ": " + p + "ms" + "\n落地ISP: \t" + l + "\n落地ASN: \t" + c + "";
-} else {
-  console.log("ild" + m);
-  u = "";
-}
+    if (u.status === 'success') {
+      let { country: e, countryCode: t, regionName: s, query: a, city: i, org: l, isp: c, as: p, tk: d } = u;
+      n = a;
+      o && (a = a.slice(0, 6) + '∗∗∗∗∗');
+      e === i && (i = '');
+      let f = getflag(t) + e + ' ' + i;
+      r = f + '\n落地IP: \t' + a + '\n落地ISP: \t' + c + '';
+    } else {
+      console.log('ild' + u);
+      r = '';
     }
     if (e) {
       const e = await tKey('http://chat.openai.com/cdn-cgi/trace', 1e3);
