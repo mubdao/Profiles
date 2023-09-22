@@ -47,15 +47,13 @@ let pro = {
       p = '',
       d = '';
     const u = await tKey('http://ip-api.com/json/?lang=zh-CN', 1200);
-if (e.status === 'success') {
-  let { country: e, countryCode: t, regionName: s, query: a, city: i, org: l, isp: c, as: p, tk: d } = u;
-  n = a;
-  if (hideIP) {
-    a = a.slice(0, -6) + '∗∗∗∗∗';
-  }
-  e === i && (i = '');
-  let f = getflag(t) + e + ' ' + i;
-  r = f + '\n落地IP: \t' + a + '\n落地ISP: \t' + c + '';
+    if (u.status === 'success') {
+      let { country: e, countryCode: t, regionName: s, query: a, city: i, org: l, isp: c, as: p, tk: d } = u;
+      n = a;
+      o && (a = a.slice(0, 6) + '∗∗∗∗∗');
+      e === i && (i = '');
+      let f = getflag(t) + e + ' ' + i;
+      r = f + '\n落地IP: \t' + a + '\n落地ISP: \t' + c + '';
     } else {
       console.log('ild' + u);
       r = '';
