@@ -51,7 +51,7 @@ if (e.status === 'success') {
   let { country: e, countryCode: t, regionName: s, query: a, city: i, org: l, isp: c, as: p, tk: d } = u;
   n = a;
   if (hideIP) {
-    a = a.slice(0, 6) + '∗∗∗∗∗';
+    a = a.slice(0, -6) + '∗∗∗∗∗';
   }
   e === i && (i = '');
   let f = getflag(t) + e + ' ' + i;
