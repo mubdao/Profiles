@@ -61,7 +61,7 @@ let pro = {
             p = "",
             d = "",
             f = "";
-        const m = await tKey(http://ip-api.com/json", n);
+        const m = await tKey("http://ip-api.com/json/?lang=zh-CN", n);
         if (m.status === "success") {
             let {
                 country: e,
@@ -78,7 +78,7 @@ let pro = {
             a && (s = HIP(s));
             e === n && (n = "");
             let d = getflag(t) + e + " " + n;
-            u = " \t" + d + "\n落地IP: \t" + s + "\n落地ISP: \t" + l;
+            u = " \t" + d + "\n落地IP: \t" + s + ": " + p + "ms" + "\n落地ISP: \t" + l + "\n落地ASN: \t" + c + ""
         } else {
             console.log("ild" + m);
             u = ""
@@ -112,7 +112,7 @@ let pro = {
         let h = P.filter((e => /ip-api\.com/.test(e.URL)));
         if (h.length > 0) {
             const e = h[0];
-            f = e.policyName;
+            f = ": " + e.policyName;
             if (/\(Proxy\)/.test(e.remoteAddress)) {
                 y = e.remoteAddress.replace(" (Proxy)", "");
                 c = ""
@@ -150,7 +150,7 @@ let pro = {
                     } = e.data, i = e.tk;
                     cn = true;
                     a && (y = HIP(y));
-                    p = "入口国家: \t" + getflag(n) + t + " " + s + "\n入口IP: \t" + y + i + "\n入口ISP: \t" + o + c + "\n---------------------\n""
+                    p = "入口国家: \t" + getflag(n) + t + " " + s + "\n入口IP: \t" + y + ": " + i + "ms" + "\n入口ISP: \t" + o + c + "\n---------------------\n"
                 } else {
                     cn = false;
                     console.log(e);
@@ -158,7 +158,7 @@ let pro = {
                 }
             }
             if ((!w || isv6) && !cn) {
-                const e = await tKey(`http://ip-api.com/json/${y}`, n);
+                const e = await tKey(`http://ip-api.com/json/${y}?lang=zh-CN`, n);
                 if (e.status === "success") {
                     let {
                         countryCode: t,
@@ -169,7 +169,7 @@ let pro = {
                     } = e;
                     a && (y = HIP(y));
                     let r = o + " " + s;
-                    p = "入口国家: \t" + getflag(t) + r + "\n入口IP: \t" + y + "\n入口ISP: \t" + i + c + "\n---------------------\n";
+                    p = "入口国家: \t" + getflag(t) + r + "\n入口IP: \t" + y + ": " + n + "ms" + "\n入口ISP: \t" + i + c + "\n---------------------\n"
                 } else {
                     console.log(e);
                     p = "入口IPB Failed\n"
