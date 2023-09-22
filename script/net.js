@@ -1,8 +1,9 @@
+// @keywos
 let pro = {
     updata: {
       说明: "可在持久化数据中更改是否在面板中显示这样可以直接使用远程链接，不用放在本地即可修改，输错了会自动恢复默认重新运行后重写JSON里的参数即可",
       "cnTimeout 为入口超时时间": "usTimeout 为落地超时时间",
-      "icons 为图标": "icolor 为颜色",
+      "icons 为图标": "icolor 为颜色",https://github.com/mubdao/Profiles/tree/main/script
       "hideIP 为": "是否隐藏IP",
       开为: true,
       关为: false,
