@@ -150,7 +150,8 @@ let pro = {
                     } = e.data, i = e.tk;
                     cn = true;
                     a && (y = HIP(y));
-                    p = "入口国家: \t" + getflag(t) + r + "\n入口IP: \t" + y + "\n入口ISP: \t" + i + " " + c + "\n---------------------\n";
+                    p = "入口国家: \t" + getflag(t) + r + "\n入口IP: \t" + y + "\n入口ISP: \t" + i + c + "\n---------------------\n";
+
                 } else {
                     cn = false;
                     console.log(e);
