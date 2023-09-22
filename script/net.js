@@ -1,9 +1,8 @@
-// @keywos
 let pro = {
     updata: {
       说明: "可在持久化数据中更改是否在面板中显示这样可以直接使用远程链接，不用放在本地即可修改，输错了会自动恢复默认重新运行后重写JSON里的参数即可",
       "cnTimeout 为入口超时时间": "usTimeout 为落地超时时间",
-      "icons 为图标": "icolor 为颜色",https://github.com/mubdao/Profiles/tree/main/script
+      "icons 为图标": "icolor 为颜色",
       "hideIP 为": "是否隐藏IP",
       开为: true,
       关为: false,
@@ -160,7 +159,7 @@ let pro = {
       cn = false;
       zl = "直连节点:";
     } else {
-      zl = "";
+      zl = "落地地区:";
       if (!w || I) {
         const e = await tKey(`https://api-v3.${T}${k}.cn/ip?ip=${y}`, s);
         if (e.code === 0 && e.data.country === "中国") {
@@ -169,15 +168,16 @@ let pro = {
           cn = true;
           a && (y = HIP(y));
           p =
-            "\t" +
+            "入口国家: \t" +
             getflag(n) +
             t +
             " " +
             s +
             "\n入口IP: \t" +
             y +
-            " " +
+            ": " +
             i +
+            "ms" +
             "\n入口ISP: \t" +
             o +
             c +
@@ -200,8 +200,9 @@ let pro = {
             r +
             "\n入口IP: \t" +
             y +
-            " " +
+            ": " +
             n +
+            "ms" +
             "\n入口ISP: \t" +
             i +
             c +
@@ -213,7 +214,7 @@ let pro = {
       }
     }
     $done({
-      title: f,
+      title: l + f,
       content: d + r + p + zl + u,
       icon: t,
       "icon-color": o,
