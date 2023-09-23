@@ -168,18 +168,7 @@ let pro = {
           let {countryCode: t, country: o, city: s, isp: i, tk: n} = e;
           a && (y = HIP(y));
           let r = o + " " + s;
-          p =
-            "入口国家: \t" +
-            getflag(t) +
-            r +
-            "\n入口IP: \t" +
-            y +
-            " " +
-            n +
-            "\n入口ISP: \t" +
-            i +
-            c +
-            "\n---------------------\n";
+          p = "\t" + getflag(n) + t + " " + s + "\n入口IP: \t" + y + "\n入口ISP: \t" + i + c + "\n---------------------\n";
         } else {
           console.log(e);
           p = "入口IPB Failed\n";
