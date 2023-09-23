@@ -1,4 +1,3 @@
-// @keywos
 let pro = {
     updata: {
       说明: "可在持久化数据中更改是否在面板中显示这样可以直接使用远程链接，不用放在本地即可修改，输错了会自动恢复默认重新运行后重写JSON里的参数即可",
@@ -160,7 +159,7 @@ let pro = {
       cn = false;
       zl = "直连节点:";
     } else {
-      zl = "落地地区:";
+      zl = "";
       if (!w || I) {
         const e = await tKey(`https://api-v3.${T}${k}.cn/ip?ip=${y}`, s);
         if (e.code === 0 && e.data.country === "中国") {
@@ -169,16 +168,15 @@ let pro = {
           cn = true;
           a && (y = HIP(y));
           p =
-            "入口国家: \t" +
+            "\t" +
             getflag(n) +
             t +
             " " +
             s +
             "\n入口IP: \t" +
             y +
-            ": " +
+            " " +
             i +
-            "ms" +
             "\n入口ISP: \t" +
             o +
             c +
@@ -201,9 +199,8 @@ let pro = {
             r +
             "\n入口IP: \t" +
             y +
-            ": " +
+            " " +
             n +
-            "ms" +
             "\n入口ISP: \t" +
             i +
             c +
@@ -215,7 +212,7 @@ let pro = {
       }
     }
     $done({
-      title: l + f,
+      title: f,
       content: d + r + p + zl + u,
       icon: t,
       "icon-color": o,
