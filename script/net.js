@@ -90,19 +90,7 @@ let pro = {
       a && (s = HIP(s));
       e === n && (n = "");
       let d = getflag(t) + e + " " + n;
-      u =
-        " \t" +
-        d +
-        "\n落地IP: \t" +
-        s +
-        ": " +
-        p +
-        "ms" +
-        "\n落地ISP: \t" +
-        l +
-        "\n落地ASN: \t" +
-        c +
-        "";
+      u = " \t" + d + "\n落地IP: \t" + s + "\n落地ISP: \t" + l + "\n落地ASN: \t" + c + "";
     } else {
       console.log("ild" + m);
       u = "";
@@ -167,20 +155,7 @@ let pro = {
             i = e.tk;
           cn = true;
           a && (y = HIP(y));
-          p =
-            "\t" +
-            getflag(n) +
-            t +
-            " " +
-            s +
-            "\n入口IP: \t" +
-            y +
-            " " +
-            i +
-            "\n入口ISP: \t" +
-            o +
-            c +
-            "\n---------------------\n";
+          p = "\t" + getflag(n) + t + " " + s + "\n入口IP: \t" + y + "\n入口ISP: \t" + i + c + "\n---------------------\n";
         } else {
           cn = false;
           console.log(e);
