@@ -21,18 +21,6 @@ DOMAIN-SUFFIX,rsshub.app
 DOMAIN-SUFFIX,speedrun.com
 DOMAIN-SUFFIX,vercel.app
 
-# adg
-DOMAIN-SUFFIX,adguard.org
-DOMAIN-SUFFIX,adguard.com
-DOMAIN-SUFFIX,adtidy.org
-
-
-# fast
-DOMAIN-SUFFIX,fast.com
-DOMAIN-SUFFIX,fastly.net
-DOMAIN-SUFFIX,fastly.com
-DOMAIN-SUFFIX,netflix.com
-
 # mail
 DOMAIN,imap-mail.outlook.com
 DOMAIN,imap.gmail.com
