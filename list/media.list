@@ -27,3 +27,6 @@ DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
 DOMAIN,youtubei.googleapis.com
 DOMAIN,yt3.ggpht.com
+
+# emby
+DOMAIN-SUFFIX,emby-mix.atomlantis.cloud
