@@ -2,19 +2,13 @@
 #!desc=AD、google rewrite
 
 
-
 [Rule]
 # port 443
 AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
-# youtube udp
-AND,((PROTOCOL,UDP), (DOMAIN-SUFFIX,googlevideo.com)),REJECT-NO-DROP
 # bili cdn
 DEST-PORT,4480,REJECT-NO-DROP
 DEST-PORT,4483,REJECT-NO-DROP
 DEST-PORT,9102,REJECT-NO-DROP
-# invalid request
-DOMAIN,www.googleadservices.com,REJECT-DROP
-DOMAIN,googleads.g.doubleclick.net,REJECT-DROP
 
 [URL Rewrite]
 # google
