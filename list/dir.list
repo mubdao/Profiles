@@ -84,6 +84,10 @@ DOMAIN-SUFFIX,me.com
 DOMAIN-SUFFIX,mzstatic.com
 DOMAIN-SUFFIX,smoot.apple.cn
 
+# app store
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,itunes.apple.com
+
 # Emby
 DOMAIN-SUFFIX,misakaf.org
 DOMAIN-SUFFIX,789.123456.al
