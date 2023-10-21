@@ -87,6 +87,7 @@ IP-CIDR,149.154.160.0/20,no-resolve
 IP-CIDR,185.76.151.0/24,no-resolve
 
 # discord
-DOMAIN-SUFFIX, discord.com
-DOMAIN-SUFFIX, discordapp.com
-DOMAIN-SUFFIX, discordapp.net
+DOMAIN-KEYWORD,discord
+DOMAIN-SUFFIX,discord.com
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discordapp.net
