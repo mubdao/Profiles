@@ -11,6 +11,7 @@ DOMAIN-KEYWORD,instagram
 DOMAIN-KEYWORD,twitter
 DOMAIN-KEYWORD,wiki
 DOMAIN-KEYWORD,unsplash
+DOMAIN-KEYWORD,microsoft
 
 # suffix
 DOMAIN-SUFFIX,bing.com
@@ -20,6 +21,18 @@ DOMAIN-SUFFIX,cloudflare.com
 DOMAIN-SUFFIX,rsshub.app
 DOMAIN-SUFFIX,speedrun.com
 DOMAIN-SUFFIX,vercel.app
+
+# microsoft
+DOMAIN-SUFFIX,live.com
+DOMAIN-SUFFIX,hotmail.com
+DOMAIN-SUFFIX,outlook.com
+DOMAIN-SUFFIX,microsoftaccount.com
+DOMAIN-SUFFIX,microsoftonline.com
+DOMAIN-SUFFIX,msftauth.net
+DOMAIN-SUFFIX,msauth.net
+DOMAIN-SUFFIX,msecnd.net
+DOMAIN-SUFFIX,bing.com
+DOMAIN-SUFFIX,bing.net
 
 # mail
 DOMAIN,imap-mail.outlook.com
