@@ -62,5 +62,8 @@ AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
 # wechat public account
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad data="https://raw.githubusercontent.com/Keywos/rule/main/mocks//WeChat.json"
 
+# 10086
+^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/(explorePage\/getAdverList|init\/startInit) data="https://raw.githubusercontent.com/Keywos/rule/main/mocks//reject-200.txt"
+
 [MITM]
-hostname = %APPEND% www.google.cn, duckduckgo.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, gw.alicdn.com, webappcfg.paas.cmbchina.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, rescdn.qqmail.com, mp.weixin.qq.com
+hostname = %APPEND% www.google.cn, duckduckgo.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, gw.alicdn.com, webappcfg.paas.cmbchina.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, rescdn.qqmail.com, mp.weixin.qq.com, client.app.coc.10086.cn
