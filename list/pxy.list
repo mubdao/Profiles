@@ -1,28 +1,43 @@
 # Proxy
 
 
-# key
+# general
 DOMAIN-KEYWORD,github
 DOMAIN-KEYWORD,google
 DOMAIN-KEYWORD,gmail
 DOMAIN-KEYWORD,facebook
 DOMAIN-KEYWORD,fbcdn
 DOMAIN-KEYWORD,instagram
-DOMAIN-KEYWORD,twitter
 DOMAIN-KEYWORD,wiki
 DOMAIN-KEYWORD,unsplash
-DOMAIN-KEYWORD,microsoft
-
-# suffix
-DOMAIN-SUFFIX,bing.com
 DOMAIN-SUFFIX,duckduckgo.com
+DOMAIN-SUFFIX,v2ex.com
+DOMAIN-SUFFIX,javbus.com
+
+# cloud
 DOMAIN-SUFFIX,amazonaws.com
 DOMAIN-SUFFIX,cloudflare.com
-DOMAIN-SUFFIX,rsshub.app
-DOMAIN-SUFFIX,speedrun.com
-DOMAIN-SUFFIX,vercel.app
+DOMAIN,in.appcenter.ms
+DOMAIN-SUFFIX,amazonaws.com
+DOMAIN-SUFFIX,amazontrust.com
+DOMAIN-SUFFIX,appsflyer.com
+DOMAIN-SUFFIX,appsflyersdk.com
+DOMAIN-SUFFIX,cloudfront.net
+DOMAIN-SUFFIX,lencr.org
+DOMAIN-SUFFIX,ocsp.sectigo.com
+DOMAIN-SUFFIX,sprig.com
+DOMAIN-SUFFIX,statsig.com
+DOMAIN-SUFFIX,usertrust.com
+
+# discord
+DOMAIN-KEYWORD,discord
+DOMAIN-SUFFIX,discord.com
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discordapp.net
 
 # microsoft
+DOMAIN-KEYWORD,microsoft
+DOMAIN-SUFFIX,bing.com
 DOMAIN-SUFFIX,live.com
 DOMAIN-SUFFIX,hotmail.com
 DOMAIN-SUFFIX,outlook.com
@@ -45,17 +60,11 @@ DOMAIN,smtp.office365.com
 DOMAIN-SUFFIX,apple.imap.mail.yahoo.com
 DOMAIN-SUFFIX,m.hotmail.com
 
-# spark
-DOMAIN-SUFFIX,amplitude.com
-DOMAIN-SUFFIX,firebaseio.com
-DOMAIN-SUFFIX,hockeyapp.net
-DOMAIN-SUFFIX,readdle.com
-DOMAIN-SUFFIX,smartmailcloud.com
-
 # testflight
 DOMAIN,testflight.apple.com
 
 # twitter
+DOMAIN-KEYWORD,twitter
 DOMAIN-SUFFIX,periscope.tv
 DOMAIN-SUFFIX,pscp.tv
 DOMAIN-SUFFIX,t.co
@@ -86,8 +95,6 @@ IP-CIDR,91.105.192.0/23,no-resolve
 IP-CIDR,149.154.160.0/20,no-resolve
 IP-CIDR,185.76.151.0/24,no-resolve
 
-# discord
-DOMAIN-KEYWORD,discord
-DOMAIN-SUFFIX,discord.com
-DOMAIN-SUFFIX,discordapp.com
-DOMAIN-SUFFIX,discordapp.net
+# other
+DOMAIN-SUFFIX,rsshub.app
+DOMAIN-SUFFIX,vercel.app
