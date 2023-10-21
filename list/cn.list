@@ -84,6 +84,9 @@ DOMAIN-SUFFIX,me.com
 DOMAIN-SUFFIX,mzstatic.com
 DOMAIN-SUFFIX,smoot.apple.cn
 
+# other
+DOMAIN-SUFFIX,digicert.com
+
 # app store
 DOMAIN-SUFFIX,apps.apple.com
 DOMAIN-SUFFIX,itunes.apple.com
