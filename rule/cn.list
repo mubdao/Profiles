@@ -1,0 +1,115 @@
+# dir
+
+
+# amy
+HOST,btlsmi.xyz
+
+# China Apps
+USER-AGENT,MicroMessenger Client
+USER-AGENT,WeChat*
+USER-AGENT,MApi* 
+
+# Ali
+HOST-KEYWORD,alipay
+HOST-KEYWORD,taobao
+HOST-KEYWORD,alicdn
+HOST-KEYWORD,aliyun
+HOST-KEYWORD,.tmall.
+IP-CIDR,198.11.188.0/25
+IP-CIDR,198.11.136.0/24
+USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
+
+# China
+HOST-SUFFIX,CN
+HOST-KEYWORD,baidu
+
+# wechat
+HOST-KEYWORD,wechat
+HOST-SUFFIX,myqcloud.com
+HOST-SUFFIX,qlogo.cn
+HOST-SUFFIX,qpic.cn
+HOST-SUFFIX,qq.com
+HOST-SUFFIX,servicewechat.com
+HOST-SUFFIX,tencent-cloud.com
+HOST-SUFFIX,tencent-cloud.net
+HOST-SUFFIX,tencent.com
+HOST-SUFFIX,tencentcs.com
+HOST-SUFFIX,tenpay.com
+HOST-SUFFIX,wechat.com
+HOST-SUFFIX,wechatlegal.net
+HOST-SUFFIX,wechatpay.com
+HOST-SUFFIX,weixin.com
+HOST-SUFFIX,weixinbridge.com
+HOST-SUFFIX,weixinsxy.com
+IP-CIDR,43.156.222.154/32
+IP-CIDR,43.156.223.202/32
+IP-CIDR,43.156.255.184/32
+IP-CIDR,43.156.222.210/32
+IP-CIDR,43.159.77.28/32
+IP-CIDR,43.156.222.165/32
+IP-CIDR,43.156.222.216/32
+IP-CIDR,101.32.104.4/32
+IP-CIDR,101.32.104.41/32
+IP-CIDR,101.32.104.56/32
+IP-CIDR,101.32.118.25/32
+IP-CIDR,101.32.133.16/32
+IP-CIDR,101.32.133.53/32
+IP-CIDR,101.32.133.209/32
+IP-CIDR,129.226.3.47/32
+IP-CIDR,129.226.107.244/32
+USER-AGENT,MicroMessenger*
+USER-AGENT,WeChat*
+
+# apple
+HOST-SUFFIX,aaplimg.com
+HOST-SUFFIX,apple-cloudkit.com
+HOST-SUFFIX,apple-livephotoskit.com
+HOST-SUFFIX,apple-mapkit.com
+HOST-SUFFIX,apple-support.akadns.net
+HOST-SUFFIX,apple.co
+HOST-SUFFIX,apple.com
+HOST-SUFFIX,apple.com.akadns.net
+HOST-SUFFIX,apple.com.cn
+HOST-SUFFIX,apple.com.edgekey.net
+HOST-SUFFIX,applemusic.com
+HOST-SUFFIX,appstore.com
+HOST-SUFFIX,apzones.com
+HOST-SUFFIX,cdn-apple.com
+HOST-SUFFIX,icloud-content.com
+HOST-SUFFIX,icloud.com
+HOST-SUFFIX,icloud.com.akadns.net
+HOST-SUFFIX,icloud.com.cn
+HOST-SUFFIX,itunes.com
+HOST-SUFFIX,me.com
+HOST-SUFFIX,mzstatic.com
+HOST-SUFFIX,smoot.apple.cn
+
+# other
+HOST-SUFFIX,digicert.com
+
+# app store
+HOST-SUFFIX,apps.apple.com
+HOST-SUFFIX,itunes.apple.com
+
+# Emby
+HOST-SUFFIX,misakaf.org
+HOST-SUFFIX,789.123456.al
+
+# ip
+IP-CIDR,1.255.62.0/24
+IP-CIDR,101.32.118.0/23
+IP-CIDR,101.32.96.0/20
+IP-CIDR,119.28.28.28/32
+IP-CIDR,129.226.0.0/16
+IP-CIDR,182.254.116.0/24
+IP-CIDR,183.128.0.0/11
+IP-CIDR,185.188.32.0/22
+IP-CIDR,203.205.238.0/23
+IP-CIDR,203.205.254.0/23
+IP-CIDR6,2a0b:b580::/48
+IP-CIDR6,2a0b:b581::/48
+IP-CIDR6,2a0b:b582::/48
+IP-CIDR6,2a0b:b583::/48
+
+# GeoIP
+GEOIP, CN, DIRECT
