@@ -1,0 +1,90 @@
+# Advertising
+
+
+HOST-SUFFIX,app-site-association.cdn-apple.com
+
+# apple
+HOST,api-adservices.apple.com
+HOST-SUFFIX,iadsdk.apple.com
+
+# 安全浏览限制解除
+HOST,lookup.api.bsb.baidu.com
+HOST,proxy.safebrowsing.apple
+HOST,safebrowsing.g.applimg.com
+HOST,safebrowsing.googleapis.com
+HOST,safebrowsing.urlsec.qq.com
+HOST,token.safebrowsing.apple
+HOST,vs6.bj2ct.u3.ucweb.com
+HOST-SUFFIX,safebrowsing.apple
+HOST-SUFFIX,u3.ucweb.com
+
+# ali
+IP-CIDR,203.107.1.1/24
+
+# baidu
+HOST-SUFFIX,pos.baidu.com
+IP-CIDR,180.76.76.200/32
+
+# bilibili
+HOST,mall.bilibili.com
+HOST,passport.bilibili.com
+
+# chat gpt
+HOST,o33249.ingest.sentry.io
+
+# clue
+HOST,api.helloclue.com
+HOST,brahe.apptimize.com
+HOST,collector.clue.run
+HOST,images.ctfassets.net
+HOST,mapi.apptimize.com
+HOST,md-i-s.apptimize.com
+
+# flurry
+HOST,data.flurry.com
+
+# foreca & google
+HOST,adservice.google.com
+HOST,googleads.g.doubleclick-cn.net
+HOST,googleads.g.doubleclick.net
+HOST,pubads.g.doubleclick.net
+HOST,pagead2.googlesyndication.com.net
+HOST,www.googleadservices.com
+HOST-KEYWORD,adservice.google.com.
+
+# 广告联盟
+HOST,is.snssdk.com
+HOST,mi.gdt.qq.com
+HOST,open.e.kuaishou.com
+HOST-SUFFIX,pangolin-sdk-toutiao.com
+HOST-SUFFIX,pangolin-sdk-toutiao-b.com
+HOST-SUFFIX,pglstatp-toutiao.com
+
+# meituan
+HOST,al-log.d.meituan.net
+HOST,babel-statistics-android.d.meituan.net
+HOST,maplocatesdksnapshot.d.meituan.net
+HOST,metrics-picture.d.meituan.net
+HOST,route-stats.d.meituan.net
+
+# RARBG 推广跳转
+HOST,bravetense.com
+HOST,furiousfar.com
+HOST,swallowcrockerybless.com
+
+# tx
+HOST,tpns.qq.com
+
+# zhihu
+HOST,appcloud.zhihu.com
+HOST,appcloud2.in.zhihu.com
+HOST,crash2.zhihu.com
+HOST,mqtt.zhihu.com
+HOST,sugar.zhihu.com
+IP-CIDR,118.89.204.198/32
+IP-CIDR,103.41.167.237/32
+IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128
+
+# zijie
+HOST,ad.zijieapi.com
+HOST-KEYWORD,-ad-sign.byteimg.co
