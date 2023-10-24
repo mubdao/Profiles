@@ -3,9 +3,14 @@
 #!author=@key
 
 
+[Rule]
+DOMAIN,upos-sz-staticcos.bilivideo.com,reject
+
 [URL Rewrite]
 ^https?:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - reject
 ^https?:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
+(?=resource\?resourceUrl|upos\-sz\-staticcos) - reject
+(?=.*(hdslb\.com.*(\.zip|\.mp4)))^((?!(hdslb\.com\/bfs\/app-static\/)).)*$ - reject
 
 [Map Local]
 ^https?:\/\/api\.bili(bili\.com|api\.net)\/pgc\/season\/app\/related\/recommend\? data="https://raw.githubusercontent.com/mubdao/Profiles/main/surge/mocks/reject-dict.json"
