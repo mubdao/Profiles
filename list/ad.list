@@ -113,7 +113,7 @@ IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,no-resolve
 
 # zijie
 DOMAIN,ad.zijieapi.com
-DOMAIN-KEYWORD, -ad-sign.byteimg.co
+DOMAIN-KEYWORD,-ad-sign.byteimg.co
 
 # 运营商
 DOMAIN-SUFFIX,114so.cn
