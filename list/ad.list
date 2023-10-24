@@ -3,6 +3,32 @@
 
 DOMAIN,app-site-association.cdn-apple.com
 
+# key
+DOMAIN-KEYWORD,admarvel
+DOMAIN-KEYWORD,admaster
+DOMAIN-KEYWORD,adsage
+DOMAIN-KEYWORD,adsensor
+DOMAIN-KEYWORD,adsmogo
+DOMAIN-KEYWORD,adsrvmedia
+DOMAIN-KEYWORD,adsserving
+DOMAIN-KEYWORD,adsystem
+DOMAIN-KEYWORD,adwords
+DOMAIN-KEYWORD,applovin
+DOMAIN-KEYWORD,appsflyer
+DOMAIN-KEYWORD,domob
+DOMAIN-KEYWORD,duomeng
+DOMAIN-KEYWORD,dwtrack
+DOMAIN-KEYWORD,guanggao
+DOMAIN-KEYWORD,omgmta
+DOMAIN-KEYWORD,omniture
+DOMAIN-KEYWORD,openx
+DOMAIN-KEYWORD,partnerad
+DOMAIN-KEYWORD,pingfore
+DOMAIN-KEYWORD,socdm
+DOMAIN-KEYWORD,supersonicads
+DOMAIN-KEYWORD,wlmonitor
+DOMAIN-KEYWORD,zjtoolbar
+
 # apple
 DOMAIN,api-adservices.apple.com
 DOMAIN-SUFFIX,iadsdk.apple.com
@@ -30,15 +56,15 @@ DOMAIN,mall.bilibili.com
 DOMAIN,passport.bilibili.com
 
 # chat gpt
-DOMAIN, o33249.ingest.sentry.io
+DOMAIN,o33249.ingest.sentry.io
 
 # clue
-DOMAIN, api.helloclue.com
-DOMAIN, brahe.apptimize.com
-DOMAIN, collector.clue.run
-DOMAIN, images.ctfassets.net
-DOMAIN, mapi.apptimize.com
-DOMAIN, md-i-s.apptimize.com
+DOMAIN,api.helloclue.com
+DOMAIN,brahe.apptimize.com
+DOMAIN,collector.clue.run
+DOMAIN,images.ctfassets.net
+DOMAIN,mapi.apptimize.com
+DOMAIN,md-i-s.apptimize.com
 
 # flurry
 DOMAIN,data.flurry.com
@@ -61,11 +87,11 @@ DOMAIN-SUFFIX,pangolin-sdk-toutiao-b.com
 DOMAIN-SUFFIX,pglstatp-toutiao.com
 
 # meituan
-DOMAIN, al-log.d.meituan.net
-DOMAIN, babel-statistics-android.d.meituan.net
-DOMAIN, maplocatesdksnapshot.d.meituan.net
-DOMAIN, metrics-picture.d.meituan.net
-DOMAIN, route-stats.d.meituan.net
+DOMAIN,al-log.d.meituan.net
+DOMAIN,babel-statistics-android.d.meituan.net
+DOMAIN,maplocatesdksnapshot.d.meituan.net
+DOMAIN,metrics-picture.d.meituan.net
+DOMAIN,route-stats.d.meituan.net
 
 # RARBG 推广跳转
 DOMAIN,bravetense.com
@@ -76,15 +102,21 @@ DOMAIN,swallowcrockerybless.com
 DOMAIN,tpns.qq.com
 
 # zhihu
-DOMAIN, appcloud.zhihu.com
-DOMAIN, appcloud2.in.zhihu.com
-DOMAIN, crash2.zhihu.com
-DOMAIN, mqtt.zhihu.com
-DOMAIN, sugar.zhihu.com
-IP-CIDR, 118.89.204.198/32,no-resolve
-IP-CIDR, 103.41.167.237/32,no-resolve
+DOMAIN,appcloud.zhihu.com
+DOMAIN,appcloud2.in.zhihu.com
+DOMAIN,crash2.zhihu.com
+DOMAIN,mqtt.zhihu.com
+DOMAIN,sugar.zhihu.com
+IP-CIDR,118.89.204.198/32,no-resolve
+IP-CIDR,103.41.167.237/32,no-resolve
 IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,no-resolve
 
 # zijie
-DOMAIN, ad.zijieapi.com
+DOMAIN,ad.zijieapi.com
 DOMAIN-KEYWORD, -ad-sign.byteimg.co
+
+# 运营商
+DOMAIN-SUFFIX,114so.cn
+DOMAIN-SUFFIX,go.10086.cn
+DOMAIN-SUFFIX,hivedata.cc
+DOMAIN-SUFFIX,navi.gd.chinamobile.com
