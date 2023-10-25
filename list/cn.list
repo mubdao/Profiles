@@ -1,29 +1,139 @@
 # direct
 
 
+# cn
+DOMAIN-SUFFIX,cn
+DOMAIN-SUFFIX,xn--fiqs8s
+DOMAIN-SUFFIX,xn--55qx5d
+DOMAIN-SUFFIX,xn--io0a7i
+
+# key
+DOMAIN-KEYWORD,360buy
+DOMAIN-KEYWORD,alicdn
+DOMAIN-KEYWORD,alimama
+DOMAIN-KEYWORD,alipay
+DOMAIN-KEYWORD,baidupcs
+DOMAIN-KEYWORD,bilibili
+DOMAIN-KEYWORD,ccgslb
+DOMAIN-KEYWORD,chinacache
+DOMAIN-KEYWORD,jdpay
+DOMAIN-KEYWORD,moke
+DOMAIN-KEYWORD,qhimg
+DOMAIN-KEYWORD,vpimg
+DOMAIN-KEYWORD,xiaomi
+
 # amy
 DOMAIN,btlsmi.xyz
 
-# China Apps
-USER-AGENT,MicroMessenger Client
-USER-AGENT,WeChat*
-USER-AGENT,MApi* 
-
 # Ali
-DOMAIN-KEYWORD,alipay
-DOMAIN-KEYWORD,taobao
-DOMAIN-KEYWORD,alicdn
-DOMAIN-KEYWORD,aliyun
-DOMAIN-KEYWORD,.tmall.
-IP-CIDR,198.11.188.0/25,no-resolve
-IP-CIDR,198.11.136.0/24,no-resolve
-USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
+DOMAIN-SUFFIX,1688.com
+DOMAIN-SUFFIX,aliapp.org
+DOMAIN-SUFFIX,alibaba.com
+DOMAIN-SUFFIX,alibabacloud.com
+DOMAIN-SUFFIX,alibabausercontent.com
+DOMAIN-SUFFIX,alicdn.com
+DOMAIN-SUFFIX,alicloudccp.com
+DOMAIN-SUFFIX,aliexpress.com
+DOMAIN-SUFFIX,aliimg.com
+DOMAIN-SUFFIX,alikunlun.com
+DOMAIN-SUFFIX,alipay.com
+DOMAIN-SUFFIX,alipayobjects.com
+DOMAIN-SUFFIX,alisoft.com
+DOMAIN-SUFFIX,aliyun.com
+DOMAIN-SUFFIX,aliyuncdn.com
+DOMAIN-SUFFIX,aliyuncs.com
+DOMAIN-SUFFIX,aliyundrive.com
+DOMAIN-SUFFIX,amap.com
+DOMAIN-SUFFIX,autonavi.com
+DOMAIN-SUFFIX,dingtalk.com
+DOMAIN-SUFFIX,ele.me
+DOMAIN-SUFFIX,hichina.com
+DOMAIN-SUFFIX,mmstat.com
+DOMAIN-SUFFIX,mxhichina.com
+DOMAIN-SUFFIX,soku.com
+DOMAIN-SUFFIX,taobao.com
+DOMAIN-SUFFIX,taobaocdn.com
+DOMAIN-SUFFIX,tbcache.com
+DOMAIN-SUFFIX,tbcdn.com
+DOMAIN-SUFFIX,tmall.com
+DOMAIN-SUFFIX,tmall.hk
+DOMAIN-SUFFIX,ucweb.com
+DOMAIN-SUFFIX,xiami.com
+DOMAIN-SUFFIX,xiami.net
+DOMAIN-SUFFIX,ykimg.com
+DOMAIN-SUFFIX,youku.com
 
-# China
-DOMAIN-SUFFIX,CN
-DOMAIN-KEYWORD,baidu
+# baidu
+DOMAIN-SUFFIX,baidu.com
+DOMAIN-SUFFIX,baidubcr.com
+DOMAIN-SUFFIX,baidupcs.com
+DOMAIN-SUFFIX,baidustatic.com
+DOMAIN-SUFFIX,bcebos.com
+DOMAIN-SUFFIX,bdimg.com
+DOMAIN-SUFFIX,bdstatic.com
+DOMAIN-SUFFIX,bdurl.net
+DOMAIN-SUFFIX,hao123.com
+DOMAIN-SUFFIX,hao123img.com
+DOMAIN-SUFFIX,jomodns.com
+DOMAIN-SUFFIX,yunjiasu-cdn.net
+
+# bilibili
+DOMAIN-SUFFIX,acg.tv
+DOMAIN-SUFFIX,acgvideo.com
+DOMAIN-SUFFIX,b23.tv
+DOMAIN-SUFFIX,bigfun.cn
+DOMAIN-SUFFIX,bigfunapp.cn
+DOMAIN-SUFFIX,biliapi.com
+DOMAIN-SUFFIX,biliapi.net
+DOMAIN-SUFFIX,bilibili.com
+DOMAIN-SUFFIX,biligame.com
+DOMAIN-SUFFIX,biligame.net
+DOMAIN-SUFFIX,bilivideo.com
+DOMAIN-SUFFIX,bilivideo.cn
+DOMAIN-SUFFIX,hdslb.com
+DOMAIN-SUFFIX,im9.com
+DOMAIN-SUFFIX,smtcdns.net
+
+# jd
+DOMAIN-SUFFIX,360buy.com
+DOMAIN-SUFFIX,360buyimg.com
+DOMAIN-SUFFIX,jcloudcs.com
+DOMAIN-SUFFIX,jd.com
+DOMAIN-SUFFIX,jd.hk
+DOMAIN-SUFFIX,jdcloud.com
+DOMAIN-SUFFIX,jdpay.com
+DOMAIN-SUFFIX,paipai.com
+
+# netease
+DOMAIN-SUFFIX,126.com
+DOMAIN-SUFFIX,126.net
+DOMAIN-SUFFIX,127.net
+DOMAIN-SUFFIX,163.com
+DOMAIN-SUFFIX,163yun.com
+DOMAIN-SUFFIX,lofter.com
+DOMAIN-SUFFIX,netease.com
+DOMAIN-SUFFIX,ydstatic.com
+DOMAIN-SUFFIX,youdao.com
+
+# sina
+DOMAIN-SUFFIX,leju.com
+DOMAIN-SUFFIX,miaopai.com
+DOMAIN-SUFFIX,sina.com
+DOMAIN-SUFFIX,sina.com.cn
+DOMAIN-SUFFIX,sina.cn
+DOMAIN-SUFFIX,sinaapp.com
+DOMAIN-SUFFIX,sinaapp.cn
+DOMAIN-SUFFIX,sinaimg.com
+DOMAIN-SUFFIX,sinaimg.cn
+DOMAIN-SUFFIX,weibo.com
+DOMAIN-SUFFIX,weibo.cn
+DOMAIN-SUFFIX,weibocdn.com
+DOMAIN-SUFFIX,weibocdn.cn
+DOMAIN-SUFFIX,xiaoka.tv
 
 # wechat
+USER-AGENT,MicroMessenger*
+USER-AGENT,WeChat*
 DOMAIN-KEYWORD,wechat
 DOMAIN-SUFFIX,myqcloud.com
 DOMAIN-SUFFIX,qlogo.cn
@@ -57,8 +167,10 @@ IP-CIDR,101.32.133.53/32,no-resolve
 IP-CIDR,101.32.133.209/32,no-resolve
 IP-CIDR,129.226.3.47/32,no-resolve
 IP-CIDR,129.226.107.244/32,no-resolve
-USER-AGENT,MicroMessenger*
-USER-AGENT,WeChat*
+
+# app store
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,itunes.apple.com
 
 # apple
 DOMAIN,apple.comscoreresearch.com
@@ -94,26 +206,6 @@ IP-CIDR,205.180.175.0/24,no-resolve
 # other
 DOMAIN-SUFFIX,digicert.com
 
-# app store
-DOMAIN-SUFFIX,apps.apple.com
-DOMAIN-SUFFIX,itunes.apple.com
-
 # Emby
 DOMAIN-SUFFIX,misakaf.org
 DOMAIN-SUFFIX,789.123456.al
-
-# ip
-IP-CIDR,1.255.62.0/24,no-resolve
-IP-CIDR,101.32.118.0/23,no-resolve
-IP-CIDR,101.32.96.0/20,no-resolve
-IP-CIDR,119.28.28.28/32,no-resolve
-IP-CIDR,129.226.0.0/16,no-resolve
-IP-CIDR,182.254.116.0/24,no-resolve
-IP-CIDR,183.128.0.0/11,no-resolve
-IP-CIDR,185.188.32.0/22,no-resolve
-IP-CIDR,203.205.238.0/23,no-resolve
-IP-CIDR,203.205.254.0/23,no-resolve
-IP-CIDR6,2a0b:b580::/48,no-resolve
-IP-CIDR6,2a0b:b581::/48,no-resolve
-IP-CIDR6,2a0b:b582::/48,no-resolve
-IP-CIDR6,2a0b:b583::/48,no-resolve
