@@ -1,0 +1,11 @@
+#!name=Airport Information 3
+#!desc=Airport Information
+
+
+[Panel]
+Sub-info = script-name=机场1,update-interval=3600
+Sub-info = script-name=机场2,update-interval=3600
+
+[Script]
+机场1 = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/sgmodule/panel/sub-info/airport3.js,script-update-interval=86400,argument=url=Encode后的订阅链接&title=机场名字&reset_day=重置日期（1-31）
+机场2 = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/sgmodule/panel/sub-info/airport3.js,script-update-interval=86400,argument=url=Encode后的订阅链接&title=机场名字&reset_day=重置日期（1-31）
