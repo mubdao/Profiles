@@ -2,10 +2,6 @@
 #!desc=Ad
 
 
-[Rule]
-# port 443
-AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
-
 [URL Rewrite]
 # google
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
