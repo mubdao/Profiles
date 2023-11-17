@@ -59,43 +59,6 @@ DOMAIN-SUFFIX,itunes.apple.com
 # Emby
 DOMAIN-SUFFIX,789.123456.al
 
-# wechat
-USER-AGENT,MicroMessenger*
-USER-AGENT,WeChat*
-DOMAIN-KEYWORD,wechat
-DOMAIN-SUFFIX,myqcloud.com
-DOMAIN-SUFFIX,qlogo.cn
-DOMAIN-SUFFIX,qpic.cn
-DOMAIN-SUFFIX,qq.com
-DOMAIN-SUFFIX,servicewechat.com
-DOMAIN-SUFFIX,tencent-cloud.com
-DOMAIN-SUFFIX,tencent-cloud.net
-DOMAIN-SUFFIX,tencent.com
-DOMAIN-SUFFIX,tencentcs.com
-DOMAIN-SUFFIX,tenpay.com
-DOMAIN-SUFFIX,wechat.com
-DOMAIN-SUFFIX,wechatlegal.net
-DOMAIN-SUFFIX,wechatpay.com
-DOMAIN-SUFFIX,weixin.com
-DOMAIN-SUFFIX,weixinbridge.com
-DOMAIN-SUFFIX,weixinsxy.com
-IP-CIDR,43.156.222.154/32,no-resolve
-IP-CIDR,43.156.223.202/32,no-resolve
-IP-CIDR,43.156.255.184/32,no-resolve
-IP-CIDR,43.156.222.210/32,no-resolve
-IP-CIDR,43.159.77.28/32,no-resolve
-IP-CIDR,43.156.222.165/32,no-resolve
-IP-CIDR,43.156.222.216/32,no-resolve
-IP-CIDR,101.32.104.4/32,no-resolve
-IP-CIDR,101.32.104.41/32,no-resolve
-IP-CIDR,101.32.104.56/32,no-resolve
-IP-CIDR,101.32.118.25/32,no-resolve
-IP-CIDR,101.32.133.16/32,no-resolve
-IP-CIDR,101.32.133.53/32,no-resolve
-IP-CIDR,101.32.133.209/32,no-resolve
-IP-CIDR,129.226.3.47/32,no-resolve
-IP-CIDR,129.226.107.244/32,no-resolve
-
 # ip-cidr
 IP-CIDR,1.255.62.0/24,no-resolve
 IP-CIDR,101.32.104.0/21,no-resolve
