@@ -1,6 +1,6 @@
 #!name=App Unlock
 #!desc=Common software cracking
-https://github.com/mubdao/Profiles/tree/main
+
 
 [General]
 skip-proxy = %APPEND% iosapps.itunes.apple.com
