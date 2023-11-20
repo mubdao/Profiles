@@ -18,6 +18,10 @@ DOMAIN-KEYWORD,jdpay
 DOMAIN-KEYWORD,moke
 DOMAIN-KEYWORD,taobao
 
+# apple
+DOMAIN-SUFFIX,ls.apple.com // Apple Maps
+DOMAIN-SUFFIX,store.apple.com // Apple Store Online
+
 # amy
 DOMAIN,btlsmi.xyz
 
