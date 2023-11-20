@@ -14,6 +14,13 @@ DOMAIN-KEYWORD,moke
 DOMAIN-KEYWORD,taobao
 
 # apple
+DOMAIN-SUFFIX, push.apple.com //推送通知
+DOMAIN, identity.apple.com //APNs 证书请求门户
+IP-CIDR, 17.249.0.0/16, no-resolve
+IP-CIDR, 17.252.0.0/16, no-resolve
+IP-CIDR, 17.57.144.0/22, no-resolve
+IP-CIDR, 17.188.128.0/18, no-resolve
+IP-CIDR, 17.188.20.0/23, no-resolve
 DOMAIN,aod.itunes.apple.com // Apple Music
 DOMAIN-SUFFIX,store.apple.com // Apple Store Online
 DOMAIN-SUFFIX,ls.apple.com // Apple Maps
