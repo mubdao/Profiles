@@ -67,9 +67,6 @@ DOMAIN-SUFFIX,hockeyapp.net
 DOMAIN-SUFFIX,readdle.com
 DOMAIN-SUFFIX,smartmailcloud.com
 
-# testflight
-DOMAIN,testflight.apple.com
-
 # twitter
 DOMAIN-KEYWORD,twitter
 DOMAIN-SUFFIX,periscope.tv
@@ -113,7 +110,6 @@ IP-ASN,62014,no-resolve // Telegram Messenger Inc
 IP-ASN,62041,no-resolve // Telegram Messenger Inc
 IP-ASN,59930,no-resolve // Telegram Messenger Inc
 IP-ASN,211157,no-resolve // Telegram Messenger 
-
 # other
 DOMAIN-SUFFIX,rsshub.app
 DOMAIN-SUFFIX,vercel.app
