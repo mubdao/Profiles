@@ -24,6 +24,11 @@ DOMAIN-SUFFIX,alibaba.com
 DOMAIN-SUFFIX,bilivideo.com
 DOMAIN-SUFFIX,moke.com
 
+# Apple Music Streaming
+DOMAIN,aod.itunes.apple.com
+DOMAIN,mvod.itunes.apple.com
+DOMAIN,streamingaudio.itunes.apple.com
+
 # tencent
 IP-CIDR,182.254.116.0/24,no-resolve
 IP-CIDR,203.205.238.0/23,no-resolve
