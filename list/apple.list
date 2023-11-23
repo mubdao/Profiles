@@ -1,12 +1,6 @@
 # apple
 
 
-# Apple Music Streaming
-DOMAIN,aod.itunes.apple.com
-DOMAIN,mvod.itunes.apple.com
-DOMAIN,streamingaudio.itunes.apple.com
-
-# Apple other
 DOMAIN-SUFFIX,aaplimg.com
 DOMAIN-SUFFIX,apple.com
 DOMAIN-SUFFIX,apple.cn
