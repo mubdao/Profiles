@@ -1,0 +1,57 @@
+china
+
+
+# ua
+USER-AGENT,MicroMessenger*
+USER-AGENT,WeChat*
+USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
+
+# key suffix
+DOMAIN-KEYWORD,alipay
+DOMAIN-KEYWORD,alibaba
+DOMAIN-KEYWORD,taobao
+DOMAIN-KEYWORD,alicdn
+DOMAIN-KEYWORD,aliyun
+DOMAIN-KEYWORD,iqiyi
+DOMAIN-KEYWORD,bilibili
+DOMAIN-KEYWORD,baidu
+DOMAIN-SUFFIX,jd.com
+DOMAIN-SUFFIX,mi.com
+DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,tmall.com
+DOMAIN-SUFFIX,microsoft.com
+DOMAIN-SUFFIX,alibaba.com
+DOMAIN-SUFFIX,bilivideo.com
+DOMAIN-SUFFIX,moke.com
+
+# tencent
+IP-CIDR,182.254.116.0/24,no-resolve
+IP-CIDR,203.205.238.0/23,no-resolve
+IP-CIDR,203.205.254.0/23,no-resolve
+
+# other
+IP-CIDR,1.255.62.0/24,no-resolve
+IP-CIDR,101.32.104.0/21,no-resolve
+IP-CIDR,101.32.118.0/23,no-resolve
+IP-CIDR,101.32.96.0/20,no-resolve
+IP-CIDR,119.28.28.28/32,no-resolve
+IP-CIDR,120.195.181.180/32,no-resolve
+IP-CIDR,129.226.0.0/16,no-resolve
+IP-CIDR,182.254.116.0/24,no-resolve
+IP-CIDR,183.128.0.0/11,no-resolve
+IP-CIDR,183.131.48.0/20,no-resolve
+IP-CIDR,185.188.32.0/22,no-resolve
+IP-CIDR,185.188.32.0/24,no-resolve
+IP-CIDR,185.188.33.0/24,no-resolve
+IP-CIDR,185.188.34.0/24,no-resolve
+IP-CIDR,185.188.35.0/24,no-resolve
+IP-CIDR,203.205.238.0/23,no-resolve
+IP-CIDR,203.205.254.0/23,no-resolve
+
+# misc
+DOMAIN-SUFFIX,synn.cc // synn
+DOMAIN,acl.syyn.pw // synn sub
+DOMAIN,btlsmi.xyz // amytelecom
+DOMAIN-SUFFIX,789.123456.al // treediagram emby
+
+DOMAIN-SUFFIX,cn
