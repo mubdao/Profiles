@@ -1,15 +1,20 @@
-# apple proxy
+# apple
 
 
-DOMAIN-SUFFIX,cdn-apple.com
-DOMAIN-SUFFIX,mzstatic.com // App Store & iTunes Images
+# Apple Music Streaming
+DOMAIN,aod.itunes.apple.com
+DOMAIN,mvod.itunes.apple.com
+DOMAIN,streamingaudio.itunes.apple.com
+
+# Apple other
 DOMAIN-SUFFIX,aaplimg.com
-DOMAIN-SUFFIX,apple.co
 DOMAIN-SUFFIX,apple.com
+DOMAIN-SUFFIX,apple.cn
+DOMAIN-SUFFIX,apple.com.cn
+DOMAIN-SUFFIX,icloud.com.cn
+DOMAIN-SUFFIX,cdn-apple.com
 DOMAIN-SUFFIX,icloud-content.com
 DOMAIN-SUFFIX,icloud.com
 DOMAIN-SUFFIX,itunes.com
-DOMAIN-SUFFIX,itunes.apple.com
-DOMAIN-SUFFIX,lookup-api.apple.com // Dictionary
 DOMAIN-SUFFIX,me.com
-DOMAIN,testflight.apple.com // testflight
+DOMAIN-SUFFIX,mzstatic.com
