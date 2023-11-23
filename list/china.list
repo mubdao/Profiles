@@ -24,7 +24,31 @@ DOMAIN-SUFFIX,alibaba.com
 DOMAIN-SUFFIX,bilivideo.com
 DOMAIN-SUFFIX,moke.com
 
-# Apple Music Streaming
+# apple
+DOMAIN-SUFFIX,push.apple.com //推送通知
+DOMAIN,identity.apple.com //APNs 证书请求门户
+IP-CIDR,17.249.0.0/16,no-resolve
+IP-CIDR,17.252.0.0/16,no-resolve
+IP-CIDR,17.57.144.0/22 no-resolve
+IP-CIDR,17.188.128.0/18,no-resolve
+IP-CIDR,17.188.20.0/23,no-resolve
+DOMAIN-SUFFIX,store.apple.com // Apple Store Online
+DOMAIN-SUFFIX,ls.apple.com // Apple Maps
+# app store
+DOMAIN,apps.apple.com
+DOMAIN,itunes.apple.com
+# weather
+DOMAIN,weather-data.apple.com
+DOMAIN,weather-analytics-events.apple.com
+DOMAIN,weather-map2.apple.com
+# update
+DOMAIN,updates.cdn-apple.com //system update
+DOMAIN,supportdownload.apple.com
+DOMAIN,appldnld.apple.com
+DOMAIN,swcdn.apple.com
+DOMAIN,apptrailers.itunes.apple.com
+DOMAIN,updates-http.cdn-apple.com
+# apple Music Streaming
 DOMAIN,aod.itunes.apple.com
 DOMAIN,mvod.itunes.apple.com
 DOMAIN,streamingaudio.itunes.apple.com
