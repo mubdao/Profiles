@@ -1,0 +1,34 @@
+# streamingMedia
+
+
+# spotify
+USER-AGENT,Spotify*
+HOST-KEYWORD,-spotify-
+HOST-KEYWORD,spotify.com
+HOST-SUFFIX,pscdn.co
+HOST-SUFFIX,scdn.co
+HOST-SUFFIX,spoti.fi
+HOST-SUFFIX,spotify.com
+HOST-SUFFIX,spotifycdn.com
+HOST-SUFFIX,spotifycdn.net
+
+# youtube
+USER-AGENT,com.google.ios.youtube*
+USER-AGENT,YouTube*
+HOST-SUFFIX,googlevideo.com
+HOST-SUFFIX,withyoutube.com
+HOST-SUFFIX,youtu.be
+HOST-SUFFIX,youtube.com
+HOST-SUFFIX,youtubeeducation.com
+HOST-SUFFIX,youtubegaming.com
+HOST-SUFFIX,youtubekids.com
+HOST-SUFFIX,youtube-nocookie.com
+HOST-SUFFIX,yt.be
+HOST-SUFFIX,ytimg.com
+HOST,youtubei.googleapis.com
+HOST,yt3.ggpht.com
+
+# emby
+HOST-SUFFIX,emby-mix.atomlantis.cloud
+HOST-SUFFIX,emby-misakaf.atomlantis.cloud
+HOST-SUFFIX,stream.synn.cc
