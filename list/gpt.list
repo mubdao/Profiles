@@ -1,0 +1,35 @@
+# AI
+
+
+# chat gpt
+HOST,challenges.cloudflare.com
+HOST,cdn.auth0.com
+HOST,api.statsig.com
+HOST,cdn.oaistatic.com
+HOST-SUFFIX,ai.com
+HOST-SUFFIX,openai.com
+HOST-SUFFIX,stripe.com
+HOST-SUFFIX,poe.com
+HOST-SUFFIX,intercom.io
+HOST-SUFFIX,identrust.com
+HOST-SUFFIX,featuregates.org
+HOST-SUFFIX,events.statsigapi.net
+HOST-SUFFIX,oaiusercontent.com
+HOST-SUFFIX,openaicom.imgix.net
+HOST-SUFFIX,openaiapi-site.azureedge.net
+HOST-SUFFIX,chat.openai.com.cdn.cloudflare.net
+HOST-SUFFIX,openaiapi-site.azureedge.net
+HOST-SUFFIX,openaicom.imgix.net
+HOST-SUFFIX,openaicomproductionae4b.blob.core.windows.net
+HOST-SUFFIX,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+HOST-SUFFIX,sentry.io
+
+# bing
+HOST-SUFFIX,bingapis.com
+
+# claude
+HOST-SUFFIX,anthropic.com
+HOST-SUFFIX,claude.ai
+
+# google brad
+HOST-SUFFIX,bard.google.com
