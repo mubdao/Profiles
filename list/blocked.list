@@ -1,0 +1,67 @@
+# blocked
+
+
+# key suffix
+HOST-KEYWORD,blogspot
+HOST-KEYWORD,dropbox
+HOST-KEYWORD,facebook
+HOST-KEYWORD,google
+HOST-KEYWORD,gmail
+HOST-KEYWORD,instagram
+HOST-KEYWORD,discord
+HOST-KEYWORD,twitter
+HOST-KEYWORD,youtube
+HOST-KEYWORD,github
+HOST-KEYWORD,unsplash
+HOST-KEYWORD,wiki
+HOST-SUFFIX,fb.com
+HOST-SUFFIX,fb.me
+HOST-SUFFIX,fbcdn.net
+HOST-SUFFIX,gstatic.com
+HOST-SUFFIX,bing.com
+HOST-SUFFIX,bing.net
+HOST-SUFFIX,live.com
+HOST-SUFFIX,amazonaws.com
+HOST-SUFFIX,awsstatic.com
+
+# email
+HOST,imap.gmail.com
+HOST,pop.gmail.com
+HOST,smtp.gmail.com
+HOST,imap-mail.outlook.com
+HOST,outlook.office365.com
+HOST,smtp-mail.outlook.com
+
+# twitter
+HOST-SUFFIX,t.co
+HOST-SUFFIX,twimg.co
+HOST-SUFFIX,twimg.com
+HOST-SUFFIX,twimg.org
+HOST-SUFFIX,twitter.com
+HOST-SUFFIX,x.com
+
+# telegram 
+HOST-SUFFIX,t.me
+HOST-SUFFIX,tdesktop.com
+HOST-SUFFIX,telegra.ph
+HOST-SUFFIX,telegram.me
+HOST-SUFFIX,telegram.org
+HOST-SUFFIX,telesco.pe
+IP-CIDR,91.108.56.0/22
+IP-CIDR,91.108.4.0/22 
+IP-CIDR,91.108.8.0/22 
+IP-CIDR,91.108.16.0/22 
+IP-CIDR,91.108.12.0/22 
+IP-CIDR,149.154.160.0/20 
+IP-CIDR,91.105.192.0/23 
+IP-CIDR,91.108.20.0/22 
+IP-CIDR,185.76.151.0/24 
+IP-ASN,44907 
+IP-ASN,62014 
+IP-ASN,62041 
+IP-ASN,59930 
+IP-ASN,211157 
+
+# other
+HOST-SUFFIX,rsshub.app
+HOST-SUFFIX,vercel.app
