@@ -4,6 +4,9 @@
 [General]
 force-http-engine-hosts = %APPEND% www.google.cn
 
+[Rule]
+DOMAIN,app-site-association.cdn-apple.com,REJECT
+
 [URL Rewrite]
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
 ^https:\/\/duckduckgo.com\/\?q=b\+([^&]+).+ https://www.baidu.com/s?wd=$1 302
