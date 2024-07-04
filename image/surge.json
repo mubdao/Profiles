@@ -1,7 +1,9 @@
 {
     "name": "surge",
     "icons": [
-     { "name": "surge", "url": "https://raw.githubusercontent.com/mubdao/Profiles/main/image/surge.png"},
+     { "name": "surge_classic", "url": "https://raw.githubusercontent.com/mubdao/Profiles/main/image/surge_classic.png"},
+     { "name": "surge_enterprise", "url": "https://raw.githubusercontent.com/mubdao/Profiles/main/image/surge_enterprise.png"},
+     { "name": "surge_inky", "url": "https://raw.githubusercontent.com/mubdao/Profiles/main/image/surge_inky.png"},
      { "name": "texon", "url": "https://raw.githubusercontent.com/mubdao/Profiles/main/image/texon2.png"},
      { "name": "Emby", "url": "https://raw.githubusercontent.com/mubdao/Profiles/main/image/Emby/ntRRR.png"},
     ]
