@@ -1,5 +1,6 @@
 #!name=TestFlight
 #!desc=TestFlight App download
+#!category=APP
 
 [General]
 skip-proxy = %APPEND% iosapps.itunes.apple.com
