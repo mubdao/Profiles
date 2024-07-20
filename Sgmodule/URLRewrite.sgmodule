@@ -1,5 +1,6 @@
 #!name=URL Rewrite
 #!desc=Google 地址重定向
+#!category=General
 
 [General]
 force-http-engine-hosts = %APPEND% www.google.cn
