@@ -1,4 +1,3 @@
-// 转自 @suiyuran
 let url = $request.url;
 let hasUid = (url) => url.includes("uid");
 let getUid = (url) => (hasUid(url) ? url.match(/uid=(\d+)/)[1] : undefined);
@@ -22,5 +21,4 @@ if (url.includes("remind/unread_count")) {
   $done({ body: JSON.stringify({ statuses, since_id: sinceId, total_number: 100 }) });
 } else {
   $done({});
-}
 }
