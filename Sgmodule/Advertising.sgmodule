@@ -3,6 +3,8 @@
 #!category=General
 
 [Rule]
+# Telegram
+IP-CIDR,95.161.76.100/31,REJECT,notification-text="Fuck Telegram",pre-matching,no-resolve
 # Safari 
 DOMAIN,app-site-association.cdn-apple.com,REJECT,pre-matching
 # HTTP3/QUIC
