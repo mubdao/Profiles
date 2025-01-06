@@ -10,10 +10,8 @@ $httpClient.get(url, function(error, response, data){
     
     body = {
         title: `${emoji} ${city}`, // 显示国旗emoji和城市名
-        content: `★  ${isp} ${ip}`, // 在ISP和IP地址前添加★符号
+        content:   `★  ${isp} ${ip}`, // 在ISP和IP地址前添加★符号
         // icon: "globe.asia.australia.fill" // 图标暂时不显示
-        titleColor: "#FFFFFF", // 标题颜色设为道奇蓝
-        contentColor: "#FF7D2F" // 内容颜色设为青灰色
     }
     $done(body);
 });
