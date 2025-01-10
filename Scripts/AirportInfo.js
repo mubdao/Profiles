@@ -8,7 +8,7 @@ let args = getArgs();
   let total = info.total;
   let expire = args.expire || info.expire;
 
-  let content = [`📊：${bytesToSize(used)} | ${bytesToSize(total)}`];
+  let content = [`用量：${bytesToSize(used)} | ${bytesToSize(total)}`];
 
   if (expire && expire !== "false") {
     if (/^[\d.]+$/.test(expire)) expire *= 1000;
@@ -16,9 +16,9 @@ let args = getArgs();
 
   if (args["reset_day"] && parseInt(args["reset_day"]) > 0) {
     let resetDayLeft = getRemainingDays(parseInt(args["reset_day"]));
-    content.push(`⏳：${resetDayLeft}天 | ${formatTime(expire)}`);
+    content.push(`到期：${resetDayLeft}天 | ${formatTime(expire)}`);
   } else {
-    content.push(`⏳：${formatTime(expire)}`);
+    content.push(`到期：${formatTime(expire)}`);
   }
 
   let now = new Date();
@@ -30,8 +30,8 @@ let args = getArgs();
   $done({
     title: `${args.title} | ${hour}:${minutes}`,
     content: content.join("\n"),
-    // icon: args.icon || "airplane.circle",
-    // "icon-color": args.color || "#007aff",
+    // icon: args.icon || "airplane.circle",        // 注释掉图标配置
+    // "icon-color": args.color || "#007aff",      // 注释掉图标颜色配置
   });
 })();
 
