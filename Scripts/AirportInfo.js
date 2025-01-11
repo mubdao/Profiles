@@ -8,30 +8,16 @@ let args = getArgs();
   let total = info.total;
   let expire = args.expire || info.expire;
 
-  let content = [`用量：${bytesToSize(used)} | ${bytesToSize(total)}`];
+  // 格式化流量显示和到期时间
+  let dataString = `${bytesToSize(used)}｜${bytesToSize(total)}`;
 
   if (expire && expire !== "false") {
     if (/^[\d.]+$/.test(expire)) expire *= 1000;
   }
 
-  if (args["reset_day"] && parseInt(args["reset_day"]) > 0) {
-    let resetDayLeft = getRemainingDays(parseInt(args["reset_day"]));
-    content.push(`到期：${resetDayLeft}天 | ${formatTime(expire)}`);
-  } else {
-    content.push(`到期：${formatTime(expire)}`);
-  }
-
-  let now = new Date();
-  let hour = now.getHours();
-  let minutes = now.getMinutes();
-  hour = hour > 9 ? hour : "0" + hour;
-  minutes = minutes > 9 ? minutes : "0" + minutes;
-
   $done({
-    title: `${args.title} | ${hour}:${minutes}`,
-    content: content.join("\n"),
-    // icon: args.icon || "airplane.circle",        // 注释掉图标配置
-    // "icon-color": args.color || "#007aff",      // 注释掉图标颜色配置
+    title: args.title,  // 现在只显示标题，没有时间
+    content: `${dataString}｜${formatTime(expire)}`,
   });
 })();
 
@@ -84,28 +70,12 @@ async function getDataInfo(url) {
   );
 }
 
-function getRemainingDays(resetDay) {
-  if (!resetDay) return 0;
-
-  let now = new Date();
-  let today = now.getDate();
-  let month = now.getMonth();
-  let year = now.getFullYear();
-  let daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  if (resetDay >= today) {
-    return resetDay - today;
-  } else {
-    return daysInMonth - today + resetDay;
-  }
-}
-
 function bytesToSize(bytes) {
   if (bytes === 0) return "0B";
   let k = 1024;
   let sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
   let i = Math.floor(Math.log(bytes) / Math.log(k));
-  return (bytes / Math.pow(k, i)).toFixed(2) + " " + sizes[i];
+  return (bytes / Math.pow(k, i)).toFixed(2) + sizes[i];
 }
 
 function formatTime(time) {
@@ -113,5 +83,5 @@ function formatTime(time) {
   let year = dateObj.getFullYear();
   let month = dateObj.getMonth() + 1;
   let day = dateObj.getDate();
-  return year + "年" + month + "月" + day + "日";
+  return `${year}/${month}/${day}`;
 }
