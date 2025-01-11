@@ -5,19 +5,16 @@ let args = getArgs();
   if (!info) $done();
 
   let used = info.download + info.upload;
-  let total = info.total;
   let expire = args.expire || info.expire;
 
-  // 格式化流量显示和到期时间
-  let dataString = `${bytesToSize(used)}｜${bytesToSize(total)}`;
-
+  // 格式化到期时间
   if (expire && expire !== "false") {
     if (/^[\d.]+$/.test(expire)) expire *= 1000;
   }
 
   $done({
-    title: args.title,  // 现在只显示标题，没有时间
-    content: `${dataString}｜${formatTime(expire)}`,
+    title: args.title || "订阅信息",
+    content: `${bytesToSize(used)} ${formatTime(expire)}`,
   });
 })();
 
@@ -81,7 +78,7 @@ function bytesToSize(bytes) {
 function formatTime(time) {
   let dateObj = new Date(time);
   let year = dateObj.getFullYear();
-  let month = dateObj.getMonth() + 1;
-  let day = dateObj.getDate();
-  return `${year}/${month}/${day}`;
+  let month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
+  let day = dateObj.getDate().toString().padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
