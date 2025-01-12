@@ -14,7 +14,7 @@ let args = getArgs();
 
   $done({
     title: args.title || "订阅信息",
-    content: `${bytesToSize(used)} ${formatTime(expire)}`,
+    content: `${bytesToSize(used)} - ${formatTime(expire)}`,
   });
 })();
 
@@ -80,5 +80,5 @@ function formatTime(time) {
   let year = dateObj.getFullYear();
   let month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
   let day = dateObj.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return `${year}.${month}.${day}`;
 }
