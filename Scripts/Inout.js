@@ -67,10 +67,10 @@ let content = ''
   //   )
   // }
   let [domesticIPv4 = {}, foreignIPv4 = {}, domesticIPv6 = {}, foreignIPv6 = {}] = await Promise.all(tasks)
-  const domesticIPv4Info = `${domesticIPv4.flag || '🏴‍☠️'} ${simplifyASO(domesticIPv4.aso)}`
-  const domesticIPv6Info = `${domesticIPv6.flag || '🏴‍☠️'} ${simplifyASO(domesticIPv6.aso)}`
-  const foreignIPv4Info = `${foreignIPv4.flag || '🏴‍☠️'} ${simplifyASO(foreignIPv4.aso)}`
-  const foreignIPv6Info = `${foreignIPv6.flag || '🏴‍☠️'} ${simplifyASO(foreignIPv6.aso)}`
+  const domesticIPv4Info = `${domesticIPv4.flag || '🏴‍☠️'} ${simplifyASO(domesticIPv4.aso)} ${domesticIPv4.ip || ''}`
+  const domesticIPv6Info = `${domesticIPv6.flag || '🏴‍☠️'} ${simplifyASO(domesticIPv6.aso)} ${domesticIPv6.ip || ''}`
+  const foreignIPv4Info = `${foreignIPv4.flag || '🏴‍☠️'} ${simplifyASO(foreignIPv4.aso)} ${foreignIPv4.ip || ''}`
+  const foreignIPv6Info = `${foreignIPv6.flag || '🏴‍☠️'} ${simplifyASO(foreignIPv6.aso)} ${foreignIPv6.ip || ''}`
   title = `${domesticIPv4Info}`
   content = `${foreignIPv4Info}`
   // if (ipv6 && domesticIPv6?.ip) {
@@ -79,11 +79,9 @@ let content = ''
   // if (ipv6 && foreignIPv6?.ip) {
   //   content = `${content}\nIPv6 ${foreignIPv6Info}`
   // }
-  // title = title || TITLE
 })()
   .catch(async e => {
     $.error(e)
-
     const msg = `${$.lodash_get(e, 'message') || $.lodash_get(e, 'error') || e}`
     title = `❌`
     content = msg
