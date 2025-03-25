@@ -92,13 +92,13 @@ async function operator(proxies = [], targetPlatform, env) {
     // 创建第一个节点：显示流量信息
     proxies.unshift({
       ...node,
-      name: `DATA: ${showValue}G | ${totalGB}G`,
+      name: `Traffic: ${showValue}G | ${totalGB}G`,
     })
 
     // 创建第二个节点：显示到期时间
     proxies.unshift({
       ...node,
-      name: `EXPIRE: ${expireDate}`,
+      name: `Expire: ${expireDate}`,
     })
   }
   return proxies
