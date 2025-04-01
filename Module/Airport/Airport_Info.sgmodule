@@ -11,6 +11,6 @@
 
 
 [Script] 
-{{{AIRPORT_NAME_1}}} = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Scripts/Airport_Info.js,script-update-interval=0,argument=url={{{URL_1}}}&reset_day={{{RESET_DAY_1}}}&title={{{TITLE_1}}}&icon={{{ICON_1}}}&color={{{COLOR_1}}}
-{{{AIRPORT_NAME_2}}} = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Scripts/Airport_Info.js,script-update-interval=0,argument=url={{{URL_2}}}&reset_day={{{RESET_DAY_2}}}&title={{{TITLE_2}}}&icon={{{ICON_2}}}&color={{{COLOR_2}}}
-{{{AIRPORT_NAME_3}}} = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Scripts/Airport_Info.js,script-update-interval=0,argument=url={{{URL_3}}}&reset_day={{{RESET_DAY_3}}}&title={{{TITLE_3}}}&icon={{{ICON_3}}}&color={{{COLOR_3}}}
+{{{AIRPORT_NAME_1}}} = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Module/Airport/Airport_Info.js,script-update-interval=0,argument=url={{{URL_1}}}&reset_day={{{RESET_DAY_1}}}&title={{{TITLE_1}}}&icon={{{ICON_1}}}&color={{{COLOR_1}}}
+{{{AIRPORT_NAME_2}}} = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Module/Airport/Airport_Info.js,script-update-interval=0,argument=url={{{URL_2}}}&reset_day={{{RESET_DAY_2}}}&title={{{TITLE_2}}}&icon={{{ICON_2}}}&color={{{COLOR_2}}}
+{{{AIRPORT_NAME_3}}} = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Module/Airport/Airport_Info.js,script-update-interval=0,argument=url={{{URL_3}}}&reset_day={{{RESET_DAY_3}}}&title={{{TITLE_3}}}&icon={{{ICON_3}}}&color={{{COLOR_3}}}
