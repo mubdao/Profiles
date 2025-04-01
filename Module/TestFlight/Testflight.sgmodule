@@ -6,7 +6,7 @@
 skip-proxy = %APPEND% iosapps.itunes.apple.com
 
 [Script]
-TestFlight = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$,requires-body=1,script-update-interval=-1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/main/Scripts/Testflight.js
+TestFlight = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$,requires-body=1,script-update-interval=-1,max-size=0,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Module/TestFlight/Testflight.js
 
 [MITM]
 hostname = %APPEND% testflight.apple.com
