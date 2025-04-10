@@ -62,7 +62,6 @@ async function operator(proxies = [], targetPlatform, env) {
     if (args.hideExpire) {
       expires = undefined
     }
-    // 自定义日期格式 YYYY-MM-DD
     let expireDate = 'N/A'
     if (expires) {
       const date = new Date(expires * 1000)
@@ -71,22 +70,29 @@ async function operator(proxies = [], targetPlatform, env) {
       const day = String(date.getDate()).padStart(2, '0')
       expireDate = `${year}-${month}-${day}`
     }
-
-    // 计算流量
     let used = upload + download
-    const usedGB = (used / 1024 / 1024 / 1024).toFixed(2) // 已使用，保留2位小数
-    const totalGB = Math.round(total / 1024 / 1024 / 1024) // 总量取整
-
-    // 计算重置时间（假设每月重置，需根据实际逻辑调整）
+    const usedGB = (used / 1024 / 1024 / 1024).toFixed(2)
+    const totalGB = Math.round(total / 1024 / 1024 / 1024)
     let resetDays = 'N/A'
+    const now = new Date()
     if (expires) {
-      const now = new Date()
       const expireTime = new Date(expires * 1000)
-      const daysLeft = Math.ceil((expireTime - now) / (1000 * 60 * 60 * 24))
-      resetDays = `${daysLeft} Days Left`
+      const resetDay = expireTime.getDate()
+      let nextReset = new Date(now)
+      nextReset.setDate(resetDay)
+      nextReset.setHours(0, 0, 0, 0)
+      if (nextReset < now) {
+        nextReset.setMonth(nextReset.getMonth() + 1)
+      }
+      if (nextReset > expireTime) {
+        resetDays = 'N/A'
+      } else if (nextReset.toDateString() === now.toDateString()) {
+        resetDays = 'Today'
+      } else {
+        const daysLeft = Math.ceil((nextReset - now) / (1000 * 60 * 60 * 24))
+        resetDays = `${daysLeft} Days Left`
+      }
     }
-
-    // 获取基础节点配置
     const node = proxies[proxies.length - 1] || {
       type: 'ss',
       server: '1.0.0.1',
@@ -94,8 +100,6 @@ async function operator(proxies = [], targetPlatform, env) {
       cipher: 'aes-128-gcm',
       password: 'password',
     }
-
-    // 创建三个节点
     proxies.unshift({
       ...node,
       name: `Expire Date: ${expireDate}`,
