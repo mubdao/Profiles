@@ -72,13 +72,19 @@ async function operator(proxies = [], targetPlatform, env) {
       expireDate = `${year}-${month}-${day}`
     }
 
-    let show = upload + download
-    if (args.showRemaining) {
-      show = total - show
-    }
-    const showGB = (Math.abs(show) / 1024 / 1024 / 1024).toFixed(1) // 已使用保留1位小数
+    // 计算流量
+    let used = upload + download
+    const usedGB = (used / 1024 / 1024 / 1024).toFixed(2) // 已使用，保留2位小数
     const totalGB = Math.round(total / 1024 / 1024 / 1024) // 总量取整
-    const showValue = show < 0 ? `-${showGB}` : showGB
+
+    // 计算重置时间（假设每月重置，需根据实际逻辑调整）
+    let resetDays = 'N/A'
+    if (expires) {
+      const now = new Date()
+      const expireTime = new Date(expires * 1000)
+      const daysLeft = Math.ceil((expireTime - now) / (1000 * 60 * 60 * 24))
+      resetDays = `${daysLeft} Days Left`
+    }
 
     // 获取基础节点配置
     const node = proxies[proxies.length - 1] || {
@@ -89,16 +95,18 @@ async function operator(proxies = [], targetPlatform, env) {
       password: 'password',
     }
 
-    // 创建第一个节点：显示流量信息
+    // 创建三个节点
     proxies.unshift({
       ...node,
-      name: `Traffic: ${showValue}G | ${totalGB}G`,
+      name: `Expire Date: ${expireDate}`,
     })
-
-    // 创建第二个节点：显示到期时间
     proxies.unshift({
       ...node,
-      name: `Expire: ${expireDate}`,
+      name: `Traffic Reset: ${resetDays}`,
+    })
+    proxies.unshift({
+      ...node,
+      name: `Traffic Plan: ${totalGB} GB | ${usedGB} GB`,
     })
   }
   return proxies
