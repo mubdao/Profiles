@@ -1,10 +1,6 @@
 async function operator(proxies = [], targetPlatform, env) {
   let args = $arguments || {}
-  const {
-    parseFlowHeaders,
-    getFlowHeaders,
-    flowTransfer
-  } = flowUtils
+  const { parseFlowHeaders, getFlowHeaders, flowTransfer } = flowUtils
   const sub = env.source[proxies?.[0]?._subName || proxies?.[0]?.subName]
   let subInfo
   if (sub.source === 'local' && !['localFirst', 'remoteFirst'].includes(sub.mergeSources)) {
@@ -34,10 +30,7 @@ async function operator(proxies = [], targetPlatform, env) {
         }
       }
     }
-    args = {
-      ...urlArgs,
-      ...args
-    }
+    args = { ...urlArgs, ...args }
     if (!args.noFlow) {
       if (sub.subUserinfo) {
         if (/^https?:\/\//.test(sub.subUserinfo)) {
@@ -51,19 +44,12 @@ async function operator(proxies = [], targetPlatform, env) {
     }
   }
   if (subInfo) {
-    let {
-      expires,
-      total,
-      usage: {
-        upload,
-        download
-      },
-    } = parseFlowHeaders(subInfo)
+    let { expires, total, usage: { upload, download } } = parseFlowHeaders(subInfo)
     if (args.hideExpire) {
       expires = undefined
     }
-    let expireDate = 'N/A'
-    if (expires) {
+    let expireDate = 'Never'
+    if (expires && !isNaN(new Date(expires * 1000))) {
       const date = new Date(expires * 1000)
       const year = date.getFullYear()
       const month = String(date.getMonth() + 1).padStart(2, '0')
@@ -71,11 +57,31 @@ async function operator(proxies = [], targetPlatform, env) {
       expireDate = `${year}-${month}-${day}`
     }
     let used = upload + download
-    const usedGB = (used / 1024 / 1024 / 1024).toFixed(2)
-    const totalGB = Math.round(total / 1024 / 1024 / 1024)
-    let resetDays = 'N/A'
+    let trafficPlan
+    if (total && total > 0) {
+      let totalInGB = total / (1024 * 1024 * 1024)
+      if (totalInGB > 1024) {
+        let totalTB = (totalInGB / 1024).toFixed(2)
+        let usedTB = (used / (1024 * 1024 * 1024 * 1024)).toFixed(2)
+        trafficPlan = `${totalTB} TB | ${usedTB} TB`
+      } else {
+        let totalGB = Math.round(totalInGB)
+        let usedGB = (used / (1024 * 1024 * 1024)).toFixed(2)
+        trafficPlan = `${totalGB} GB | ${usedGB} GB`
+      }
+    } else {
+      let usedInGB = used / (1024 * 1024 * 1024)
+      if (usedInGB > 1024) {
+        let usedTB = (usedInGB / 1024).toFixed(2)
+        trafficPlan = `Unlimited | ${usedTB} TB`
+      } else {
+        let usedGB = usedInGB.toFixed(2)
+        trafficPlan = `Unlimited | ${usedGB} GB`
+      }
+    }
+    let resetDays = 'No Reset'
     const now = new Date()
-    if (expires) {
+    if (expires && !isNaN(new Date(expires * 1000))) {
       const expireTime = new Date(expires * 1000)
       const resetDay = expireTime.getDate()
       let nextReset = new Date(now)
@@ -89,7 +95,7 @@ async function operator(proxies = [], targetPlatform, env) {
       } else if (nextReset.toDateString() === now.toDateString()) {
         resetDays = 'Today'
       } else {
-        const daysLeft = Math.ceil((nextReset - now) / (1000 * 60 * 60 * 24))
+        const daysLeft = Math.ceil((nextReset - now) / (1004 * 60 * 60 * 24))
         resetDays = `${daysLeft} Days Left`
       }
     }
@@ -110,7 +116,7 @@ async function operator(proxies = [], targetPlatform, env) {
     })
     proxies.unshift({
       ...node,
-      name: `Traffic Plan: ${totalGB} GB | ${usedGB} GB`,
+      name: `Traffic Plan: ${trafficPlan}`,
     })
   }
   return proxies
