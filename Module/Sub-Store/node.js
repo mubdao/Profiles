@@ -1,5 +1,17 @@
 async function operator(proxies = [], targetPlatform, env) {
   let args = $arguments || {}
+  let scriptUrl = $script?.url || ''
+  let queryArgs = {}
+  if (scriptUrl.includes('?')) {
+    const queryString = scriptUrl.split('?')[1]
+    for (const pair of queryString.split('&')) {
+      const [key, value] = pair.split('=')
+      if (key && value !== undefined) {
+        queryArgs[key] = decodeURIComponent(value)
+      }
+    }
+  }
+  args = { ...args, ...queryArgs }
   const { parseFlowHeaders, getFlowHeaders, flowTransfer } = flowUtils
   const sub = env.source[proxies?.[0]?._subName || proxies?.[0]?.subName]
   let subInfo
@@ -80,8 +92,9 @@ async function operator(proxies = [], targetPlatform, env) {
       }
     }
     let resetDays = 'No Reset'
-    const now = new Date()
-    if (expires && !isNaN(new Date(expires * 1000))) {
+    const autoReset = (sub.autoReset ?? args.autoReset ?? true) === 'true' || (sub.autoReset ?? args.autoReset ?? true) === true
+    if (autoReset && expires && !isNaN(new Date(expires * 1000))) {
+      const now = new Date()
       const expireTime = new Date(expires * 1000)
       const resetDay = expireTime.getDate()
       let nextReset = new Date(now)
@@ -95,7 +108,7 @@ async function operator(proxies = [], targetPlatform, env) {
       } else if (nextReset.toDateString() === now.toDateString()) {
         resetDays = 'Today'
       } else {
-        const daysLeft = Math.ceil((nextReset - now) / (1004 * 60 * 60 * 24))
+        const daysLeft = Math.ceil((nextReset - now) / (1000 * 60 * 60 * 24))
         resetDays = `${daysLeft} Days Left`
       }
     }
@@ -108,16 +121,18 @@ async function operator(proxies = [], targetPlatform, env) {
     }
     proxies.unshift({
       ...node,
-      name: `Expire Date: ${expireDate}`,
-    })
-    proxies.unshift({
-      ...node,
-      name: `Traffic Reset: ${resetDays}`,
-    })
-    proxies.unshift({
-      ...node,
       name: `Traffic Plan: ${trafficPlan}`,
     })
+    proxies.unshift({
+      ...node,
+      name: `Expire Date: ${expireDate}`,
+    })
+    if (autoReset) {
+      proxies.unshift({
+        ...node,
+        name: `Traffic Reset: ${resetDays}`,
+      })
+    }
   }
   return proxies
 }
