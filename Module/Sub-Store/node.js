@@ -112,7 +112,7 @@ async function operator(proxies = [], targetPlatform, env) {
         resetDays = `${daysLeft} Days Left`
       }
     }
-    const node = proxies[proxies.length - 1] || {
+    const node = proxies[0] || {
       type: 'ss',
       server: '1.0.0.1',
       port: 80,
