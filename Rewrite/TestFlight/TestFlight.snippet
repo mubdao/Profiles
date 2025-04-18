@@ -1,0 +1,7 @@
+# TestFlight
+
+[rewrite_local]
+^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$ url script-request-body https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Rewrite/TestFlight/TestFlight.js
+
+[mitm]
+hostname = testflight.apple.com
