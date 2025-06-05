@@ -1,0 +1,9 @@
+#!name=Baidu Jump
+#!desc=Baidu Jump of Safari
+
+
+[Script]
+BaiduJump = type=http-request, pattern=^https?:\/\/.*\.baidu\.com\/.+, script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Module/Baidu/BaiduJump.js, timeout=60
+
+[MITM]
+hostname = %APPEND% *.baidu.com
