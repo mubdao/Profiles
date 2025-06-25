@@ -42,6 +42,11 @@ async function fetchJSON(url, timeout) {
 (async () => {
     let entryText = "", exitText = "", fullText = "";
 
+    // ✅ 主动发送一次请求，确保生成新的代理日志
+    await new Promise((res) => {
+        $httpClient.get({ url: "http://ip-api.com/json/?lang=zh-CN" }, () => res());
+    });
+
     // 落地 IP 信息
     const exitInfo = await fetchJSON("http://ip-api.com/json/?lang=zh-CN", c);
     if (exitInfo.status === "success") {
@@ -64,7 +69,7 @@ async function fetchJSON(url, timeout) {
         if (entryInfo.code === 0) {
             const { countryCode, province, city, isp } = entryInfo.data;
             const flag = d(countryCode);
-            const locText = `${province} ${city}`;  // ✅ 不显示“中国”
+            const locText = `${province} ${city}`; // 不显示中国
             entryText = `入口地区: ${flag} ${locText}\n入口 IP: ${remoteIP}\n入口运营商: ${isp || "未知"}\n`;
         } else {
             entryText = "入口信息获取失败\n";
