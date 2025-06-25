@@ -42,14 +42,18 @@ async function fetchJSON(url, timeout) {
 
 (async () => {
     let title = "节点信息";
-    let entryText = "", exitText = "", chatGPTText = "", fullText = "", nodeLine = "";
+    let entryText = "", exitText = "", chatGPTText = "", fullText = "";
+
+    // 获取当前使用的节点名称（不显示策略组）
+    const profile = await httpAPI("/v1/profiles");
+    const nodeName = profile.proxy || "未知节点";
 
     // 获取落地 IP 信息
     const exitInfo = await fetchJSON("http://ip-api.com/json/?lang=zh-CN", c);
     if (exitInfo.status === "success") {
         const { country, countryCode, city, query, isp } = exitInfo;
         const flag = d(countryCode);
-        exitText = `落地地区:\t${flag}${country} ${city}\n落地IP:\t${query}\n落地运营商:\t${isp}\n`;
+        exitText = `落地地区: ${flag}${country} ${city}\n落地 IP: ${query}\n落地运营商: ${isp || "未知"}\n`;
     }
 
     // 获取入口 IP（代理链）信息
@@ -65,16 +69,11 @@ async function fetchJSON(url, timeout) {
         if (entryInfo.code === 0) {
             const { countryCode, country, province, city, isp } = entryInfo.data;
             const flag = d(countryCode);
-            entryText = `入口地区:\t${flag}${country} ${province} ${city}\n入口IP:\t${remoteIP}\n入口运营商:\t${isp}\n`;
+            entryText = `入口地区: ${flag}${country} ${province} ${city}\n入口 IP: ${remoteIP}\n入口运营商: ${isp || "未知"}\n`;
         } else {
             entryText = "入口信息获取失败\n";
         }
     }
-
-    // 获取当前使用的节点名称（不显示策略组）
-    const profile = await httpAPI("/v1/profiles");
-    const nodeName = profile["proxy"];
-    nodeLine = `节点信息：${nodeName}`;
 
     // ChatGPT 可用性
     if (i) {
@@ -86,7 +85,7 @@ async function fetchJSON(url, timeout) {
         }
     }
 
-    fullText = `${nodeLine}\n\n${entryText}${exitText}`;
+    fullText = `节点信息: ${nodeName}\n\n${entryText}${exitText}`;
     a = {
         title,
         content: fullText.trim()
