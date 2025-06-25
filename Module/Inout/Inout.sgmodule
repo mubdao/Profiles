@@ -1,9 +1,0 @@
-#!name=Net Lite
-#!desc=Net Lite
-#!category=General
-
-[Script]
-Net = type=generic,timeout=120,script-path=https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main/Module/Inout/Inout.js
-
-[Panel]
-Net = script-name=Net,update-interval=1
