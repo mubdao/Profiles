@@ -140,7 +140,7 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
     if (f) content.push(f);
     if (p) content.push(p);
     a = {
-        title: l || "节点信息",
+        title: l || "",
         content: content.join("\n\n")
     };
 })().catch(e => {
