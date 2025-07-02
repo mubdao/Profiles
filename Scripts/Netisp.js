@@ -147,7 +147,7 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
     if (f) content.push(f);
     if (p) content.push(p);
     a = {
-        title: l || "NETISP",
+        title: l || "节点信息",
         content: content.join("\n\n")
     };
 })().catch(e => {
