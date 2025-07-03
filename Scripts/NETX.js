@@ -16,31 +16,9 @@ function l(e) {
     return params;
 }
 
-function getFlagEmoji(countryCode) {
-    if (!countryCode) return "🌐";
-    // 特殊处理台湾地区
-    if (countryCode.toUpperCase() === "TW") return "🇨🇳";
-    
-    try {
-        return countryCode.toUpperCase().split('')
-            .map(char => String.fromCodePoint(127397 + char.charCodeAt()))
-            .join('')
-            .replace(/🇹🇼/g, "🇨🇳");
-    } catch (e) {
-        return "🌐";
-    }
-}
-
-function Area_check(para) {
-    return para == "中华民国" ? "台湾" : para;
-}
-
-function City_ValidCheck(para) {
-    return para || "高谭市";
-}
-
-function ISP_ValidCheck(para) {
-    return para || "Cross-GFW.org";
+function d(e) {
+    const t = e.toUpperCase().split("").map(char => 127397 + char.charCodeAt());
+    return String.fromCodePoint(...t).replace(/🇹🇼/g, "🇨🇳");
 }
 
 async function m(e, t) {
@@ -104,13 +82,11 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
     try {
         const P = await m("http://ip-api.com/json/?lang=zh-CN", c);
         if (P.status === "success") {
-            const { country, countryCode, regionName, city, query, isp, as, org } = P;
+            const { countryCode, city, query, isp } = P;
             n = query;
-            const flag = getFlagEmoji(countryCode);
-            const displayCity = City_ValidCheck(Area_check(city));
-            const displayOrg = ISP_ValidCheck(org || as);
-            
-            p = `落地：${flag} ${displayCity}\n运营：${displayOrg}   IP：${query}`;
+            // 只显示城市，不显示省份
+            const location = `${d(countryCode)} ${city || "未知城市"}`;
+            p = `落地：${location}  ${query}\n运营：${isp}`;
         }
     } catch (e) {
         p = "落地信息获取失败";
@@ -138,10 +114,10 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
                 try {
                     const cnResponse = await m(`https://api-v3.speedtest.cn/ip?ip=${entryIP}`, o);
                     if (cnResponse.code === 0 && cnResponse.data.country === "中国") {
-                        const { province, city, isp, countryCode } = cnResponse.data;
-                        const flag = getFlagEmoji(countryCode);
-                        const displayCity = City_ValidCheck(Area_check(city));
-                        f = `入口：${flag} ${displayCity}\n运营：${ISP_ValidCheck(isp)}   IP：${entryIP}`;
+                        const { city, isp, countryCode } = cnResponse.data;
+                        // 只显示城市，不显示省份
+                        const location = `${d(countryCode)} ${city || "未知城市"}`;
+                        f = `入口：${location}  ${entryIP}\n运营：${isp}`;
                     }
                 } catch (e) {}
             }
@@ -149,11 +125,10 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
                 try {
                     const intlResponse = await m(`http://ip-api.com/json/${entryIP}?lang=zh-CN`, c);
                     if (intlResponse.status === "success") {
-                        const { country, countryCode, city, isp, as, org } = intlResponse;
-                        const flag = getFlagEmoji(countryCode);
-                        const displayCity = City_ValidCheck(Area_check(city));
-                        const displayOrg = ISP_ValidCheck(org || as);
-                        f = `入口：${flag} ${displayCity}\n运营：${displayOrg}   IP：${entryIP}`;
+                        const { countryCode, city, isp } = intlResponse;
+                        // 只显示城市，不显示国家
+                        const location = `${d(countryCode)} ${city || "未知城市"}`;
+                        f = `入口：${location}  ${entryIP}\n运营：${isp}`;
                     }
                 } catch (e) {}
             }
