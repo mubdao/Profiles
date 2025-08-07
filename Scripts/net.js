@@ -144,7 +144,7 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
     if (f) content.push(f);
     if (p) content.push(p);
     a = {
-        title: " " + (l || "节点") + y, // 在标题中附加空格和 policyName
+        title: l ? l + y : `节点： ${y.slice(2)}`, // 在节点前加冒号和空格，确保对齐
         content: content.join("\n\n")
     };
 })().catch(e => {
