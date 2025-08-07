@@ -144,7 +144,7 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
     if (f) content.push(f);
     if (p) content.push(p);
     a = {
-        title: l ? l + y : `节点： ${y.slice(2)}`, // 在节点前加冒号和空格，确保对齐
+        title: l ? l + y : `节点：${y.slice(2)}`, // 去掉节点：后的空格
         content: content.join("\n\n")
     };
 })().catch(e => {
