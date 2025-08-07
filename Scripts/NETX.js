@@ -77,14 +77,22 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
     });
 }
 
+// 新增通知函数
+async function notify(title, subtitle, content) {
+    if ("undefined" != typeof $argument && l($argument).notify === "1") {
+        $notification.post(title, subtitle, content);
+    } else {
+        console.log(`🔕 ${title} | ${subtitle} | ${content}`);
+    }
+}
+
 (async() => {
-    let n = "", l = "", p = "", f = "";
+    let n = "", l = "", p = "", f = "", y = "";
     try {
         const P = await m("http://ip-api.com/json/?lang=zh-CN", c);
         if (P.status === "success") {
             const { countryCode, city, query, isp } = P;
             n = query;
-            // 只显示城市，不显示省份
             const location = `${d(countryCode)} ${city || "未知城市"}`;
             p = `落地：${location}  ${query}\n运营：${isp}`;
         }
@@ -110,12 +118,12 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
         const recent = requests.slice(0, 6).find(r => /ip-api\.com/.test(r.URL));
         if (recent) {
             entryIP = recent.remoteAddress.replace(" (Proxy)", "");
+            y = recent.policyName ? `: ${recent.policyName}` : "";
             if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(entryIP)) {
                 try {
                     const cnResponse = await m(`https://api-v3.speedtest.cn/ip?ip=${entryIP}`, o);
                     if (cnResponse.code === 0 && cnResponse.data.country === "中国") {
                         const { city, isp, countryCode } = cnResponse.data;
-                        // 只显示城市，不显示省份
                         const location = `${d(countryCode)} ${city || "未知城市"}`;
                         f = `入口：${location}  ${entryIP}\n运营：${isp}`;
                     }
@@ -126,7 +134,6 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
                     const intlResponse = await m(`http://ip-api.com/json/${entryIP}?lang=zh-CN`, c);
                     if (intlResponse.status === "success") {
                         const { countryCode, city, isp } = intlResponse;
-                        // 只显示城市，不显示国家
                         const location = `${d(countryCode)} ${city || "未知城市"}`;
                         f = `入口：${location}  ${entryIP}\n运营：${isp}`;
                     }
@@ -143,12 +150,16 @@ async function g(e = "/v1/requests/recent", t = "GET", n = null) {
     if (f) content.push(f);
     if (p) content.push(p);
     a = {
-        title: l || "节点信息",
+        title: l ? l + y : `节点：${y.slice(2)}`,
         content: content.join("\n\n")
     };
+    // 发送通知
+    await notify(a.title, "", a.content);
 })().catch(e => {
     a = {
         title: "脚本错误",
         content: e.message || String(e)
     };
+    // 错误时发送通知
+    notify(a.title, "", a.content);
 }).finally(() => $done(a));
