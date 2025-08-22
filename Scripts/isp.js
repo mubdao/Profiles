@@ -6,22 +6,19 @@ const flags = new Map([["AC", "🇦🇨"], ["AD", "🇦🇩"], ["AE", "🇦🇪"
 const city0 = "未知地区";
 const isp0 = "未知服务商";
 
+// ...（前面代码不变）...
+
 let body = $response.body;
 let obj = JSON.parse(body);
 
 const country = country_check(obj['country']);
 const city = city_check(obj['city']);
 
-// 第1行展示：国旗 + 国家 + 城市
 let title = flags.get(obj['countryCode']) + ' ' + append(country, city);
-// 第2行展示：IP + ISP
-let subtitle = obj['query'] + ' ' + isp_check(obj['isp']);
-// IP字段用于过滤器使用，不展示
+let subtitle = isp_check(obj['isp']);
 let ip = obj['query'];
-// 长按“查看节点信息”显示内容
 let description = '国家：' + obj['countryCode'] + ' ' + obj['country'] + '\n'
   + '地区：' + obj['region'] + ' ' + city_check(obj['regionName']) + '\n'
-  + 'IP：' + obj['query'] + '\n'
   + '服务商：' + obj['isp'] + '\n'
   + '经纬度：' + obj['lat'] + ' / ' + obj['lon'] + '\n'
   + '时区：' + obj['timezone'];
