@@ -1,21 +1,5 @@
 # VPS 流量监控 一键部署脚本
 
-基于 [英俊柴 VPS 流量审计 Pro V18.5](https://github.com/mubdao/Profiles) 的一键部署工具。  
-支持每日自动推送流量日报到 Telegram，并可通过 Bot 指令随时主动查询。
-
------
-
-## 功能特性
-
-- 📊 每天早上 9:00 自动推送流量日报到 Telegram
-- 🤖 支持发送 `/report` 给 Bot 随时查看流量情况
-- ⚙️ 交互式配置，按提示输入即可，无需手动改脚本
-- 🔄 支持初始流量对齐（已用流量校准）
-- 🔁 Bot 监听服务开机自启，稳定运行
-- 🕐 每 5 分钟自动记账，数据准确
-
------
-
 ## 使用前准备
 
 **1. 创建 Telegram Bot，获取 Token**
@@ -70,19 +54,6 @@ bash <(curl -s https://raw.githubusercontent.com/mubdao/Profiles/refs/heads/main
 
 -----
 
-## 日报样式
-
-```
-📅 流量日报 | Hytron
-━━━━━━━━━━━━━━━━
-⏳ 距离重置： 23 天  时间 28.50%
-📊 昨日消耗： 3.08 GB
-📈 周期累计： 106.99 GB | 10.45%
-🚀 剩余可用： 917.01 GB (89.55%)
-```
-
------
-
 ## 常用维护命令
 
 ```bash
@@ -116,12 +87,3 @@ systemctl status tgbot
 |`/root/505/.vps_monitor_data`      |流量数据账本    |
 |`/root/505/vps_monitor.log`        |运行日志      |
 |`/etc/systemd/system/tgbot.service`|Bot 开机自启服务|
-
------
-
-## 注意事项
-
-- 脚本基于 `/proc/net/dev` 统计流量，统计的是**入站+出站合计**
-- 双向各 1024GB 的套餐，配额填 `1024`（按合计算）或 `2048`（按各自算）请根据服务商规则决定
-- 多台 VPS 使用同一个 Bot 时，`/report` 指令两台都会响应并各自推送
-- 时区默认为 `Asia/Shanghai`（北京时间）
