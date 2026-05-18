@@ -87,3 +87,18 @@ systemctl status tgbot
 |`/root/505/.vps_monitor_data`      |流量数据账本    |
 |`/root/505/vps_monitor.log`        |运行日志      |
 |`/etc/systemd/system/tgbot.service`|Bot 开机自启服务|
+
+
+## 卸载 / 重新部署
+
+在 VPS 上运行以下命令，彻底清除所有相关文件和任务：
+
+```bash
+ps -ef | grep tg_bot.sh | grep -v grep | awk '{print $2}' | xargs -r kill -9; \
+systemctl stop tgbot 2>/dev/null; \
+systemctl disable tgbot 2>/dev/null; \
+(crontab -l 2>/dev/null | grep -v "vps_monitor.sh") | crontab -; \
+rm -f /root/505/vps_monitor.sh /root/505/tg_bot.sh /root/505/.vps_monitor_data /root/505/.tg_offset /root/505/vps_monitor.log /etc/systemd/system/tgbot.service; \
+systemctl daemon-reload; \
+echo "🔥 清除完成"
+
