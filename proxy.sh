@@ -299,9 +299,12 @@ snell_install() {
     id snell &>/dev/null || useradd -r -s /usr/sbin/nologin snell
     mkdir -p /etc/snell
 
+    # v5 只支持单地址格式，v6 支持双栈
+    [ "$major" = "6" ] && local listen_addr="0.0.0.0:${port},[::]:${port}" || local listen_addr="::0:${port}"
+
     cat > "$SNELL_CONF" << EOF
 [snell-server]
-listen = 0.0.0.0:${port},[::]:${port}
+listen = ${listen_addr}
 psk = ${psk}
 ipv6 = true
 version = ${major}
@@ -743,7 +746,12 @@ snell_modify_menu() {
                 echo -e "当前端口：${CYAN}${port}${PLAIN}"
                 read -p "新端口: " np
                 if valid_port "$np"; then
-                    snell_set "listen" "0.0.0.0:${np},[::]:${np}"
+                    local cur_ver=$(snell_get "version"); [ -z "$cur_ver" ] && cur_ver="5"
+                    if [ "$cur_ver" = "6" ]; then
+                        snell_set "listen" "0.0.0.0:${np},[::]:${np}"
+                    else
+                        snell_set "listen" "::0:${np}"
+                    fi
                     systemctl restart snell; echo -e "${GREEN}端口已改为 ${np}${PLAIN}"
                 else echo -e "${RED}端口不合法${PLAIN}"; fi
                 ;;
