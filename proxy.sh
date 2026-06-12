@@ -22,8 +22,6 @@ SS_SERVICE="/etc/systemd/system/ss2022.service"
 
 ANYTLS_BIN="/usr/local/bin/anytls-server"
 ANYTLS_META="/etc/anytls/meta"        # 存端口和密码
-ANYTLS_CERT="/etc/anytls/server.crt"
-ANYTLS_KEY="/etc/anytls/server.key"
 ANYTLS_SERVICE="/etc/systemd/system/anytls.service"
 
 # =============================================
@@ -198,7 +196,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/anytls-server -l 0.0.0.0:${port} -p ${pass} --cert /etc/anytls/server.crt --key /etc/anytls/server.key
+ExecStart=/usr/local/bin/anytls-server -l 0.0.0.0:${port} -p ${pass}
 LimitNOFILE=32768
 Restart=on-failure
 StandardOutput=journal
@@ -242,7 +240,7 @@ anytls_surge_line() {
     local pass=$(anytls_get "password")
     local ip=$(get_ip)
     local country=$(get_country "$ip")
-    echo "${country} = anytls, ${ip}, ${port}, password = ${pass}, skip-cert-verify = true"
+    echo "${country} = anytls, ${ip}, ${port}, password = ${pass}"
 }
 
 # =============================================
@@ -502,11 +500,6 @@ anytls_install() {
     fi
 
     mkdir -p /etc/anytls
-    echo -e "${GREEN}生成自签名证书...${PLAIN}"
-    openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 \
-        -keyout "$ANYTLS_KEY" -out "$ANYTLS_CERT" \
-        -days 36500 -nodes -subj "/CN=anytls" >/dev/null 2>&1
-
     anytls_set "port" "$port"
     anytls_set "password" "$pass"
 
