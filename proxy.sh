@@ -260,13 +260,11 @@ snell_install() {
 
     echo -e "${CYAN}获取最新版本...${PLAIN}"
     local major="6"
-    # v6 beta 从官方知识库页面获取版本号
+    # 从官方知识库页面抓取完整版本号（含beta后缀如v6.0.0b1）
     local ver
-    ver=$(curl -s --connect-timeout 5 "https://kb.nssurge.com/surge-knowledge-base/release-notes/snell"         | grep -oE 'snell-server-v6\.[0-9]+\.[0-9]+'         | grep -oE 'v6\.[0-9]+\.[0-9]+'         | head -1)
-    # 若获取失败则尝试passeway/Snell仓库（可能还没有v6）
-    [ -z "$ver" ] && ver=$(get_latest "passeway/Snell")
+    ver=$(curl -s --connect-timeout 5 "https://kb.nssurge.com/surge-knowledge-base/release-notes/snell"         | grep -oE 'snell-server-v6[^-]*'         | sed 's/snell-server-//'         | head -1)
     if [ -z "$ver" ]; then
-        ver="v6.0.1"
+        ver="v6.0.0b1"
         echo -e "${YELLOW}获取失败，使用默认 ${ver}${PLAIN}"
     else
         echo -e "${GREEN}最新版本：${ver}${PLAIN}"
@@ -566,8 +564,8 @@ snell_update() {
     local cur=$(snell_version)
     echo -e "${CYAN}检查版本...${PLAIN}"
     local new
-    new=$(curl -s --connect-timeout 5 "https://kb.nssurge.com/surge-knowledge-base/release-notes/snell"         | grep -oE 'snell-server-v6\.[0-9]+\.[0-9]+'         | grep -oE 'v6\.[0-9]+\.[0-9]+'         | head -1)
-    [ -z "$new" ] && new=$(get_latest "passeway/Snell")
+    new=$(curl -s --connect-timeout 5 "https://kb.nssurge.com/surge-knowledge-base/release-notes/snell"         | grep -oE 'snell-server-v6[^-]*'         | sed 's/snell-server-//'         | head -1)
+    [ -z "$new" ] && new="v6.0.0b1"
     echo -e "当前：${YELLOW}${cur}${PLAIN}  最新：${GREEN}${new:-获取失败}${PLAIN}"
     [ -z "$new" ] && return
     [ "$cur" = "$new" ] && echo -e "${GREEN}已是最新${PLAIN}" && return
@@ -642,8 +640,8 @@ protocol_menu() {
         clear; hr
         echo -e "  协议管理"
             if snell_installed; then
-            snell_running && echo -e "  Snell   |  ${GREEN}运行中${PLAIN}  |  $(snell_version)"
-            snell_running || echo -e "  Snell   |  ${RED}未运行${PLAIN}  |  $(snell_version)"
+            snell_running && echo -e "  Snell   |  ${GREEN}运行中${PLAIN}"
+            snell_running || echo -e "  Snell   |  ${RED}未运行${PLAIN}"
         else
             echo -e "  Snell   |  ${RED}未安装${PLAIN}"
         fi
@@ -654,8 +652,8 @@ protocol_menu() {
             echo -e "  SS2022  |  ${RED}未安装${PLAIN}"
         fi
         if anytls_installed; then
-            anytls_running && echo -e "  AnyTLS  |  ${GREEN}运行中${PLAIN}  |  $(anytls_version)"
-            anytls_running || echo -e "  AnyTLS  |  ${RED}未运行${PLAIN}  |  $(anytls_version)"
+            anytls_running && echo -e "  AnyTLS  |  ${GREEN}运行中${PLAIN}"
+            anytls_running || echo -e "  AnyTLS  |  ${RED}未运行${PLAIN}"
         else
             echo -e "  AnyTLS  |  ${RED}未安装${PLAIN}"
         fi
