@@ -106,7 +106,7 @@ ss_version() {
     ss_installed && "$SS_BIN" --version 2>&1 | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -1 || echo "-"
 }
 anytls_version() {
-    anytls_installed && "$ANYTLS_BIN" --version 2>&1 | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -1 || echo "-"
+    anytls_installed && anytls_get "version" || echo "-"
 }
 
 status_text() {
@@ -196,8 +196,6 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/etc/anytls
-Type=simple
 ExecStart=/usr/local/bin/anytls-server -l 0.0.0.0:${port} -p ${pass}
 LimitNOFILE=32768
 Restart=on-failure
@@ -218,7 +216,10 @@ snell_surge_line() {
     local port=$(snell_port)
     local psk=$(snell_get "psk")
     local tfo=$(snell_get "tfo")
-    local ver=$(snell_get "version"); [ -z "$ver" ] && ver="5"
+    # 从二进制版本号提取大版本数字作为协议版本
+    local bin_ver=$(snell_version)
+    local ver=$(echo "$bin_ver" | grep -oE '^v[0-9]+' | tr -d 'v')
+    [ -z "$ver" ] && ver="6"
     local ip=$(get_ip)
     local country=$(get_country "$ip")
     local line="${country} = snell, ${ip}, ${port}, psk = ${psk}, version = ${ver}, reuse = true"
@@ -242,7 +243,7 @@ anytls_surge_line() {
     local pass=$(anytls_get "password")
     local ip=$(get_ip)
     local country=$(get_country "$ip")
-    echo "${country} = anytls, ${ip}, ${port}, password = ${pass}"
+    echo "${country} = anytls, ${ip}, ${port}, password = ${pass}, skip-cert-verify = true"
 }
 
 # =============================================
@@ -254,18 +255,11 @@ snell_install() {
         echo -e "${YELLOW}Snell 已安装${PLAIN}"; press_enter; return
     fi
 
-    hr
-    echo "  选择 Snell 版本："
-    echo "  1. v6"
-    echo "  2. v5"
-    hr
-    read -p "请选择 [默认1]: " vc
-    [ "$vc" = "2" ] && local major="5" || local major="6"
-
-    echo -e "${CYAN}获取 v${major} 最新版本...${PLAIN}"
+    echo -e "${CYAN}获取最新版本...${PLAIN}"
+    local major="6"
     local ver=$(get_latest "passeway/Snell")
     if [ -z "$ver" ]; then
-        ver="v${major}.0.0"
+        ver="v6.0.1"
         echo -e "${YELLOW}获取失败，使用 ${ver}${PLAIN}"
     else
         echo -e "${GREEN}最新版本：${ver}${PLAIN}"
@@ -299,15 +293,14 @@ snell_install() {
     id snell &>/dev/null || useradd -r -s /usr/sbin/nologin snell
     mkdir -p /etc/snell
 
-    # v5 只支持单地址格式，v6 支持双栈
-    [ "$major" = "6" ] && local listen_addr="0.0.0.0:${port},[::]:${port}" || local listen_addr="::0:${port}"
+    local listen_addr="0.0.0.0:${port},[::]:${port}"
 
     cat > "$SNELL_CONF" << EOF
 [snell-server]
 listen = ${listen_addr}
 psk = ${psk}
 ipv6 = true
-version = ${major}
+dns-ip-preference = prefer-ipv6
 EOF
     [ "$tfo_default" = "true" ] && echo "tfo = true" >> "$SNELL_CONF"
 
@@ -504,6 +497,7 @@ anytls_install() {
     mkdir -p /etc/anytls
     anytls_set "port" "$port"
     anytls_set "password" "$pass"
+    anytls_set "version" "$ver"
 
     anytls_write_service
     systemctl daemon-reload
@@ -568,13 +562,13 @@ snell_update() {
     echo -e "当前：${YELLOW}${cur}${PLAIN}  最新：${GREEN}${new:-获取失败}${PLAIN}"
     [ -z "$new" ] && return
     [ "$cur" = "$new" ] && echo -e "${GREEN}已是最新${PLAIN}" && return
-    local ver_num=$(snell_get "version"); [ -z "$ver_num" ] && ver_num="5"
     systemctl stop snell
     local arch=$(get_arch)
     wget -q --show-progress "https://dl.nssurge.com/snell/snell-server-${new}-linux-${arch}.zip" -O /tmp/snell.zip \
         || { echo -e "${RED}下载失败${PLAIN}"; systemctl start snell; return 1; }
     unzip -o /tmp/snell.zip -d /usr/local/bin >/dev/null
     rm -f /tmp/snell.zip; chmod +x "$SNELL_BIN"
+    systemctl daemon-reload
     systemctl start snell; sleep 2
     snell_running && echo -e "${GREEN}更新成功：$(snell_version)${PLAIN}" \
                   || echo -e "${RED}启动失败${PLAIN}"
@@ -623,6 +617,8 @@ anytls_update() {
         find /tmp/anytls_tmp -name "anytls-server" -exec mv {} "$ANYTLS_BIN" \;
         rm -rf /tmp/anytls.zip /tmp/anytls_tmp; chmod +x "$ANYTLS_BIN"
     fi
+    # 更新meta里的版本号
+    anytls_set "version" "$new"
     systemctl start anytls; sleep 2
     anytls_running && echo -e "${GREEN}更新成功：$(anytls_version)${PLAIN}" \
                    || echo -e "${RED}启动失败${PLAIN}"
@@ -636,9 +632,24 @@ protocol_menu() {
     while true; do
         clear; hr
         echo -e "  协议管理"
-        echo -e "  Snell   $(installed_text snell_installed)"
-        echo -e "  SS2022  $(installed_text ss_installed)"
-        echo -e "  AnyTLS  $(installed_text anytls_installed)"
+            if snell_installed; then
+            snell_running && echo -e "  Snell   |  ${GREEN}运行中${PLAIN}  |  $(snell_version)"
+            snell_running || echo -e "  Snell   |  ${RED}未运行${PLAIN}  |  $(snell_version)"
+        else
+            echo -e "  Snell   |  ${RED}未安装${PLAIN}"
+        fi
+        if ss_installed; then
+            ss_running && echo -e "  SS2022  |  ${GREEN}运行中${PLAIN}  |  $(ss_version)"
+            ss_running || echo -e "  SS2022  |  ${RED}未运行${PLAIN}  |  $(ss_version)"
+        else
+            echo -e "  SS2022  |  ${RED}未安装${PLAIN}"
+        fi
+        if anytls_installed; then
+            anytls_running && echo -e "  AnyTLS  |  ${GREEN}运行中${PLAIN}  |  $(anytls_version)"
+            anytls_running || echo -e "  AnyTLS  |  ${RED}未运行${PLAIN}  |  $(anytls_version)"
+        else
+            echo -e "  AnyTLS  |  ${RED}未安装${PLAIN}"
+        fi
         hr
 
         local opts=() labels=()
@@ -741,12 +752,7 @@ snell_modify_menu() {
                 echo -e "当前端口：${CYAN}${port}${PLAIN}"
                 read -p "新端口: " np
                 if valid_port "$np"; then
-                    local cur_ver=$(snell_get "version"); [ -z "$cur_ver" ] && cur_ver="5"
-                    if [ "$cur_ver" = "6" ]; then
-                        snell_set "listen" "0.0.0.0:${np},[::]:${np}"
-                    else
-                        snell_set "listen" "::0:${np}"
-                    fi
+                    snell_set "listen" "0.0.0.0:${np},[::]:${np}"
                     systemctl restart snell; echo -e "${GREEN}端口已改为 ${np}${PLAIN}"
                 else echo -e "${RED}端口不合法${PLAIN}"; fi
                 ;;
@@ -903,9 +909,21 @@ status_menu() {
         clear; hr
         echo "  协议状态"
         hr
-        snell_installed  && echo -e "  Snell   $(snell_version)  |  $(status_text snell_running)"
-        ss_installed     && echo -e "  SS2022  $(ss_version)     |  $(status_text ss_running)"
-        anytls_installed && echo -e "  AnyTLS  $(anytls_version) |  $(status_text anytls_running)"
+        if snell_installed; then
+            local sv=$(snell_version); local sv_s
+            snell_running && sv_s="${GREEN}运行中${PLAIN}" || sv_s="${RED}未运行${PLAIN}"
+            echo -e "  Snell   |  ${sv_s}  |  ${sv}  |  端口: $(snell_port)"
+        fi
+        if ss_installed; then
+            local sv2=$(ss_version); local ss_s
+            ss_running && ss_s="${GREEN}运行中${PLAIN}" || ss_s="${RED}未运行${PLAIN}"
+            echo -e "  SS2022  |  ${ss_s}  |  ${sv2}  |  端口: $(ss_get server_port)"
+        fi
+        if anytls_installed; then
+            local av=$(anytls_version); local at_s
+            anytls_running && at_s="${GREEN}运行中${PLAIN}" || at_s="${RED}未运行${PLAIN}"
+            echo -e "  AnyTLS  |  ${at_s}  |  ${av}  |  端口: $(anytls_get port)"
+        fi
         ! snell_installed && ! ss_installed && ! anytls_installed && echo "  暂无已安装的协议"
         hr
 
@@ -1018,9 +1036,28 @@ main_menu() {
         clear; hr
         echo -e "  代理管理工具"
         hr
-        snell_installed  && echo -e "  Snell   $(snell_version)  |  $(status_text snell_running)"   || echo -e "  Snell   ${RED}未安装${PLAIN}"
-        ss_installed     && echo -e "  SS2022  $(ss_version)     |  $(status_text ss_running)"      || echo -e "  SS2022  ${RED}未安装${PLAIN}"
-        anytls_installed && echo -e "  AnyTLS  $(anytls_version) |  $(status_text anytls_running)"  || echo -e "  AnyTLS  ${RED}未安装${PLAIN}"
+        local sv sv_stat ss_stat at_stat
+        if snell_installed; then
+            sv=$(snell_version)
+            snell_running && sv_stat="${GREEN}运行中${PLAIN}" || sv_stat="${RED}未运行${PLAIN}"
+            echo -e "  Snell   |  ${sv_stat}  |  ${sv}  |  端口: $(snell_port)"
+        else
+            echo -e "  Snell   |  ${RED}未安装${PLAIN}"
+        fi
+        if ss_installed; then
+            local sv2=$(ss_version)
+            ss_running && ss_stat="${GREEN}运行中${PLAIN}" || ss_stat="${RED}未运行${PLAIN}"
+            echo -e "  SS2022  |  ${ss_stat}  |  ${sv2}  |  端口: $(ss_get server_port)"
+        else
+            echo -e "  SS2022  |  ${RED}未安装${PLAIN}"
+        fi
+        if anytls_installed; then
+            local av=$(anytls_version)
+            anytls_running && at_stat="${GREEN}运行中${PLAIN}" || at_stat="${RED}未运行${PLAIN}"
+            echo -e "  AnyTLS  |  ${at_stat}  |  ${av}  |  端口: $(anytls_get port)"
+        else
+            echo -e "  AnyTLS  |  ${RED}未安装${PLAIN}"
+        fi
         hr
         echo "  1. 协议管理"
         echo "  2. 查看配置"
