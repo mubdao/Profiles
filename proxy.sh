@@ -103,7 +103,10 @@ snell_version() {
     snell_installed && "$SNELL_BIN" -version 2>&1 | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' || echo "-"
 }
 ss_version() {
-    ss_installed && "$SS_BIN" --version 2>&1 | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -1 || echo "-"
+    if ! ss_installed; then echo "-"; return; fi
+    local ver
+    ver=$("$SS_BIN" --version 2>&1 | grep -oE 'v?[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+    [ -z "$ver" ] && echo "-" || echo "$ver"
 }
 anytls_version() {
     anytls_installed && anytls_get "version" || echo "-"
@@ -257,10 +260,14 @@ snell_install() {
 
     echo -e "${CYAN}获取最新版本...${PLAIN}"
     local major="6"
-    local ver=$(get_latest "passeway/Snell")
+    # v6 beta 从官方知识库页面获取版本号
+    local ver
+    ver=$(curl -s --connect-timeout 5 "https://kb.nssurge.com/surge-knowledge-base/release-notes/snell"         | grep -oE 'snell-server-v6\.[0-9]+\.[0-9]+'         | grep -oE 'v6\.[0-9]+\.[0-9]+'         | head -1)
+    # 若获取失败则尝试passeway/Snell仓库（可能还没有v6）
+    [ -z "$ver" ] && ver=$(get_latest "passeway/Snell")
     if [ -z "$ver" ]; then
         ver="v6.0.1"
-        echo -e "${YELLOW}获取失败，使用 ${ver}${PLAIN}"
+        echo -e "${YELLOW}获取失败，使用默认 ${ver}${PLAIN}"
     else
         echo -e "${GREEN}最新版本：${ver}${PLAIN}"
     fi
@@ -558,7 +565,9 @@ snell_update() {
     ! snell_installed && echo -e "${RED}Snell 未安装${PLAIN}" && return
     local cur=$(snell_version)
     echo -e "${CYAN}检查版本...${PLAIN}"
-    local new=$(get_latest "passeway/Snell")
+    local new
+    new=$(curl -s --connect-timeout 5 "https://kb.nssurge.com/surge-knowledge-base/release-notes/snell"         | grep -oE 'snell-server-v6\.[0-9]+\.[0-9]+'         | grep -oE 'v6\.[0-9]+\.[0-9]+'         | head -1)
+    [ -z "$new" ] && new=$(get_latest "passeway/Snell")
     echo -e "当前：${YELLOW}${cur}${PLAIN}  最新：${GREEN}${new:-获取失败}${PLAIN}"
     [ -z "$new" ] && return
     [ "$cur" = "$new" ] && echo -e "${GREEN}已是最新${PLAIN}" && return
@@ -639,8 +648,8 @@ protocol_menu() {
             echo -e "  Snell   |  ${RED}未安装${PLAIN}"
         fi
         if ss_installed; then
-            ss_running && echo -e "  SS2022  |  ${GREEN}运行中${PLAIN}  |  $(ss_version)"
-            ss_running || echo -e "  SS2022  |  ${RED}未运行${PLAIN}  |  $(ss_version)"
+            ss_running && echo -e "  SS2022  |  ${GREEN}运行中${PLAIN}"
+            ss_running || echo -e "  SS2022  |  ${RED}未运行${PLAIN}"
         else
             echo -e "  SS2022  |  ${RED}未安装${PLAIN}"
         fi
