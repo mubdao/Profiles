@@ -2,7 +2,7 @@
 
 # =============================================
 # 代理协议统一管理脚本
-# 支持 Snell v6 / SS2022
+# 支持 Snell v6 / SS2022 / AnyTLS
 # =============================================
 
 RED='\033[0;31m'
@@ -18,6 +18,14 @@ SNELL_SERVICE="/etc/systemd/system/snell.service"
 SS_BIN="/usr/local/bin/ssserver"
 SS_CONF="/etc/ss2022/config.json"
 SS_SERVICE="/etc/systemd/system/ss2022.service"
+
+ANYTLS_BIN="/usr/local/bin/anytls-server"
+ANYTLS_DIR="/etc/anytls"
+ANYTLS_CONF="/etc/anytls/anytls.conf"
+ANYTLS_SCHEME="/etc/anytls/scheme.txt"
+ANYTLS_VER_FILE="/etc/anytls/version"
+ANYTLS_SERVICE="/etc/systemd/system/anytls.service"
+ANYTLS_DEFAULT_SNI="iosapps.itunes.apple.com"
 
 # =============================================
 # 通用工具
@@ -76,6 +84,19 @@ valid_port() {
 
 rand_port() { shuf -i 30000-65000 -n 1; }
 rand_pass()  { tr -dc A-Za-z0-9 </dev/urandom | head -c 24; }
+
+# 防火墙自动放行端口
+firewall_allow() {
+    local port="$1"
+    if command -v ufw >/dev/null 2>&1 && ufw status 2>/dev/null | grep -q "Status: active"; then
+        ufw allow "$port"/tcp >/dev/null 2>&1
+        echo -e "${GREEN}已放行端口 ${port}（ufw）${PLAIN}"
+    elif command -v firewall-cmd >/dev/null 2>&1 && firewall-cmd --state 2>/dev/null | grep -q "running"; then
+        firewall-cmd --permanent --add-port="${port}"/tcp >/dev/null 2>&1
+        firewall-cmd --reload >/dev/null 2>&1
+        echo -e "${GREEN}已放行端口 ${port}（firewalld）${PLAIN}"
+    fi
+}
 
 press_enter() { echo ""; read -p "按 Enter 继续..."; }
 hr() { echo "--------------------------------------------------------"; }
@@ -191,6 +212,252 @@ ss_surge_line() {
     echo "$line"
 }
 
+
+# =============================================
+# AnyTLS 状态检测
+# =============================================
+
+anytls_installed() { [ -f "$ANYTLS_BIN" ]; }
+anytls_running()   { systemctl is-active --quiet anytls.service 2>/dev/null; }
+
+anytls_version() {
+    anytls_installed && cat "$ANYTLS_VER_FILE" 2>/dev/null || echo "-"
+}
+
+anytls_conf_get() {
+    [ -f "$ANYTLS_CONF" ] || return
+    grep -E "^${1}=" "$ANYTLS_CONF" 2>/dev/null | cut -d= -f2- | tr -d "'"
+}
+
+anytls_conf_set() {
+    mkdir -p "$ANYTLS_DIR"
+    if grep -qE "^${1}=" "$ANYTLS_CONF" 2>/dev/null; then
+        sed -i "s|^${1}=.*|${1}=$(printf '%q' "${2}")|" "$ANYTLS_CONF"
+    else
+        echo "${1}=$(printf '%q' "${2}")" >> "$ANYTLS_CONF"
+    fi
+}
+
+anytls_port() { anytls_conf_get "ANYTLS_LISTEN" | grep -oE '[0-9]+$'; }
+
+# =============================================
+# AnyTLS Surge节点生成
+# =============================================
+
+anytls_surge_line() {
+    local port=$(anytls_port)
+    local pass=$(anytls_conf_get "ANYTLS_PASSWORD")
+    local sni=$(anytls_conf_get "ANYTLS_CLIENT_SNI")
+    local ip=$(get_ip)
+    local country=$(get_country "$ip")
+    local line="${country} = anytls, ${ip}, ${port}, password = ${pass}, skip-cert-verify = true"
+    [ -n "$sni" ] && line="${line}, sni = ${sni}"
+    echo "$line"
+}
+
+# =============================================
+# AnyTLS scheme文件
+# =============================================
+
+anytls_write_scheme() {
+    mkdir -p "$ANYTLS_DIR"
+    cat > "$ANYTLS_SCHEME" << 'SCHEME'
+stop=8
+0=30-30
+1=100-400
+2=400-500,c,500-1000,c,500-1000,c,500-1000,c,500-1000
+3=9-9,500-1000
+4=500-1000
+5=500-1000
+6=500-1000
+7=500-1000
+SCHEME
+    chmod 600 "$ANYTLS_SCHEME"
+}
+
+# =============================================
+# AnyTLS systemd服务
+# =============================================
+
+anytls_write_service() {
+    local port=$(anytls_port)
+    local pass=$(anytls_conf_get "ANYTLS_PASSWORD")
+    cat > "$ANYTLS_SERVICE" << EOF
+[Unit]
+Description=AnyTLS Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Environment=LOG_LEVEL=warn
+ExecStart=${ANYTLS_BIN} -l 0.0.0.0:${port} -p ${pass} --padding-scheme ${ANYTLS_SCHEME}
+LimitNOFILE=1048576
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=anytls
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    systemctl daemon-reload
+}
+
+# =============================================
+# AnyTLS 安装
+# =============================================
+
+anytls_install() {
+    if anytls_installed; then
+        echo -e "${YELLOW}AnyTLS 已安装，请使用更新功能${PLAIN}"; press_enter; return
+    fi
+
+    echo -e "${CYAN}获取最新版本...${PLAIN}"
+    local ver=$(get_latest_github "anytls/anytls-go")
+    if [ -z "$ver" ]; then
+        echo -e "${RED}获取失败，请检查网络${PLAIN}"; return 1
+    fi
+    echo -e "${GREEN}最新版本：${ver}${PLAIN}"
+
+    local def_port=$(rand_port)
+    read -p "端口 [默认随机: ${def_port}]: " inp_port
+    local port=${inp_port:-$def_port}
+    if ! valid_port "$port"; then
+        echo -e "${RED}端口不合法，使用 ${def_port}${PLAIN}"; port=$def_port
+    fi
+
+    local def_pass=$(rand_pass)
+    read -p "密码 [默认随机]: " inp_pass
+    local pass=${inp_pass:-$def_pass}
+
+    local sni="$ANYTLS_DEFAULT_SNI"
+    read -p "SNI  [默认: ${sni}，留空不发送]: " inp_sni
+    [ -n "$inp_sni" ] && sni="$inp_sni"
+    [ "$inp_sni" = "none" ] && sni=""
+
+    install_deps
+
+    local arch=$(get_arch)
+    local ver_num="${ver#v}"
+    local url="https://github.com/anytls/anytls-go/releases/download/${ver}/anytls_${ver_num}_linux_${arch}.zip"
+
+    echo -e "${GREEN}下载 AnyTLS ${ver}...${PLAIN}"
+    local tmpdir=$(mktemp -d)
+    wget -q --show-progress "$url" -O "${tmpdir}/anytls.zip"
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}下载失败${PLAIN}"; rm -rf "$tmpdir"; return 1
+    fi
+
+    unzip -oq "${tmpdir}/anytls.zip" -d "${tmpdir}" 2>/dev/null
+    local found_bin=$(find "${tmpdir}" -type f -name "anytls-server" | head -1)
+    if [ -z "$found_bin" ]; then
+        echo -e "${RED}未找到 anytls-server 二进制${PLAIN}"; rm -rf "$tmpdir"; return 1
+    fi
+    install -m 0755 "$found_bin" "$ANYTLS_BIN"
+    rm -rf "$tmpdir"
+
+    mkdir -p "$ANYTLS_DIR"
+    chmod 700 "$ANYTLS_DIR"
+
+    # 写配置
+    cat > "$ANYTLS_CONF" << EOF
+ANYTLS_LISTEN=$(printf '%q' "0.0.0.0:${port}")
+ANYTLS_PASSWORD=$(printf '%q' "${pass}")
+ANYTLS_CLIENT_SNI=$(printf '%q' "${sni}")
+ANYTLS_VERSION=$(printf '%q' "${ver}")
+EOF
+    chmod 600 "$ANYTLS_CONF"
+
+    # 写版本文件
+    echo "$ver" > "$ANYTLS_VER_FILE"
+
+    # 写scheme文件
+    anytls_write_scheme
+
+    # 写服务
+    anytls_write_service
+
+    systemctl enable anytls >/dev/null 2>&1
+    systemctl start anytls
+    sleep 2
+
+    # 防火墙放行
+    firewall_allow "$port"
+
+    if anytls_running; then
+        echo -e "${GREEN}AnyTLS 安装成功！${PLAIN}"
+        echo ""; hr
+        echo -e "${CYAN}Surge 节点：${PLAIN}"
+        anytls_surge_line
+        hr
+    else
+        echo -e "${RED}启动失败：journalctl -u anytls.service -n 20 --no-pager${PLAIN}"
+    fi
+}
+
+# =============================================
+# AnyTLS 卸载
+# =============================================
+
+anytls_uninstall() {
+    ! anytls_installed && echo -e "${RED}AnyTLS 未安装${PLAIN}" && return
+    read -p "确认卸载 AnyTLS？[y/N]: " c
+    [[ "${c,,}" != "y" ]] && echo "已取消" && return
+    systemctl stop anytls 2>/dev/null
+    systemctl disable anytls 2>/dev/null
+    rm -f "$ANYTLS_SERVICE"
+    systemctl daemon-reload
+    rm -f "$ANYTLS_BIN"
+    rm -rf "$ANYTLS_DIR"
+    echo -e "${GREEN}AnyTLS 已卸载${PLAIN}"
+}
+
+# =============================================
+# AnyTLS 更新
+# =============================================
+
+anytls_update() {
+    ! anytls_installed && echo -e "${RED}AnyTLS 未安装${PLAIN}" && return
+    local cur=$(anytls_version)
+    echo -e "${CYAN}检查版本...${PLAIN}"
+    local new=$(get_latest_github "anytls/anytls-go")
+    if [ -z "$new" ]; then
+        echo -e "${RED}获取失败${PLAIN}"; return
+    fi
+    echo -e "当前：${YELLOW}${cur}${PLAIN}  最新：${GREEN}${new}${PLAIN}"
+    [ "$cur" = "$new" ] && echo -e "${GREEN}已是最新版本${PLAIN}" && return
+
+    echo -e "${GREEN}开始更新...${PLAIN}"
+    systemctl stop anytls
+
+    local arch=$(get_arch)
+    local ver_num="${new#v}"
+    local url="https://github.com/anytls/anytls-go/releases/download/${new}/anytls_${ver_num}_linux_${arch}.zip"
+    local tmpdir=$(mktemp -d)
+    wget -q --show-progress "$url" -O "${tmpdir}/anytls.zip"
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}下载失败，保持当前版本${PLAIN}"
+        systemctl start anytls; rm -rf "$tmpdir"; return 1
+    fi
+
+    unzip -oq "${tmpdir}/anytls.zip" -d "${tmpdir}" 2>/dev/null
+    local found_bin=$(find "${tmpdir}" -type f -name "anytls-server" | head -1)
+    if [ -n "$found_bin" ]; then
+        install -m 0755 "$found_bin" "$ANYTLS_BIN"
+        echo "$new" > "$ANYTLS_VER_FILE"
+        anytls_conf_set "ANYTLS_VERSION" "$new"
+    fi
+    rm -rf "$tmpdir"
+
+    anytls_write_service
+    systemctl start anytls
+    sleep 2
+    anytls_running && echo -e "${GREEN}更新成功：$(anytls_version)${PLAIN}"                    || echo -e "${RED}启动失败${PLAIN}"
+}
+
 # =============================================
 # Snell 最新版本获取
 # =============================================
@@ -295,6 +562,9 @@ EOF
     systemctl enable snell >/dev/null 2>&1
     systemctl start snell
     sleep 2
+
+    # 防火墙放行
+    firewall_allow "$port"
 
     if snell_running; then
         echo -e "${GREEN}Snell 安装成功！${PLAIN}"
@@ -460,6 +730,9 @@ EOF
     systemctl start ss2022
     sleep 2
 
+    # 防火墙放行
+    firewall_allow "$port"
+
     if ss_running; then
         echo -e "${GREEN}SS2022 安装成功！${PLAIN}"
         echo ""; hr
@@ -544,13 +817,21 @@ protocol_menu() {
         else
             echo -e "  SS2022  |  ${RED}未安装${PLAIN}"
         fi
+        if anytls_installed; then
+            anytls_running && echo -e "  AnyTLS  |  ${GREEN}运行中${PLAIN}" \
+                           || echo -e "  AnyTLS  |  ${RED}未运行${PLAIN}"
+        else
+            echo -e "  AnyTLS  |  ${RED}未安装${PLAIN}"
+        fi
         hr
 
         local opts=() labels=()
-        snell_installed  || { opts+=("ins"); labels+=("安装 Snell  "); }
-        ss_installed     || { opts+=("iss"); labels+=("安装 SS2022 "); }
-        snell_installed  && { opts+=("uns"); labels+=("卸载 Snell  "); }
-        ss_installed     && { opts+=("uss"); labels+=("卸载 SS2022 "); }
+        snell_installed   || { opts+=("ins");  labels+=("安装 Snell  "); }
+        ss_installed      || { opts+=("iss");  labels+=("安装 SS2022 "); }
+        anytls_installed  || { opts+=("iat");  labels+=("安装 AnyTLS "); }
+        snell_installed   && { opts+=("uns");  labels+=("卸载 Snell  "); }
+        ss_installed      && { opts+=("uss");  labels+=("卸载 SS2022 "); }
+        anytls_installed  && { opts+=("uat");  labels+=("卸载 AnyTLS "); }
 
         for i in "${!opts[@]}"; do echo "  $((i+1)). ${labels[$i]}"; done
         echo "  0. 返回主菜单"
@@ -561,10 +842,12 @@ protocol_menu() {
         local idx=$((c-1))
         if [[ "$idx" -ge 0 && "$idx" -lt "${#opts[@]}" ]]; then
             case "${opts[$idx]}" in
-                ins) snell_install   ;;
-                iss) ss_install      ;;
-                uns) snell_uninstall ;;
-                uss) ss_uninstall    ;;
+                ins) snell_install    ;;
+                iss) ss_install       ;;
+                iat) anytls_install   ;;
+                uns) snell_uninstall  ;;
+                uss) ss_uninstall     ;;
+                uat) anytls_uninstall ;;
             esac
         else
             echo -e "${RED}无效选项${PLAIN}"
@@ -597,7 +880,13 @@ view_config_menu() {
                     echo -e "${CYAN}=== SS2022 配置 ===${PLAIN}"
                     cat "$SS_CONF"; echo ""
                 fi
-                ! snell_installed && ! ss_installed && echo "  暂无已安装的协议"
+                if anytls_installed; then
+                    echo -e "${CYAN}=== AnyTLS 配置 ===${PLAIN}"
+                    echo "端口：$(anytls_port)"
+                    echo "密码：$(anytls_conf_get ANYTLS_PASSWORD)"
+                    echo "SNI ：$(anytls_conf_get ANYTLS_CLIENT_SNI)"; echo ""
+                fi
+                ! snell_installed && ! ss_installed && ! anytls_installed && echo "  暂无已安装的协议"
                 ;;
             2)
                 hr
@@ -609,7 +898,11 @@ view_config_menu() {
                     echo -e "${CYAN}SS2022：${PLAIN}"
                     ss_surge_line; echo ""
                 fi
-                ! snell_installed && ! ss_installed && echo "  暂无已安装的协议"
+                if anytls_installed; then
+                    echo -e "${CYAN}AnyTLS：${PLAIN}"
+                    anytls_surge_line; echo ""
+                fi
+                ! snell_installed && ! ss_installed && ! anytls_installed && echo "  暂无已安装的协议"
                 ;;
             0) return ;;
             *) echo -e "${RED}无效选项${PLAIN}" ;;
@@ -643,6 +936,7 @@ snell_modify_menu() {
                 if valid_port "$np"; then
                     snell_set "listen" "0.0.0.0:${np},[::]:${np}"
                     systemctl restart snell
+                    firewall_allow "$np"
                     echo -e "${GREEN}端口已改为 ${np}${PLAIN}"
                 else
                     echo -e "${RED}端口不合法${PLAIN}"
@@ -702,6 +996,7 @@ ss_modify_menu() {
                 if valid_port "$np"; then
                     ss_set_int "server_port" "$np"
                     systemctl restart ss2022
+                    firewall_allow "$np"
                     echo -e "${GREEN}端口已改为 ${np}${PLAIN}"
                 else
                     echo -e "${RED}端口不合法${PLAIN}"
@@ -733,6 +1028,57 @@ ss_modify_menu() {
     done
 }
 
+
+anytls_modify_menu() {
+    while true; do
+        clear; hr
+        local port=$(anytls_port)
+        echo -e "  修改 AnyTLS | 端口: ${port}"
+        hr
+        echo "  1. 修改端口"
+        echo "  2. 修改密码"
+        echo "  3. 修改 SNI"
+        echo "  0. 返回"
+        hr
+        read -p "请选择操作: " c; echo ""
+        case "$c" in
+            1)
+                echo -e "当前端口：${CYAN}${port}${PLAIN}"
+                read -p "新端口: " np
+                if valid_port "$np"; then
+                    anytls_conf_set "ANYTLS_LISTEN" "0.0.0.0:${np}"
+                    anytls_write_service
+                    systemctl restart anytls
+                    firewall_allow "$np"
+                    echo -e "${GREEN}端口已改为 ${np}${PLAIN}"
+                else
+                    echo -e "${RED}端口不合法${PLAIN}"
+                fi
+                ;;
+            2)
+                echo -e "当前密码：${CYAN}$(anytls_conf_get ANYTLS_PASSWORD)${PLAIN}"
+                local dp=$(rand_pass)
+                read -p "新密码 [默认随机]: " np; np=${np:-$dp}
+                anytls_conf_set "ANYTLS_PASSWORD" "$np"
+                anytls_write_service
+                systemctl restart anytls
+                echo -e "${GREEN}密码已修改${PLAIN}"
+                ;;
+            3)
+                local cur_sni=$(anytls_conf_get "ANYTLS_CLIENT_SNI")
+                echo -e "当前 SNI：${CYAN}${cur_sni:-不发送}${PLAIN}"
+                read -p "新 SNI [输入 none 清空]: " np
+                [ "$np" = "none" ] && np=""
+                anytls_conf_set "ANYTLS_CLIENT_SNI" "$np"
+                echo -e "${GREEN}SNI 已修改${PLAIN}"
+                ;;
+            0) return ;;
+            *) echo -e "${RED}无效选项${PLAIN}" ;;
+        esac
+        press_enter
+    done
+}
+
 modify_config_menu() {
     while true; do
         clear; hr
@@ -740,8 +1086,9 @@ modify_config_menu() {
         hr
 
         local opts=() labels=()
-        snell_installed && { opts+=("s");  labels+=("修改 Snell  "); }
-        ss_installed    && { opts+=("ss"); labels+=("修改 SS2022 "); }
+        snell_installed   && { opts+=("s");   labels+=("修改 Snell  "); }
+        ss_installed      && { opts+=("ss");  labels+=("修改 SS2022 "); }
+        anytls_installed  && { opts+=("at");  labels+=("修改 AnyTLS "); }
 
         if [ "${#opts[@]}" -eq 0 ]; then
             echo "  暂无已安装的协议"
@@ -759,8 +1106,9 @@ modify_config_menu() {
         local idx=$((c-1))
         if [[ "$idx" -ge 0 && "$idx" -lt "${#opts[@]}" ]]; then
             case "${opts[$idx]}" in
-                s)  snell_modify_menu ;;
-                ss) ss_modify_menu    ;;
+                s)  snell_modify_menu  ;;
+                ss) ss_modify_menu     ;;
+                at) anytls_modify_menu ;;
             esac
         else
             echo -e "${RED}无效选项${PLAIN}"; press_enter
@@ -787,19 +1135,26 @@ status_menu() {
             ss_running && ss_s="${GREEN}运行中${PLAIN}" || ss_s="${RED}未运行${PLAIN}"
             echo -e "  SS2022  |  ${ss_s}  |  ${sv2}  |  端口: $(ss_get server_port)"
         fi
-        ! snell_installed && ! ss_installed && echo "  暂无已安装的协议"
+        if anytls_installed; then
+            local av=$(anytls_version); local at_s
+            anytls_running && at_s="${GREEN}运行中${PLAIN}" || at_s="${RED}未运行${PLAIN}"
+            echo -e "  AnyTLS  |  ${at_s}  |  ${av}  |  端口: $(anytls_port)"
+        fi
+        ! snell_installed && ! ss_installed && ! anytls_installed && echo "  暂无已安装的协议"
         hr
 
         local opts=() labels=()
         local any_running=false
-        snell_running && any_running=true
-        ss_running    && any_running=true
+        snell_running  && any_running=true
+        ss_running     && any_running=true
+        anytls_running && any_running=true
 
         $any_running && { opts+=("stop");    labels+=("停止所有服务"); } \
                      || { opts+=("start");   labels+=("启动所有服务"); }
         opts+=("restart"); labels+=("重启所有服务")
-        snell_installed && { opts+=("us"); labels+=("更新 Snell  "); }
-        ss_installed    && { opts+=("uss"); labels+=("更新 SS2022 "); }
+        snell_installed   && { opts+=("us");  labels+=("更新 Snell  "); }
+        ss_installed      && { opts+=("uss"); labels+=("更新 SS2022 "); }
+        anytls_installed  && { opts+=("uat"); labels+=("更新 AnyTLS "); }
 
         for i in "${!opts[@]}"; do echo "  $((i+1)). ${labels[$i]}"; done
         echo "  0. 返回主菜单"
@@ -811,22 +1166,26 @@ status_menu() {
         if [[ "$idx" -ge 0 && "$idx" -lt "${#opts[@]}" ]]; then
             case "${opts[$idx]}" in
                 stop)
-                    snell_installed && systemctl stop snell
-                    ss_installed    && systemctl stop ss2022
+                    snell_installed   && systemctl stop snell
+                    ss_installed      && systemctl stop ss2022
+                    anytls_installed  && systemctl stop anytls
                     echo -e "${GREEN}所有服务已停止${PLAIN}"
                     ;;
                 start)
-                    snell_installed && systemctl start snell
-                    ss_installed    && systemctl start ss2022
+                    snell_installed   && systemctl start snell
+                    ss_installed      && systemctl start ss2022
+                    anytls_installed  && systemctl start anytls
                     echo -e "${GREEN}所有服务已启动${PLAIN}"
                     ;;
                 restart)
-                    snell_installed && systemctl restart snell
-                    ss_installed    && systemctl restart ss2022
+                    snell_installed   && systemctl restart snell
+                    ss_installed      && systemctl restart ss2022
+                    anytls_installed  && systemctl restart anytls
                     sleep 1; echo -e "${GREEN}所有服务已重启${PLAIN}"
                     ;;
-                us)  snell_update ;;
-                uss) ss_update    ;;
+                us)  snell_update  ;;
+                uss) ss_update     ;;
+                uat) anytls_update ;;
             esac
         else
             echo -e "${RED}无效选项${PLAIN}"
@@ -865,6 +1224,15 @@ uninstall_all() {
         rm -rf /etc/ss2022
         echo -e "${GREEN}SS2022 已卸载${PLAIN}"
     fi
+    if anytls_installed; then
+        systemctl stop anytls 2>/dev/null
+        systemctl disable anytls 2>/dev/null
+        rm -f "$ANYTLS_SERVICE"
+        systemctl daemon-reload
+        rm -f "$ANYTLS_BIN"
+        rm -rf "$ANYTLS_DIR"
+        echo -e "${GREEN}AnyTLS 已卸载${PLAIN}"
+    fi
 
     local script_path
     script_path=$(realpath "$0" 2>/dev/null || echo "$0")
@@ -894,6 +1262,12 @@ main_menu() {
                        || echo -e "  SS2022  |  ${RED}未运行${PLAIN}"
         else
             echo -e "  SS2022  |  ${RED}未安装${PLAIN}"
+        fi
+        if anytls_installed; then
+            anytls_running && echo -e "  AnyTLS  |  ${GREEN}运行中${PLAIN}" \
+                           || echo -e "  AnyTLS  |  ${RED}未运行${PLAIN}"
+        else
+            echo -e "  AnyTLS  |  ${RED}未安装${PLAIN}"
         fi
         hr
         echo "  1. 协议管理"
