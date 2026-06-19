@@ -10,7 +10,7 @@ BLUE='\033[0;34m'; CYAN='\033[0;36m'; BOLD='\033[1m'; RESET='\033[0m'
 clear
 echo -e "${CYAN}${BOLD}"
 echo "╔══════════════════════════════════════════╗"
-echo "║     VPS 流量监控 · 一键部署向导 V18.5    ║"
+echo "║     VPS 流量监控 · 一键部署向导 V18.6    ║"
 echo "╚══════════════════════════════════════════╝"
 echo -e "${RESET}"
 echo -e "${RESET}"
@@ -45,10 +45,10 @@ done
 
 # ── 3. 服务器显示名 ──
 echo -e "${BOLD}[3/7] 服务器显示名称${RESET}"
-read -rp "    → 请输入名称（直接回车使用默认 MyVPS）: " INPUT_HOSTNAME
-INPUT_HOSTNAME=$(echo "$INPUT_HOSTNAME" | xargs)
-HOSTNAME="${INPUT_HOSTNAME:-MyVPS}"
-echo -e "${GREEN}    ✓ 显示名: ${HOSTNAME}${RESET}\n"
+read -rp "    → 请输入名称（直接回车使用默认 MyVPS）: " INPUT_VPSNAME
+INPUT_VPSNAME=$(echo "$INPUT_VPSNAME" | xargs)
+VPS_NAME="${INPUT_VPSNAME:-MyVPS}"
+echo -e "${GREEN}    ✓ 显示名: ${VPS_NAME}${RESET}\n"
 
 # ── 4. 流量重置日期 ──
 while true; do
@@ -112,14 +112,16 @@ while true; do
     INPUT_PUSH_TIME="${INPUT_PUSH_TIME:-9:30}"
     PUSH_HOUR=$(echo "$INPUT_PUSH_TIME" | cut -d: -f1)
     PUSH_MIN=$(echo "$INPUT_PUSH_TIME" | cut -d: -f2)
-    if ! [[ "$PUSH_HOUR" =~ ^[0-9]+$ && "$PUSH_MIN" =~ ^[0-9]+$ ]] \
-        || [[ "$PUSH_HOUR" -gt 23 || "$PUSH_MIN" -gt 59 ]]; then
+    # 用 10# 强制按十进制解析，避免 "08" / "09" 被 bash 当成非法八进制数报错
+    if ! [[ "$PUSH_HOUR" =~ ^[0-9]{1,2}$ && "$PUSH_MIN" =~ ^[0-9]{1,2}$ ]] \
+        || (( 10#$PUSH_HOUR > 23 || 10#$PUSH_MIN > 59 )); then
         echo -e "${RED}    ✗ 格式无效，请重新输入（例如: 9:30 或 18:00）${RESET}\n"
         continue
     fi
-    CRON_HOUR=$PUSH_HOUR
-    CRON_MIN=$PUSH_MIN
-    echo -e "${GREEN}    ✓ 推送时间: 每天 ${PUSH_HOUR}:$(printf '%02d' $PUSH_MIN)${RESET}\n"
+    CRON_HOUR=$((10#$PUSH_HOUR))
+    CRON_MIN=$((10#$PUSH_MIN))
+    PUSH_MIN_DISPLAY=$(printf '%02d' "$CRON_MIN")
+    echo -e "${GREEN}    ✓ 推送时间: 每天 ${CRON_HOUR}:${PUSH_MIN_DISPLAY}${RESET}\n"
     break
 done
 
@@ -144,7 +146,8 @@ read -rp "    → 请输入网卡名（直接回车使用自动检测: ${AUTO_IF
 INPUT_IF=$(echo "$INPUT_IF" | xargs)
 INTERFACE="${INPUT_IF:-$AUTO_IF}"
 
-if ! grep -q "$INTERFACE" /proc/net/dev 2>/dev/null; then
+# 注意：用锚点匹配，避免 "ens3" 误匹配到 "ens33" 等相似网卡名
+if ! grep -qE "^[[:space:]]*${INTERFACE}:" /proc/net/dev 2>/dev/null; then
     echo -e "${YELLOW}    ⚠ 警告: 未在 /proc/net/dev 中找到 ${INTERFACE}，已记录但请核实${RESET}\n"
 else
     echo -e "${GREEN}    ✓ 网卡: ${INTERFACE}${RESET}\n"
@@ -152,11 +155,11 @@ fi
 
 # ── 确认配置 ──
 echo -e "${CYAN}${BOLD}══════════════ 配置确认 ══════════════${RESET}"
-echo -e "  服务器名称:   ${BOLD}${HOSTNAME}${RESET}"
+echo -e "  服务器名称:   ${BOLD}${VPS_NAME}${RESET}"
 echo -e "  TG Token:     ${BOLD}${TG_TOKEN:0:10}...${RESET}"
 echo -e "  Chat ID:      ${BOLD}${CHAT_ID}${RESET}"
 echo -e "  重置时间:     ${BOLD}每月 ${TRAFFIC_RESET}${RESET}"
-echo -e "  每日推送:     ${BOLD}每天 ${PUSH_HOUR}:$(printf '%02d' $PUSH_MIN)${RESET}"
+echo -e "  每日推送:     ${BOLD}每天 ${CRON_HOUR}:${PUSH_MIN_DISPLAY}${RESET}"
 echo -e "  流量配额:     ${BOLD}${TRAFFIC_QUOTA} GB${RESET}"
 echo -e "  初始偏移:     ${BOLD}${INIT_USAGE_GB} GB${RESET}"
 echo -e "  监控网卡:     ${BOLD}${INTERFACE}${RESET}"
@@ -185,7 +188,7 @@ export TZ='Asia/Shanghai'
 
 TG_TOKEN="${TG_TOKEN}"
 CHAT_ID="${CHAT_ID}"
-HOSTNAME="${HOSTNAME}"
+VPS_NAME="${VPS_NAME}"
 TRAFFIC_RESET="${TRAFFIC_RESET}"
 INIT_USAGE_GB=${INIT_USAGE_GB}
 INTERFACE="${INTERFACE}"
@@ -216,7 +219,7 @@ if [[ "\$1" == "--reset" ]]; then
     exit 0
 fi
 
-RAW_INFO=\$(grep "\$INTERFACE" /proc/net/dev)
+RAW_INFO=\$(grep -E "^[[:space:]]*\${INTERFACE}:" /proc/net/dev)
 [[ -z "\$RAW_INFO" ]] && { echo "\$(date): 错误 - 找不到网卡 \$INTERFACE" >> "\$LOG_FILE"; exit 1; }
 CURRENT_RAW=\$(echo "\$RAW_INFO" | awk '{printf "%.0f", \$2 + \$10}')
 UPTIME_SEC=\$(awk '{print \$1}' /proc/uptime | cut -d. -f1)
@@ -306,12 +309,12 @@ fi
 DAILY_BYTES=\$(awk "BEGIN {val=\$LIFE_TOTAL - \$DAILY_BASE; printf \"%.0f\", (val<0 ? 0 : val)}")
 REALTIME_DAILY_GB=\$(awk "BEGIN {printf \"%.2f\", \$DAILY_BYTES / 1024^3}")
 
-ESCAPED_HOST=\$(echo "\$HOSTNAME" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+ESCAPED_HOST=\$(echo "\$VPS_NAME" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
 
 if [[ "\$1" == "--test" ]]; then
-    echo -e "\n\033[34m🔍 [流量审计 V18.5]\033[0m"
+    echo -e "\n\033[34m🔍 [流量审计 V18.6]\033[0m"
     echo "━━━━━━━━━━━━━━━━"
-    echo "📅 流量日报 | \${HOSTNAME}"
+    echo "📅 流量日报 | \${VPS_NAME}"
     echo "⏳ 距离重置： \${DAYS_LEFT} 天 时间 \${TIME_PERCENT}%"
     echo "📊 昨日消耗： \${REALTIME_DAILY_GB} GB"
     echo "📈 周期累计： \${MTD_GB} GB | \${USED_PERCENT}%"
