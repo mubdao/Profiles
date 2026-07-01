@@ -6,17 +6,16 @@ const flags = new Map([["AC", "🇦🇨"], ["AD", "🇦🇩"], ["AE", "🇦🇪"
 const city0 = "未知地区";
 const isp0 = "未知服务商";
 
-// ...（前面代码不变）...
+const ispMap = new Map([]);
 
 let body = $response.body;
 let obj = JSON.parse(body);
 
-const country = country_check(obj['country']);
 const city = city_check(obj['city']);
+const ip = obj['query'];
 
-let title = flags.get(obj['countryCode']) + ' ' + append(country, city);
-let subtitle = isp_check(obj['isp']);
-let ip = obj['query'];
+let title = flags.get(obj['countryCode']) + ' ' + city;
+let subtitle = isp_check(obj['isp']) + ' ' + ip;
 let description = '国家：' + obj['countryCode'] + ' ' + obj['country'] + '\n'
   + '地区：' + obj['region'] + ' ' + city_check(obj['regionName']) + '\n'
   + '服务商：' + obj['isp'] + '\n'
@@ -25,25 +24,17 @@ let description = '国家：' + obj['countryCode'] + ' ' + obj['country'] + '\n'
 
 $done({title, subtitle, ip, description});
 
-function country_check(para) {
-  if (!para) return city0;
-  return para === "中华民国" ? "台湾" : para;
-}
-
 function city_check(para) {
-  if (!para) return city0;
-  const paraWithoutSpaces = para.replace(/\s/g, '');
-  if (/^[a-zA-Z]+$/.test(paraWithoutSpaces)) {
-    return '';
-  } else {
-    return para;
-  }
+  return para || city0;
 }
 
 function isp_check(para) {
-  return para || isp0;
-}
+  if (!para) return isp0;
 
-function append(country, city) {
-  return country === city ? country : country + ' ' + city;
+  let firstWord = para.split(/\s+/)[0];
+
+  if (ispMap.has(firstWord.toUpperCase())) {
+    return ispMap.get(firstWord.toUpperCase());
+  }
+  return firstWord;
 }
