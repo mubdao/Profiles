@@ -1,0 +1,187 @@
+# ========== 基础设置 ==========
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: true
+udp: true
+
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+geodata-mode: false
+geodata-loader: standard
+geo-auto-update: true
+geo-update-interval: 24
+
+geox-url:
+  mmdb: 'https://geodata.kelee.one/Country-Masaiki.mmdb'
+
+external-controller: :9090
+external-ui: dashboard
+
+# 重启后记住你手动选的节点 / 解析记录,不用每次重新选
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# 域名嗅探:即使软件直接用IP连接,也能嗅探出真实域名用于匹配规则
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+# ========== DNS 设置 ==========
+dns:
+  enable: true
+  listen: :1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "*.apple.com"
+    - "time.*.com"
+    - "time.*.gov"
+  # 用来解析下面 nameserver 里那些 DoH 域名自己的真实IP,必须是纯IP,不能再写域名
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://223.5.5.5/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://dns.google/dns-query
+    - https://doh.pub/dns-query
+
+# ========== 节点订阅(Sub-Store) ==========
+# 请把下面 url 换成你自己的 Sub-Store Clash 订阅链接
+proxy-providers:
+  订阅:
+    type: http
+    url: "把你的 Sub-Store Clash 订阅链接粘贴到这里"
+    path: ./proxy_provider/my.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com
+      interval: 300
+
+# ========== 策略组 ==========
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - Auto
+      - Choose
+
+  - name: AI
+    type: select
+    proxies:
+      - Auto
+      - Choose
+
+  - name: Adblock
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  # ---- 以下是 Proxy / AI 内部引用的子策略组 ----
+  - name: Auto
+    type: url-test
+    use:
+      - 订阅
+    url: https://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+
+  - name: Choose
+    type: select
+    use:
+      - 订阅
+
+# ========== 远程规则集 ==========
+rule-providers:
+  lan:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"
+    path: ./rule_provider/lan.yaml
+    interval: 86400
+
+  banad:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"
+    path: ./rule_provider/banad.yaml
+    interval: 86400
+
+  banprogramad:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list"
+    path: ./rule_provider/banprogramad.yaml
+    interval: 86400
+
+  ai:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Ruleset/AI.list"
+    path: ./rule_provider/ai.yaml
+    interval: 86400
+
+  telegram:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list"
+    path: ./rule_provider/telegram.yaml
+    interval: 86400
+
+  proxylite:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list"
+    path: ./rule_provider/proxylite.yaml
+    interval: 86400
+
+  chinadomain:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list"
+    path: ./rule_provider/chinadomain.yaml
+    interval: 86400
+
+  chinacompanyip:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list"
+    path: ./rule_provider/chinacompanyip.yaml
+    interval: 86400
+
+# ========== 分流规则 ==========
+rules:
+  - RULE-SET,lan,DIRECT
+  - RULE-SET,banad,Adblock
+  - RULE-SET,banprogramad,Adblock
+  - RULE-SET,ai,AI
+  - RULE-SET,telegram,Proxy
+  - RULE-SET,proxylite,Proxy
+  - RULE-SET,chinadomain,DIRECT
+  - RULE-SET,chinacompanyip,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy
