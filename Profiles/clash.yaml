@@ -68,12 +68,12 @@ dns:
     - https://dns.google/dns-query
     - https://doh.pub/dns-query
 
-# ========== 节点订阅(Sub-Store) ==========
-# 请把下面 url 换成你自己的 Sub-Store Clash 订阅链接
+# ========== 节点订阅 ==========
+# 请把下面 url 换成你自己的Clash订阅链接
 proxy-providers:
   订阅:
     type: http
-    url: "把你的 Sub-Store Clash 订阅链接粘贴到这里"
+    url: "把你的Clash订阅链接粘贴到这里"
     path: ./proxy_provider/my.yaml
     interval: 3600
     health-check:
